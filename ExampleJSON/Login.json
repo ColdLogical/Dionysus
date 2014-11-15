@@ -1,0 +1,12 @@
+{
+    "AuthResponse": {
+        "Username": "michudatest@charter.net",
+        "Token": "907571be-06d2-4a84-9a03-77a8d619c964",
+        "Expiration": 1447531105213,
+        "ExpirationCookie": "Sat, 14 Nov 2015 19:58:25 UTC",
+        "Fullname": "michudatest@charter.net",
+        "IssueDate": 0,
+        "AccountNumber": "8352306040545533",
+        "ZipCode": "55124"
+    }
+}

@@ -15,13 +15,6 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
-        if WebOperations.AuthToken() == nil {
-            self.generateAuth()
-        } else {
-            self.updateTokenInfo()
-        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,7 +31,7 @@ class ViewController: UIViewController {
     }
     
     func updateTokenInfo() {
-        if let token = WebOperations.AuthToken() {
+        if let token = WebOperations.authToken() {
             self.tokenLabel!.text = "Token Generated"
             self.tokenLabel!.textColor = UIColor.greenColor()
         } else {

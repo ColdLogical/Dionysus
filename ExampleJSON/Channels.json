@@ -1,0 +1,163 @@
+{
+    "TimeZoneOffset": "-21600000",
+    "GuidePeriod": [
+        {
+            "TotalSize": "178",
+            "StartTime": "2:24 PM",
+            "EndTime": "2:25 PM",
+            "StartDate": "1415996683874",
+            "EndDate": "1415996743874",
+            "Duration": "1",
+            "ChannelLineup": [
+                {
+                    "Channel": {
+                        "ChannelNumber": "7",
+                        "ChannelId": "11069",
+                        "Network": "QVC - Quality Value Convenience Network",
+                        "NetworkCode": "QVC",
+                        "NetworkLogoUri": [
+                            {
+                                "ImageUri": "http://tmsimg.video.cdn.charter.com/h3/NowShowing/11069/s11069_h3_aa.png",
+                                "ImageType": "For Light Background",
+                                "ReferenceType": "Network",
+                                "Width": "360",
+                                "Height": "270",
+                                "DefaultImage": "false"
+                            }
+                        ],
+                        "Format": "SD",
+                        "Entitled": "true",
+                        "Streamable": "true",
+                        "StreamableLocation": "OnNet",
+                        "NetworkCategories": {
+                            "NetworkCategory": [
+                                "Lifestyle"
+                            ]
+                        },
+                        "SDHDPair": "60222",
+                        "Affiliate": "",
+                        "CallSignDisplayLabel": "QVC"
+                    },
+                    "Title": [
+                        {
+                            "TitleId": "SH011063960000",
+                            "Name": "The Dish with Rachael Ray",
+                            "TitleType": "Series",
+                            "RunTime": "0",
+                            "GenreName": [
+                                "Cooking",
+                                "Talk",
+                                "Shopping"
+                            ],
+                            "LongDescription": "Cookware, kitchen tools and cookbooks.",
+                            "OriginalDate": "1228521600000",
+                            "TVRating": "TVG",
+                            "Delivery": [
+                                {
+                                    "TitleId": "SH011063960000",
+                                    "DeliveryId": "11069-SH011063960000-1415995200000",
+                                    "StartDate": "1415995200000",
+                                    "EndDate": "1415998800000",
+                                    "GuidePeriodMinutes": "1",
+                                    "Duration": "3600",
+                                    "Transport": [
+                                        {
+                                            "TransportType": "QAM",
+                                            "Format": "SD"
+                                        },
+                                        {
+                                            "TransportType": "IP Stream"
+                                        }
+                                    ],
+                                    "DeliveryType": "Linear"
+                                }
+                            ],
+                            "Image": [
+                                {
+                                    "ImageUri": "http://tmsimg.video.cdn.charter.com/assets/p298444_st_v9_aa.jpg",
+                                    "ImageType": "TV Banner",
+                                    "ReferenceType": "Title",
+                                    "Caption": "The Dish with Rachael Ray",
+                                    "Width": "1080",
+                                    "Height": "1440",
+                                    "DefaultImage": "false"
+                                },
+                                {
+                                    "ImageUri": "http://tmsimg.video.cdn.charter.com/assets/p298444_st_v9_aa.jpg",
+                                    "ImageType": "TV Banner",
+                                    "ReferenceType": "Title",
+                                    "Caption": "The Dish with Rachael Ray",
+                                    "Width": "1080",
+                                    "Height": "1440",
+                                    "DefaultImage": "false"
+                                },
+                                {
+                                    "ImageUri": "http://tmsimg.video.cdn.charter.com/assets/p298444_st_h9_aa.jpg",
+                                    "ImageType": "TV Banner",
+                                    "ReferenceType": "Title",
+                                    "Caption": "The Dish with Rachael Ray",
+                                    "Width": "1440",
+                                    "Height": "1080",
+                                    "DefaultImage": "false"
+                                },
+                                {
+                                    "ImageUri": "http://tmsimg.video.cdn.charter.com/assets/p298444_st_h9_aa.jpg",
+                                    "ImageType": "TV Banner",
+                                    "ReferenceType": "Title",
+                                    "Caption": "The Dish with Rachael Ray",
+                                    "Width": "1440",
+                                    "Height": "1080",
+                                    "DefaultImage": "false"
+                                },
+                                {
+                                    "ImageUri": "http://tmsimg.video.cdn.charter.com/assets/p298444_st_h10_aa.jpg",
+                                    "ImageType": "TV Banner",
+                                    "ReferenceType": "Title",
+                                    "Caption": "The Dish with Rachael Ray",
+                                    "Width": "1920",
+                                    "Height": "1080",
+                                    "DefaultImage": "false"
+                                },
+                                {
+                                    "ImageUri": "http://tmsimg.video.cdn.charter.com/assets/p298444_st_h10_aa.jpg",
+                                    "ImageType": "TV Banner",
+                                    "ReferenceType": "Title",
+                                    "Caption": "The Dish with Rachael Ray",
+                                    "Width": "1920",
+                                    "Height": "1080",
+                                    "DefaultImage": "false"
+                                },
+                                {
+                                    "ImageUri": "http://tmsimg.video.cdn.charter.com/assets/p298444_st_v8_aa.jpg",
+                                    "ImageType": "TV Banner",
+                                    "ReferenceType": "Title",
+                                    "Caption": "The Dish with Rachael Ray",
+                                    "Width": "960",
+                                    "Height": "1440",
+                                    "DefaultImage": "false"
+                                },
+                                {
+                                    "ImageUri": "http://tmsimg.video.cdn.charter.com/assets/p298444_st_v8_aa.jpg",
+                                    "ImageType": "TV Banner",
+                                    "ReferenceType": "Title",
+                                    "Caption": "The Dish with Rachael Ray",
+                                    "Width": "960",
+                                    "Height": "1440",
+                                    "DefaultImage": "false"
+                                }
+                            ],
+                            "TitleCategories": {
+                                "Category": [
+                                    "Lifestyle",
+                                    "News & Weather",
+                                    "TV",
+                                    "Family & Education"
+                                ]
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

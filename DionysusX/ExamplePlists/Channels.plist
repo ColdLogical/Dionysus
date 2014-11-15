@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>GuidePeriod</key>
+	<array>
+		<dict>
+			<key>ChannelLineup</key>
+			<array>
+				<dict>
+					<key>Channel</key>
+					<dict>
+						<key>Affiliate</key>
+						<string></string>
+						<key>CallSignDisplayLabel</key>
+						<string>QVC</string>
+						<key>ChannelId</key>
+						<string>11069</string>
+						<key>ChannelNumber</key>
+						<string>7</string>
+						<key>Entitled</key>
+						<string>true</string>
+						<key>Format</key>
+						<string>SD</string>
+						<key>Network</key>
+						<string>QVC - Quality Value Convenience Network</string>
+						<key>NetworkCategories</key>
+						<dict>
+							<key>NetworkCategory</key>
+							<array>
+								<string>Lifestyle</string>
+							</array>
+						</dict>
+						<key>NetworkCode</key>
+						<string>QVC</string>
+						<key>NetworkLogoUri</key>
+						<array>
+							<dict>
+								<key>DefaultImage</key>
+								<string>false</string>
+								<key>Height</key>
+								<string>270</string>
+								<key>ImageType</key>
+								<string>For Light Background</string>
+								<key>ImageUri</key>
+								<string>http://tmsimg.video.cdn.charter.com/h3/NowShowing/11069/s11069_h3_aa.png</string>
+								<key>ReferenceType</key>
+								<string>Network</string>
+								<key>Width</key>
+								<string>360</string>
+							</dict>
+						</array>
+						<key>SDHDPair</key>
+						<string>60222</string>
+						<key>Streamable</key>
+						<string>true</string>
+						<key>StreamableLocation</key>
+						<string>OnNet</string>
+					</dict>
+					<key>Title</key>
+					<array>
+						<dict>
+							<key>Delivery</key>
+							<array>
+								<dict>
+									<key>DeliveryId</key>
+									<string>11069-SH011063960000-1415995200000</string>
+									<key>DeliveryType</key>
+									<string>Linear</string>
+									<key>Duration</key>
+									<string>3600</string>
+									<key>EndDate</key>
+									<string>1415998800000</string>
+									<key>GuidePeriodMinutes</key>
+									<string>1</string>
+									<key>StartDate</key>
+									<string>1415995200000</string>
+									<key>TitleId</key>
+									<string>SH011063960000</string>
+									<key>Transport</key>
+									<array>
+										<dict>
+											<key>Format</key>
+											<string>SD</string>
+											<key>TransportType</key>
+											<string>QAM</string>
+										</dict>
+										<dict>
+											<key>TransportType</key>
+											<string>IP Stream</string>
+										</dict>
+									</array>
+								</dict>
+							</array>
+							<key>GenreName</key>
+							<array>
+								<string>Cooking</string>
+								<string>Talk</string>
+								<string>Shopping</string>
+							</array>
+							<key>Image</key>
+							<array>
+								<dict>
+									<key>Caption</key>
+									<string>The Dish with Rachael Ray</string>
+									<key>DefaultImage</key>
+									<string>false</string>
+									<key>Height</key>
+									<string>1440</string>
+									<key>ImageType</key>
+									<string>TV Banner</string>
+									<key>ImageUri</key>
+									<string>http://tmsimg.video.cdn.charter.com/assets/p298444_st_v9_aa.jpg</string>
+									<key>ReferenceType</key>
+									<string>Title</string>
+									<key>Width</key>
+									<string>1080</string>
+								</dict>
+								<dict>
+									<key>Caption</key>
+									<string>The Dish with Rachael Ray</string>
+									<key>DefaultImage</key>
+									<string>false</string>
+									<key>Height</key>
+									<string>1440</string>
+									<key>ImageType</key>
+									<string>TV Banner</string>
+									<key>ImageUri</key>
+									<string>http://tmsimg.video.cdn.charter.com/assets/p298444_st_v9_aa.jpg</string>
+									<key>ReferenceType</key>
+									<string>Title</string>
+									<key>Width</key>
+									<string>1080</string>
+								</dict>
+								<dict>
+									<key>Caption</key>
+									<string>The Dish with Rachael Ray</string>
+									<key>DefaultImage</key>
+									<string>false</string>
+									<key>Height</key>
+									<string>1080</string>
+									<key>ImageType</key>
+									<string>TV Banner</string>
+									<key>ImageUri</key>
+									<string>http://tmsimg.video.cdn.charter.com/assets/p298444_st_h9_aa.jpg</string>
+									<key>ReferenceType</key>
+									<string>Title</string>
+									<key>Width</key>
+									<string>1440</string>
+								</dict>
+								<dict>
+									<key>Caption</key>
+									<string>The Dish with Rachael Ray</string>
+									<key>DefaultImage</key>
+									<string>false</string>
+									<key>Height</key>
+									<string>1080</string>
+									<key>ImageType</key>
+									<string>TV Banner</string>
+									<key>ImageUri</key>
+									<string>http://tmsimg.video.cdn.charter.com/assets/p298444_st_h9_aa.jpg</string>
+									<key>ReferenceType</key>
+									<string>Title</string>
+									<key>Width</key>
+									<string>1440</string>
+								</dict>
+								<dict>
+									<key>Caption</key>
+									<string>The Dish with Rachael Ray</string>
+									<key>DefaultImage</key>
+									<string>false</string>
+									<key>Height</key>
+									<string>1080</string>
+									<key>ImageType</key>
+									<string>TV Banner</string>
+									<key>ImageUri</key>
+									<string>http://tmsimg.video.cdn.charter.com/assets/p298444_st_h10_aa.jpg</string>
+									<key>ReferenceType</key>
+									<string>Title</string>
+									<key>Width</key>
+									<string>1920</string>
+								</dict>
+								<dict>
+									<key>Caption</key>
+									<string>The Dish with Rachael Ray</string>
+									<key>DefaultImage</key>
+									<string>false</string>
+									<key>Height</key>
+									<string>1080</string>
+									<key>ImageType</key>
+									<string>TV Banner</string>
+									<key>ImageUri</key>
+									<string>http://tmsimg.video.cdn.charter.com/assets/p298444_st_h10_aa.jpg</string>
+									<key>ReferenceType</key>
+									<string>Title</string>
+									<key>Width</key>
+									<string>1920</string>
+								</dict>
+								<dict>
+									<key>Caption</key>
+									<string>The Dish with Rachael Ray</string>
+									<key>DefaultImage</key>
+									<string>false</string>
+									<key>Height</key>
+									<string>1440</string>
+									<key>ImageType</key>
+									<string>TV Banner</string>
+									<key>ImageUri</key>
+									<string>http://tmsimg.video.cdn.charter.com/assets/p298444_st_v8_aa.jpg</string>
+									<key>ReferenceType</key>
+									<string>Title</string>
+									<key>Width</key>
+									<string>960</string>
+								</dict>
+								<dict>
+									<key>Caption</key>
+									<string>The Dish with Rachael Ray</string>
+									<key>DefaultImage</key>
+									<string>false</string>
+									<key>Height</key>
+									<string>1440</string>
+									<key>ImageType</key>
+									<string>TV Banner</string>
+									<key>ImageUri</key>
+									<string>http://tmsimg.video.cdn.charter.com/assets/p298444_st_v8_aa.jpg</string>
+									<key>ReferenceType</key>
+									<string>Title</string>
+									<key>Width</key>
+									<string>960</string>
+								</dict>
+							</array>
+							<key>LongDescription</key>
+							<string>Cookware, kitchen tools and cookbooks.</string>
+							<key>Name</key>
+							<string>The Dish with Rachael Ray</string>
+							<key>OriginalDate</key>
+							<string>1228521600000</string>
+							<key>RunTime</key>
+							<string>0</string>
+							<key>TVRating</key>
+							<string>TVG</string>
+							<key>TitleCategories</key>
+							<dict>
+								<key>Category</key>
+								<array>
+									<string>Lifestyle</string>
+									<string>News &amp; Weather</string>
+									<string>TV</string>
+									<string>Family &amp; Education</string>
+								</array>
+							</dict>
+							<key>TitleId</key>
+							<string>SH011063960000</string>
+							<key>TitleType</key>
+							<string>Series</string>
+						</dict>
+					</array>
+				</dict>
+			</array>
+			<key>Duration</key>
+			<string>1</string>
+			<key>EndDate</key>
+			<string>1415996743874</string>
+			<key>EndTime</key>
+			<string>2:25 PM</string>
+			<key>StartDate</key>
+			<string>1415996683874</string>
+			<key>StartTime</key>
+			<string>2:24 PM</string>
+			<key>TotalSize</key>
+			<string>178</string>
+		</dict>
+	</array>
+	<key>TimeZoneOffset</key>
+	<string>-21600000</string>
+</dict>
+</plist>

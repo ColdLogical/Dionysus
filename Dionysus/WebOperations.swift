@@ -19,11 +19,12 @@ let kDefaultUsername = "coldlogic@charter.net"
 let kDevicesEndpoint = "services/v1/devices"
 let kFavoritesEndpoint = "services/v1/preferences/__FavoriteChannels__"
 let kLoginEndpoint = "api/symphony/auth/login"
+let kTuneChannelEndpoint = "symphony/services/v1/devices"
 let kPasswordKey = "password"
 let kUsernameKey = "username"
 
 class WebOperations {
-    class func AuthToken() -> String? {
+    class func authToken() -> String? {
         return WebOperations.userDefaultForKey(kAuthTokenKey)
     }
 
@@ -53,11 +54,12 @@ class WebOperations {
             pathToConfig = configPath
         }
         
-        //Return config or an empty dictionary if there is none
+        //Return config
         if let config = NSDictionary(contentsOfFile: pathToConfig) {
             return config
         }
         
+        //If no configuration dictionary is found, EVERYTHING IS BROKEN!!! (ÒДÓױ)
         assert(true, "No Configuration Dictionary found at \(pathToConfig)")
         return NSDictionary()
     }
@@ -158,11 +160,14 @@ class WebOperations {
     }
     
     class func setBaseURL(newBaseURL: String?) {
-        WebOperations.setUserDefault(newBaseURL, key: kAuthTokenKey)
+        WebOperations.setUserDefault(newBaseURL, key: kBaseURLKey)
     }
     
     class func setConfiguration(newPathToConfig: String?) {
-        WebOperations.setUserDefault(newPathToConfig, key: kAuthTokenKey)
+        WebOperations.setUserDefault(newPathToConfig, key: kConfigPathKey)
+        
+        //Upon setting a new configuration, need to reset baseURL from defaults to prevent corruption
+        WebOperations.setBaseURL(nil)
     }
     
     class func setUserDefault(value: String?, key: String) {

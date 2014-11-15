@@ -20,6 +20,8 @@ class WebOperationsTests: XCTestCase {
     let baseURL = "OmgCoolBaseURL"
     let password = "evenCoolerPassword"
     let username = "superCoolUsername"
+    let workingPassword = "eXsC5s87r2vM"
+    let workingUsername = "coldlogic@charter.net"
     
     
     override func setUp() {
@@ -47,16 +49,20 @@ class WebOperationsTests: XCTestCase {
         userDefaults.setValue(testToken, forKey: kAuthTokenKey)
         
         //Make sure the token we set gets returned
-        let token = WebOperations.AuthToken()
+        let token = WebOperations.authToken()
         XCTAssert(token == testToken, "Token must be value found in userDefaults")
     }
     
     func testBaseURL() {
-        
+        XCTAssert(WebOperations.baseURL() == baseURL, "BaseURL return must equal that of the config file")
     }
     
     func testConfiguration() {
-
+        let config = WebOperations.configuration()
+        XCTAssertNotNil(config, "Configuration must return a dictionary")
+        XCTAssert(config[kBaseURLKey] as? String == baseURL, "Configuration baseURL must be equal to the config files baseURL")
+        XCTAssert(config[kDefaultUsernameKey] as? String == username, "Configuration username must be equal to the config files username")
+        XCTAssert(config[kDefaultPasswordKey] as? String == password, "Configuration password must be equal to the config files password")
     }
     
     func testDefaultConfigPath() {
@@ -84,24 +90,25 @@ class WebOperationsTests: XCTestCase {
         XCTAssert(WebOperations.loginURL() == (WebOperations.baseURL() + kLoginEndpoint), "Login URL must be combination of baseURL and login endpoint")
     }
     
-    //This doesn't test that the login function works correctly
-    //  but rather that the information we get from login is what we need
     func testLogin() {
+        WebOperations.setConfiguration(WebOperations.defaultConfigPath())
+        let config = WebOperations.configuration()
+        
         var failExp = expectationWithDescription("Login Fail Test")
         func failure(request: NSURLRequest, json: NSDictionary!) -> Void {
             XCTAssertNotNil(json, "Should have recieved data")
             
             //Example Response
-            //                {
-            //                    Code = "Auth Login Failure";
-            //                    Message =             (
-            //                        "Failed to authenticate user: coldlogic@charter.net",
-            //                        "Failed to authenticate user",
-            //                        "Procedure results are unsuccessful :: The account is locked."
-            //                    );
-            //                    Timestamp = 1415838200044;
-            //                    TransactionId = "ac1ebca8-1415838199509-43978";
-            //                }
+            //            {
+            //                Code = "Auth Login Failure";
+            //                Message =             (
+            //                    "Failed to authenticate user: yourmom",
+            //                    "Failed to authenticate user",
+            //                    "Procedure results are unsuccessful :: The name was not found in the system."
+            //                );
+            //                Timestamp = 1415991011447;
+            //                TransactionId = "ac1ebcbf-1415991010753-85";
+            //            }
             
             XCTAssertNotNil(json["Code"], "Failed Login JSON must have a Code")
             
@@ -125,6 +132,7 @@ class WebOperationsTests: XCTestCase {
             //            }
             
             XCTAssertNotNil(json["Token"], "JSON has no Token")
+            XCTAssert(json["Fullname"] as? String == config[kDefaultUsernameKey] as? String, "This Login test must login with credentials from the configuration file")
             
             succExp.fulfill()
         }
@@ -148,6 +156,20 @@ class WebOperationsTests: XCTestCase {
         
         XCTAssertNotNil(token, "Value for kAuthTokenKey cannot be nil after setting it")
         XCTAssert(token == testToken, "Token must be value found in userDefaults")
+    }
+    
+    func testSetBaseURL() {
+        let value = baseURL
+        WebOperations.setBaseURL(value)
+        
+        XCTAssert(userDefaults.valueForKey(kBaseURLKey) as? String == value, "Value in user defaults must equal value that was set")
+    }
+    
+    func testSetConfiguration() {
+        let value = configPath
+        WebOperations.setConfiguration(value)
+        
+        XCTAssert(userDefaults.valueForKey(kConfigPathKey) as? String == value, "Value in user defaults must equal value that was set")
     }
     
     func testSetUserDefault() {

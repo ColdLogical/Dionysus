@@ -9,6 +9,11 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>DionysusX.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
@@ -18,6 +23,11 @@
 			<true/>
 		</dict>
 		<key>186ACCA31A0C491800512F12</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>18840AB61A16C4F30066119C</key>
 		<dict>
 			<key>primary</key>
 			<true/>

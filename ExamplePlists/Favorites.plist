@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Preference</key>
+	<array>
+		<dict>
+			<key>CreatedTime</key>
+			<string>1415995586840</string>
+			<key>Name</key>
+			<string>__FavoriteChannels__</string>
+			<key>Value</key>
+			<string>18433,12131,38589,11069,11867,11207</string>
+		</dict>
+	</array>
+	<key>TotalSize</key>
+	<string>0</string>
+</dict>
+</plist>

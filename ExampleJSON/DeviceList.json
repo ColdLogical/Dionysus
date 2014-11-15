@@ -1,0 +1,86 @@
+{
+    "Devices": {
+        "AccountId": "8352306040545533",
+        "Device": [
+            {
+                "SerialNumber": "MA1304ERH807",
+                "MacAddress": "000004A8C1BE",
+                "Make": "",
+                "Model": "DCX3510M",
+                "DVR": "true",
+                "HD": "true",
+                "EBIFEnabled": "true",
+                "RecordingDaysAhead": "0",
+                "Alias": "Basement-Sling test",
+                "DefaultDevice": "true",
+                "CompanionCapabilities": {
+                    "CompanionCapability": [
+                        "CanInform",
+                        "CanPlayLive",
+                        "CanPlayVOD",
+                        "CanRecord"
+                    ]
+                }
+            },
+            {
+                "SerialNumber": "MA1304EWI362",
+                "MacAddress": "000004A8BE3F",
+                "Make": "",
+                "Model": "DCX3510M",
+                "DVR": "true",
+                "HD": "true",
+                "EBIFEnabled": "true",
+                "RecordingDaysAhead": "0",
+                "Alias": "Bed12",
+                "DefaultDevice": "false",
+                "CompanionCapabilities": {
+                    "CompanionCapability": [
+                        "CanInform",
+                        "CanPlayLive",
+                        "CanPlayVOD",
+                        "CanRecord"
+                    ]
+                }
+            },
+            {
+                "SerialNumber": "M11335TE1997",
+                "MacAddress": "0000073BACCC",
+                "Make": "",
+                "Model": "DCX3220E",
+                "DVR": "false",
+                "HD": "true",
+                "EBIFEnabled": "true",
+                "RecordingDaysAhead": "0",
+                "Alias": "first test",
+                "DefaultDevice": "false",
+                "CompanionCapabilities": {
+                    "CompanionCapability": [
+                        "CanInform",
+                        "CanPlayLive",
+                        "CanPlayVOD"
+                    ]
+                }
+            },
+            {
+                "SerialNumber": "MA1304ETH385",
+                "MacAddress": "000004A8C42B",
+                "Make": "",
+                "Model": "DCX3510M",
+                "DVR": "true",
+                "HD": "true",
+                "EBIFEnabled": "true",
+                "RecordingDaysAhead": "0",
+                "Alias": "Living Room DVR",
+                "DefaultDevice": "false",
+                "CompanionCapabilities": {
+                    "CompanionCapability": [
+                        "CanInform",
+                        "CanPlayLive",
+                        "CanPlayVOD",
+                        "CanRecord"
+                    ]
+                }
+            }
+        ]
+    }
+}
