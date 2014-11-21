@@ -7,11 +7,36 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		18284AB01A16D4D100F34B4F /* MockOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18284AAF1A16D4D100F34B4F /* MockOperations.swift */; };
-		18284AC11A16D8F900F34B4F /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18284AC01A16D8F900F34B4F /* Channel.swift */; };
-		18284AC31A16D8FA00F34B4F /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18284AC21A16D8FA00F34B4F /* Device.swift */; };
-		18284AC51A16DA6C00F34B4F /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18284AC41A16DA6C00F34B4F /* DataManager.swift */; };
-		18284AC71A16DE8E00F34B4F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18284AC61A16DE8E00F34B4F /* CoreData.framework */; };
+		1855DF961A1D2D7B0093FA04 /* Device+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DF951A1D2D7B0093FA04 /* Device+Extensions.swift */; };
+		1855DF991A1D53F70093FA04 /* DeviceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DF981A1D53F70093FA04 /* DeviceTests.swift */; };
+		1855DFA41A1D6A980093FA04 /* Channels.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1855DF9E1A1D6A980093FA04 /* Channels.plist */; };
+		1855DFA51A1D6A980093FA04 /* DeviceList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1855DF9F1A1D6A980093FA04 /* DeviceList.plist */; };
+		1855DFA61A1D6A980093FA04 /* Favorites.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1855DFA01A1D6A980093FA04 /* Favorites.plist */; };
+		1855DFA71A1D6A980093FA04 /* Login.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1855DFA11A1D6A980093FA04 /* Login.plist */; };
+		1855DFA81A1D6A980093FA04 /* SetDefault.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1855DFA21A1D6A980093FA04 /* SetDefault.plist */; };
+		1855DFA91A1D6A980093FA04 /* TuneToChannel.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1855DFA31A1D6A980093FA04 /* TuneToChannel.plist */; };
+		1855DFB41A1D6AAB0093FA04 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFAA1A1D6AAB0093FA04 /* Channel.swift */; };
+		1855DFB51A1D6AAB0093FA04 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFAB1A1D6AAB0093FA04 /* DataManager.swift */; };
+		1855DFB61A1D6AAB0093FA04 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFAC1A1D6AAB0093FA04 /* Device.swift */; };
+		1855DFB71A1D6AAB0093FA04 /* DionysusInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFAD1A1D6AAB0093FA04 /* DionysusInterfaceController.swift */; };
+		1855DFB81A1D6AAB0093FA04 /* DionysusModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFAE1A1D6AAB0093FA04 /* DionysusModel.xcdatamodeld */; };
+		1855DFB91A1D6AAB0093FA04 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1855DFB01A1D6AAB0093FA04 /* Images.xcassets */; };
+		1855DFBA1A1D6AAB0093FA04 /* MockOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFB11A1D6AAB0093FA04 /* MockOperations.swift */; };
+		1855DFBB1A1D6AAB0093FA04 /* WebOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFB21A1D6AAB0093FA04 /* WebOperation.swift */; };
+		1855DFBC1A1D6AAB0093FA04 /* WebOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFB31A1D6AAB0093FA04 /* WebOperations.swift */; };
+		1855DFBE1A1D6D030093FA04 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18284AC61A16DE8E00F34B4F /* CoreData.framework */; };
+		1855DFBF1A1D6D8B0093FA04 /* WebOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFB21A1D6AAB0093FA04 /* WebOperation.swift */; };
+		1855DFC01A1D6D8B0093FA04 /* WebOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFB31A1D6AAB0093FA04 /* WebOperations.swift */; };
+		1855DFC11A1D6D8C0093FA04 /* WebOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFB21A1D6AAB0093FA04 /* WebOperation.swift */; };
+		1855DFC21A1D6D8C0093FA04 /* WebOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFB31A1D6AAB0093FA04 /* WebOperations.swift */; };
+		1855DFC91A1D6D9A0093FA04 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFAB1A1D6AAB0093FA04 /* DataManager.swift */; };
+		1855DFCA1A1D6D9A0093FA04 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFAC1A1D6AAB0093FA04 /* Device.swift */; };
+		1855DFCB1A1D6D9A0093FA04 /* Device+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DF951A1D2D7B0093FA04 /* Device+Extensions.swift */; };
+		1855DFCC1A1D6D9A0093FA04 /* MockOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFB11A1D6AAB0093FA04 /* MockOperations.swift */; };
+		1855DFCD1A1D6D9A0093FA04 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFAB1A1D6AAB0093FA04 /* DataManager.swift */; };
+		1855DFCE1A1D6D9A0093FA04 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFAC1A1D6AAB0093FA04 /* Device.swift */; };
+		1855DFCF1A1D6D9A0093FA04 /* Device+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DF951A1D2D7B0093FA04 /* Device+Extensions.swift */; };
+		1855DFD01A1D6D9A0093FA04 /* MockOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFB11A1D6AAB0093FA04 /* MockOperations.swift */; };
 		186ACC951A0C491800512F12 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186ACC941A0C491800512F12 /* AppDelegate.swift */; };
 		186ACC971A0C491800512F12 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186ACC961A0C491800512F12 /* ViewController.swift */; };
 		186ACC9A1A0C491800512F12 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 186ACC981A0C491800512F12 /* Main.storyboard */; };
@@ -19,26 +44,14 @@
 		186ACC9F1A0C491800512F12 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 186ACC9D1A0C491800512F12 /* LaunchScreen.xib */; };
 		186ACCAB1A0C491800512F12 /* DionysusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186ACCAA1A0C491800512F12 /* DionysusTests.swift */; };
 		186ACCB71A0D62D300512F12 /* WebOperationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186ACCB61A0D62D300512F12 /* WebOperationTests.swift */; };
-		186ACCBA1A0D631400512F12 /* WebOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186ACCB81A0D62FB00512F12 /* WebOperation.swift */; };
-		18840ABA1A16C4F30066119C /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18840AB91A16C4F30066119C /* NotificationCenter.framework */; };
-		18840ABF1A16C4F40066119C /* DionysusXViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18840ABE1A16C4F40066119C /* DionysusXViewController.swift */; };
-		18840AC11A16C4F40066119C /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18840AC01A16C4F40066119C /* MainInterface.storyboard */; };
-		18840AC41A16C4F40066119C /* DionysusX.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 18840AB71A16C4F30066119C /* DionysusX.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		18840AC91A16C6C90066119C /* WebOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D4E1B91A13D43200A283E2 /* WebOperations.swift */; };
-		18840ACA1A16C72B0066119C /* WebOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186ACCB81A0D62FB00512F12 /* WebOperation.swift */; };
-		18840ACC1A16C8160066119C /* original.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 18840ACB1A16C8160066119C /* original.jpg */; };
-		18840ACD1A16D0E50066119C /* WebOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D4E1B91A13D43200A283E2 /* WebOperations.swift */; };
-		18840ACE1A16D0E80066119C /* WebOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186ACCB81A0D62FB00512F12 /* WebOperation.swift */; };
-		18840AD61A16D1BB0066119C /* Channels.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18840AD01A16D1BB0066119C /* Channels.plist */; };
-		18840AD71A16D1BB0066119C /* DeviceList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18840AD11A16D1BB0066119C /* DeviceList.plist */; };
-		18840AD81A16D1BB0066119C /* Favorites.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18840AD21A16D1BB0066119C /* Favorites.plist */; };
-		18840AD91A16D1BB0066119C /* Login.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18840AD31A16D1BB0066119C /* Login.plist */; };
-		18840ADA1A16D1BB0066119C /* SetDefault.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18840AD41A16D1BB0066119C /* SetDefault.plist */; };
-		18840ADB1A16D1BB0066119C /* TuneToChannel.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18840AD51A16D1BB0066119C /* TuneToChannel.plist */; };
-		18840ADE1A16D2290066119C /* DionysusXModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 18840ADC1A16D2290066119C /* DionysusXModel.xcdatamodeld */; };
+		188A256D1A1D17E1002C8AE4 /* WatchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 188A256C1A1D17E1002C8AE4 /* WatchKit.framework */; };
+		188A25751A1D17E2002C8AE4 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188A25741A1D17E2002C8AE4 /* NotificationController.swift */; };
+		188A257B1A1D17E2002C8AE4 /* Dionysus Watch App.app in Resources */ = {isa = PBXBuildFile; fileRef = 188A257A1A1D17E2002C8AE4 /* Dionysus Watch App.app */; };
+		188A25821A1D17E2002C8AE4 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 188A25811A1D17E2002C8AE4 /* Interface.storyboard */; };
+		188A25841A1D17E2002C8AE4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 188A25831A1D17E2002C8AE4 /* Images.xcassets */; };
+		188A25871A1D17E2002C8AE4 /* Dionysus WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 188A256B1A1D17E1002C8AE4 /* Dionysus WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		18D4E1B71A13CD0100A283E2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186ACC961A0C491800512F12 /* ViewController.swift */; };
 		18D4E1B81A13CD0300A283E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186ACC941A0C491800512F12 /* AppDelegate.swift */; };
-		18D4E1BB1A13D47B00A283E2 /* WebOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D4E1B91A13D43200A283E2 /* WebOperations.swift */; };
 		18D4E1BD1A13D48C00A283E2 /* WebOperationsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D4E1BC1A13D48C00A283E2 /* WebOperationsTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -50,12 +63,19 @@
 			remoteGlobalIDString = 186ACC8E1A0C491800512F12;
 			remoteInfo = Dionysus;
 		};
-		18840AC21A16C4F40066119C /* PBXContainerItemProxy */ = {
+		188A257C1A1D17E2002C8AE4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 186ACC871A0C491800512F12 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 18840AB61A16C4F30066119C;
-			remoteInfo = DionysusX;
+			remoteGlobalIDString = 188A25791A1D17E2002C8AE4;
+			remoteInfo = "Dionysus Watch App";
+		};
+		188A25851A1D17E2002C8AE4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 186ACC871A0C491800512F12 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 188A256A1A1D17E1002C8AE4;
+			remoteInfo = "Dionysus WatchKit Extension";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -66,7 +86,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				18840AC41A16C4F40066119C /* DionysusX.appex in Embed App Extensions */,
+				188A25871A1D17E2002C8AE4 /* Dionysus WatchKit Extension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -74,11 +94,24 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		18284AAF1A16D4D100F34B4F /* MockOperations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockOperations.swift; sourceTree = "<group>"; };
-		18284AC01A16D8F900F34B4F /* Channel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
-		18284AC21A16D8FA00F34B4F /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
-		18284AC41A16DA6C00F34B4F /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		18284AC61A16DE8E00F34B4F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		1855DF951A1D2D7B0093FA04 /* Device+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Device+Extensions.swift"; sourceTree = "<group>"; };
+		1855DF981A1D53F70093FA04 /* DeviceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceTests.swift; sourceTree = "<group>"; };
+		1855DF9E1A1D6A980093FA04 /* Channels.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Channels.plist; sourceTree = "<group>"; };
+		1855DF9F1A1D6A980093FA04 /* DeviceList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DeviceList.plist; sourceTree = "<group>"; };
+		1855DFA01A1D6A980093FA04 /* Favorites.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Favorites.plist; sourceTree = "<group>"; };
+		1855DFA11A1D6A980093FA04 /* Login.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Login.plist; sourceTree = "<group>"; };
+		1855DFA21A1D6A980093FA04 /* SetDefault.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SetDefault.plist; sourceTree = "<group>"; };
+		1855DFA31A1D6A980093FA04 /* TuneToChannel.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TuneToChannel.plist; sourceTree = "<group>"; };
+		1855DFAA1A1D6AAB0093FA04 /* Channel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
+		1855DFAB1A1D6AAB0093FA04 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		1855DFAC1A1D6AAB0093FA04 /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
+		1855DFAD1A1D6AAB0093FA04 /* DionysusInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DionysusInterfaceController.swift; sourceTree = "<group>"; };
+		1855DFAF1A1D6AAB0093FA04 /* DionysusModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DionysusModel.xcdatamodel; sourceTree = "<group>"; };
+		1855DFB01A1D6AAB0093FA04 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		1855DFB11A1D6AAB0093FA04 /* MockOperations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockOperations.swift; sourceTree = "<group>"; };
+		1855DFB21A1D6AAB0093FA04 /* WebOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebOperation.swift; sourceTree = "<group>"; };
+		1855DFB31A1D6AAB0093FA04 /* WebOperations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebOperations.swift; sourceTree = "<group>"; };
 		186ACC8F1A0C491800512F12 /* Dionysus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dionysus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		186ACC931A0C491800512F12 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		186ACC941A0C491800512F12 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -90,21 +123,17 @@
 		186ACCA91A0C491800512F12 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		186ACCAA1A0C491800512F12 /* DionysusTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DionysusTests.swift; sourceTree = "<group>"; };
 		186ACCB61A0D62D300512F12 /* WebOperationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebOperationTests.swift; sourceTree = "<group>"; };
-		186ACCB81A0D62FB00512F12 /* WebOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WebOperation.swift; path = ../Dionysus/WebOperation.swift; sourceTree = "<group>"; };
-		18840AB71A16C4F30066119C /* DionysusX.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = DionysusX.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		18840AB91A16C4F30066119C /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
-		18840ABD1A16C4F40066119C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		18840ABE1A16C4F40066119C /* DionysusXViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DionysusXViewController.swift; sourceTree = "<group>"; };
-		18840AC01A16C4F40066119C /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
 		18840ACB1A16C8160066119C /* original.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = original.jpg; path = ../original.jpg; sourceTree = "<group>"; };
-		18840AD01A16D1BB0066119C /* Channels.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Channels.plist; sourceTree = "<group>"; };
-		18840AD11A16D1BB0066119C /* DeviceList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DeviceList.plist; sourceTree = "<group>"; };
-		18840AD21A16D1BB0066119C /* Favorites.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Favorites.plist; sourceTree = "<group>"; };
-		18840AD31A16D1BB0066119C /* Login.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Login.plist; sourceTree = "<group>"; };
-		18840AD41A16D1BB0066119C /* SetDefault.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SetDefault.plist; sourceTree = "<group>"; };
-		18840AD51A16D1BB0066119C /* TuneToChannel.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TuneToChannel.plist; sourceTree = "<group>"; };
-		18840ADD1A16D2290066119C /* DionysusXModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DionysusXModel.xcdatamodel; sourceTree = "<group>"; };
-		18D4E1B91A13D43200A283E2 /* WebOperations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WebOperations.swift; path = ../Dionysus/WebOperations.swift; sourceTree = "<group>"; };
+		188A256B1A1D17E1002C8AE4 /* Dionysus WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Dionysus WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		188A256C1A1D17E1002C8AE4 /* WatchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchKit.framework; path = System/Library/Frameworks/WatchKit.framework; sourceTree = SDKROOT; };
+		188A25701A1D17E1002C8AE4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		188A25711A1D17E1002C8AE4 /* PushNotificationPayload.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = PushNotificationPayload.json; sourceTree = "<group>"; };
+		188A25741A1D17E2002C8AE4 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		188A257A1A1D17E2002C8AE4 /* Dionysus Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Dionysus Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		188A25801A1D17E2002C8AE4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		188A25811A1D17E2002C8AE4 /* Interface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Interface.storyboard; sourceTree = "<group>"; };
+		188A25831A1D17E2002C8AE4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		18D4E1BC1A13D48C00A283E2 /* WebOperationsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebOperationsTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -123,24 +152,38 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		18840AB41A16C4F30066119C /* Frameworks */ = {
+		188A25681A1D17E1002C8AE4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18284AC71A16DE8E00F34B4F /* CoreData.framework in Frameworks */,
-				18840ABA1A16C4F30066119C /* NotificationCenter.framework in Frameworks */,
+				1855DFBE1A1D6D030093FA04 /* CoreData.framework in Frameworks */,
+				188A256D1A1D17E1002C8AE4 /* WatchKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1855DF9D1A1D6A980093FA04 /* ExamplePlists */ = {
+			isa = PBXGroup;
+			children = (
+				1855DF9E1A1D6A980093FA04 /* Channels.plist */,
+				1855DF9F1A1D6A980093FA04 /* DeviceList.plist */,
+				1855DFA01A1D6A980093FA04 /* Favorites.plist */,
+				1855DFA11A1D6A980093FA04 /* Login.plist */,
+				1855DFA21A1D6A980093FA04 /* SetDefault.plist */,
+				1855DFA31A1D6A980093FA04 /* TuneToChannel.plist */,
+			);
+			path = ExamplePlists;
+			sourceTree = SOURCE_ROOT;
+		};
 		186ACC861A0C491800512F12 = {
 			isa = PBXGroup;
 			children = (
 				186ACC911A0C491800512F12 /* Dionysus */,
 				186ACCA71A0C491800512F12 /* DionysusTests */,
-				18840ABB1A16C4F30066119C /* DionysusX */,
+				188A256E1A1D17E1002C8AE4 /* Dionysus WatchKit Extension */,
+				188A257E1A1D17E2002C8AE4 /* Dionysus Watch App */,
 				18840AB81A16C4F30066119C /* Frameworks */,
 				186ACC901A0C491800512F12 /* Products */,
 			);
@@ -151,7 +194,8 @@
 			children = (
 				186ACC8F1A0C491800512F12 /* Dionysus.app */,
 				186ACCA41A0C491800512F12 /* DionysusTests.xctest */,
-				18840AB71A16C4F30066119C /* DionysusX.appex */,
+				188A256B1A1D17E1002C8AE4 /* Dionysus WatchKit Extension.appex */,
+				188A257A1A1D17E2002C8AE4 /* Dionysus Watch App.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -180,6 +224,7 @@
 		186ACCA71A0C491800512F12 /* DionysusTests */ = {
 			isa = PBXGroup;
 			children = (
+				1855DF981A1D53F70093FA04 /* DeviceTests.swift */,
 				186ACCAA1A0C491800512F12 /* DionysusTests.swift */,
 				18D4E1BC1A13D48C00A283E2 /* WebOperationsTests.swift */,
 				186ACCB61A0D62D300512F12 /* WebOperationTests.swift */,
@@ -201,48 +246,57 @@
 			children = (
 				18284AC61A16DE8E00F34B4F /* CoreData.framework */,
 				18840AB91A16C4F30066119C /* NotificationCenter.framework */,
+				188A256C1A1D17E1002C8AE4 /* WatchKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		18840ABB1A16C4F30066119C /* DionysusX */ = {
+		188A256E1A1D17E1002C8AE4 /* Dionysus WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
-				18840AC01A16C4F40066119C /* MainInterface.storyboard */,
-				18284AC01A16D8F900F34B4F /* Channel.swift */,
-				18284AC41A16DA6C00F34B4F /* DataManager.swift */,
-				18284AC21A16D8FA00F34B4F /* Device.swift */,
-				18840ABE1A16C4F40066119C /* DionysusXViewController.swift */,
-				18284AAF1A16D4D100F34B4F /* MockOperations.swift */,
-				186ACCB81A0D62FB00512F12 /* WebOperation.swift */,
-				18D4E1B91A13D43200A283E2 /* WebOperations.swift */,
-				18840ADC1A16D2290066119C /* DionysusXModel.xcdatamodeld */,
-				18840ABC1A16C4F40066119C /* Supporting Files */,
+				1855DFAA1A1D6AAB0093FA04 /* Channel.swift */,
+				1855DFAB1A1D6AAB0093FA04 /* DataManager.swift */,
+				1855DFAC1A1D6AAB0093FA04 /* Device.swift */,
+				1855DF951A1D2D7B0093FA04 /* Device+Extensions.swift */,
+				1855DFAD1A1D6AAB0093FA04 /* DionysusInterfaceController.swift */,
+				1855DFB11A1D6AAB0093FA04 /* MockOperations.swift */,
+				188A25741A1D17E2002C8AE4 /* NotificationController.swift */,
+				1855DFB21A1D6AAB0093FA04 /* WebOperation.swift */,
+				1855DFB31A1D6AAB0093FA04 /* WebOperations.swift */,
+				1855DFB01A1D6AAB0093FA04 /* Images.xcassets */,
+				1855DFAE1A1D6AAB0093FA04 /* DionysusModel.xcdatamodeld */,
+				188A256F1A1D17E1002C8AE4 /* Supporting Files */,
 			);
-			path = DionysusX;
+			path = "Dionysus WatchKit Extension";
 			sourceTree = "<group>";
 		};
-		18840ABC1A16C4F40066119C /* Supporting Files */ = {
+		188A256F1A1D17E1002C8AE4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				18840ACB1A16C8160066119C /* original.jpg */,
-				18840ACF1A16D1BB0066119C /* ExamplePlists */,
-				18840ABD1A16C4F40066119C /* Info.plist */,
+				1855DF9D1A1D6A980093FA04 /* ExamplePlists */,
+				188A25701A1D17E1002C8AE4 /* Info.plist */,
+				188A25711A1D17E1002C8AE4 /* PushNotificationPayload.json */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		18840ACF1A16D1BB0066119C /* ExamplePlists */ = {
+		188A257E1A1D17E2002C8AE4 /* Dionysus Watch App */ = {
 			isa = PBXGroup;
 			children = (
-				18840AD01A16D1BB0066119C /* Channels.plist */,
-				18840AD11A16D1BB0066119C /* DeviceList.plist */,
-				18840AD21A16D1BB0066119C /* Favorites.plist */,
-				18840AD31A16D1BB0066119C /* Login.plist */,
-				18840AD41A16D1BB0066119C /* SetDefault.plist */,
-				18840AD51A16D1BB0066119C /* TuneToChannel.plist */,
+				188A25811A1D17E2002C8AE4 /* Interface.storyboard */,
+				18840ACB1A16C8160066119C /* original.jpg */,
+				188A25831A1D17E2002C8AE4 /* Images.xcassets */,
+				188A257F1A1D17E2002C8AE4 /* Supporting Files */,
 			);
-			path = ExamplePlists;
+			path = "Dionysus Watch App";
+			sourceTree = "<group>";
+		};
+		188A257F1A1D17E2002C8AE4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				188A25801A1D17E2002C8AE4 /* Info.plist */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,7 +314,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				18840AC31A16C4F40066119C /* PBXTargetDependency */,
+				188A25861A1D17E2002C8AE4 /* PBXTargetDependency */,
 			);
 			name = Dionysus;
 			productName = Dionysus;
@@ -285,22 +339,38 @@
 			productReference = 186ACCA41A0C491800512F12 /* DionysusTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		18840AB61A16C4F30066119C /* DionysusX */ = {
+		188A256A1A1D17E1002C8AE4 /* Dionysus WatchKit Extension */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 18840AC71A16C4F40066119C /* Build configuration list for PBXNativeTarget "DionysusX" */;
+			buildConfigurationList = 188A258D1A1D17E2002C8AE4 /* Build configuration list for PBXNativeTarget "Dionysus WatchKit Extension" */;
 			buildPhases = (
-				18840AB31A16C4F30066119C /* Sources */,
-				18840AB41A16C4F30066119C /* Frameworks */,
-				18840AB51A16C4F30066119C /* Resources */,
+				188A25671A1D17E1002C8AE4 /* Sources */,
+				188A25681A1D17E1002C8AE4 /* Frameworks */,
+				188A25691A1D17E1002C8AE4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				188A257D1A1D17E2002C8AE4 /* PBXTargetDependency */,
+			);
+			name = "Dionysus WatchKit Extension";
+			productName = "Dionysus WatchKit Extension";
+			productReference = 188A256B1A1D17E1002C8AE4 /* Dionysus WatchKit Extension.appex */;
+			productType = "com.apple.product-type.watchkit-extension";
+		};
+		188A25791A1D17E2002C8AE4 /* Dionysus Watch App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 188A258C1A1D17E2002C8AE4 /* Build configuration list for PBXNativeTarget "Dionysus Watch App" */;
+			buildPhases = (
+				188A25781A1D17E2002C8AE4 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = DionysusX;
-			productName = DionysusX;
-			productReference = 18840AB71A16C4F30066119C /* DionysusX.appex */;
-			productType = "com.apple.product-type.app-extension";
+			name = "Dionysus Watch App";
+			productName = "Dionysus Watch App";
+			productReference = 188A257A1A1D17E2002C8AE4 /* Dionysus Watch App.app */;
+			productType = "com.apple.product-type.application.watchapp";
 		};
 /* End PBXNativeTarget section */
 
@@ -318,8 +388,11 @@
 						CreatedOnToolsVersion = 6.1;
 						TestTargetID = 186ACC8E1A0C491800512F12;
 					};
-					18840AB61A16C4F30066119C = {
-						CreatedOnToolsVersion = 6.1;
+					188A256A1A1D17E1002C8AE4 = {
+						CreatedOnToolsVersion = 6.2;
+					};
+					188A25791A1D17E2002C8AE4 = {
+						CreatedOnToolsVersion = 6.2;
 					};
 				};
 			};
@@ -338,7 +411,8 @@
 			targets = (
 				186ACC8E1A0C491800512F12 /* Dionysus */,
 				186ACCA31A0C491800512F12 /* DionysusTests */,
-				18840AB61A16C4F30066119C /* DionysusX */,
+				188A256A1A1D17E1002C8AE4 /* Dionysus WatchKit Extension */,
+				188A25791A1D17E2002C8AE4 /* Dionysus Watch App */,
 			);
 		};
 /* End PBXProject section */
@@ -361,18 +435,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		18840AB51A16C4F30066119C /* Resources */ = {
+		188A25691A1D17E1002C8AE4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18840AD91A16D1BB0066119C /* Login.plist in Resources */,
-				18840ACC1A16C8160066119C /* original.jpg in Resources */,
-				18840AC11A16C4F40066119C /* MainInterface.storyboard in Resources */,
-				18840AD71A16D1BB0066119C /* DeviceList.plist in Resources */,
-				18840AD81A16D1BB0066119C /* Favorites.plist in Resources */,
-				18840ADB1A16D1BB0066119C /* TuneToChannel.plist in Resources */,
-				18840ADA1A16D1BB0066119C /* SetDefault.plist in Resources */,
-				18840AD61A16D1BB0066119C /* Channels.plist in Resources */,
+				1855DFB91A1D6AAB0093FA04 /* Images.xcassets in Resources */,
+				1855DFA91A1D6A980093FA04 /* TuneToChannel.plist in Resources */,
+				1855DFA41A1D6A980093FA04 /* Channels.plist in Resources */,
+				188A257B1A1D17E2002C8AE4 /* Dionysus Watch App.app in Resources */,
+				1855DFA61A1D6A980093FA04 /* Favorites.plist in Resources */,
+				1855DFA81A1D6A980093FA04 /* SetDefault.plist in Resources */,
+				1855DFA71A1D6A980093FA04 /* Login.plist in Resources */,
+				1855DFA51A1D6A980093FA04 /* DeviceList.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		188A25781A1D17E2002C8AE4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				188A25821A1D17E2002C8AE4 /* Interface.storyboard in Resources */,
+				188A25841A1D17E2002C8AE4 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -383,10 +466,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18840ACE1A16D0E80066119C /* WebOperation.swift in Sources */,
+				1855DFC01A1D6D8B0093FA04 /* WebOperations.swift in Sources */,
+				1855DFCD1A1D6D9A0093FA04 /* DataManager.swift in Sources */,
 				186ACC971A0C491800512F12 /* ViewController.swift in Sources */,
-				18840ACD1A16D0E50066119C /* WebOperations.swift in Sources */,
+				1855DFCF1A1D6D9A0093FA04 /* Device+Extensions.swift in Sources */,
+				1855DFCE1A1D6D9A0093FA04 /* Device.swift in Sources */,
+				1855DFD01A1D6D9A0093FA04 /* MockOperations.swift in Sources */,
 				186ACC951A0C491800512F12 /* AppDelegate.swift in Sources */,
+				1855DFBF1A1D6D8B0093FA04 /* WebOperation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -396,26 +483,33 @@
 			files = (
 				186ACCB71A0D62D300512F12 /* WebOperationTests.swift in Sources */,
 				186ACCAB1A0C491800512F12 /* DionysusTests.swift in Sources */,
+				1855DFC11A1D6D8C0093FA04 /* WebOperation.swift in Sources */,
+				1855DFCB1A1D6D9A0093FA04 /* Device+Extensions.swift in Sources */,
+				1855DF991A1D53F70093FA04 /* DeviceTests.swift in Sources */,
 				18D4E1B71A13CD0100A283E2 /* ViewController.swift in Sources */,
+				1855DFC21A1D6D8C0093FA04 /* WebOperations.swift in Sources */,
 				18D4E1B81A13CD0300A283E2 /* AppDelegate.swift in Sources */,
+				1855DFC91A1D6D9A0093FA04 /* DataManager.swift in Sources */,
+				1855DFCC1A1D6D9A0093FA04 /* MockOperations.swift in Sources */,
 				18D4E1BD1A13D48C00A283E2 /* WebOperationsTests.swift in Sources */,
-				18D4E1BB1A13D47B00A283E2 /* WebOperations.swift in Sources */,
-				186ACCBA1A0D631400512F12 /* WebOperation.swift in Sources */,
+				1855DFCA1A1D6D9A0093FA04 /* Device.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		18840AB31A16C4F30066119C /* Sources */ = {
+		188A25671A1D17E1002C8AE4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18840AC91A16C6C90066119C /* WebOperations.swift in Sources */,
-				18284AC11A16D8F900F34B4F /* Channel.swift in Sources */,
-				18840ABF1A16C4F40066119C /* DionysusXViewController.swift in Sources */,
-				18284AB01A16D4D100F34B4F /* MockOperations.swift in Sources */,
-				18840ACA1A16C72B0066119C /* WebOperation.swift in Sources */,
-				18284AC51A16DA6C00F34B4F /* DataManager.swift in Sources */,
-				18284AC31A16D8FA00F34B4F /* Device.swift in Sources */,
-				18840ADE1A16D2290066119C /* DionysusXModel.xcdatamodeld in Sources */,
+				1855DF961A1D2D7B0093FA04 /* Device+Extensions.swift in Sources */,
+				1855DFB81A1D6AAB0093FA04 /* DionysusModel.xcdatamodeld in Sources */,
+				1855DFBB1A1D6AAB0093FA04 /* WebOperation.swift in Sources */,
+				1855DFB51A1D6AAB0093FA04 /* DataManager.swift in Sources */,
+				1855DFB41A1D6AAB0093FA04 /* Channel.swift in Sources */,
+				1855DFB61A1D6AAB0093FA04 /* Device.swift in Sources */,
+				188A25751A1D17E2002C8AE4 /* NotificationController.swift in Sources */,
+				1855DFBC1A1D6AAB0093FA04 /* WebOperations.swift in Sources */,
+				1855DFBA1A1D6AAB0093FA04 /* MockOperations.swift in Sources */,
+				1855DFB71A1D6AAB0093FA04 /* DionysusInterfaceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,10 +521,15 @@
 			target = 186ACC8E1A0C491800512F12 /* Dionysus */;
 			targetProxy = 186ACCA51A0C491800512F12 /* PBXContainerItemProxy */;
 		};
-		18840AC31A16C4F40066119C /* PBXTargetDependency */ = {
+		188A257D1A1D17E2002C8AE4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 18840AB61A16C4F30066119C /* DionysusX */;
-			targetProxy = 18840AC21A16C4F40066119C /* PBXContainerItemProxy */;
+			target = 188A25791A1D17E2002C8AE4 /* Dionysus Watch App */;
+			targetProxy = 188A257C1A1D17E2002C8AE4 /* PBXContainerItemProxy */;
+		};
+		188A25861A1D17E2002C8AE4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 188A256A1A1D17E1002C8AE4 /* Dionysus WatchKit Extension */;
+			targetProxy = 188A25851A1D17E2002C8AE4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -589,30 +688,63 @@
 			};
 			name = Release;
 		};
-		18840AC51A16C4F40066119C /* Debug */ = {
+		188A25881A1D17E2002C8AE4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = DionysusX/Info.plist;
+				INFOPLIST_FILE = "Dionysus WatchKit Extension/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "${TARGET_NAME}";
 				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
-		18840AC61A16C4F40066119C /* Release */ = {
+		188A25891A1D17E2002C8AE4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				INFOPLIST_FILE = DionysusX/Info.plist;
+				INFOPLIST_FILE = "Dionysus WatchKit Extension/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		188A258A1A1D17E2002C8AE4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				IBSC_MODULE = Dionysus_WatchKit_Extension;
+				INFOPLIST_FILE = "Dionysus Watch App/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
+			};
+			name = Debug;
+		};
+		188A258B1A1D17E2002C8AE4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				IBSC_MODULE = Dionysus_WatchKit_Extension;
+				INFOPLIST_FILE = "Dionysus Watch App/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
 			};
 			name = Release;
 		};
@@ -646,11 +778,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		18840AC71A16C4F40066119C /* Build configuration list for PBXNativeTarget "DionysusX" */ = {
+		188A258C1A1D17E2002C8AE4 /* Build configuration list for PBXNativeTarget "Dionysus Watch App" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				18840AC51A16C4F40066119C /* Debug */,
-				18840AC61A16C4F40066119C /* Release */,
+				188A258A1A1D17E2002C8AE4 /* Debug */,
+				188A258B1A1D17E2002C8AE4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		188A258D1A1D17E2002C8AE4 /* Build configuration list for PBXNativeTarget "Dionysus WatchKit Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				188A25881A1D17E2002C8AE4 /* Debug */,
+				188A25891A1D17E2002C8AE4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -658,13 +799,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		18840ADC1A16D2290066119C /* DionysusXModel.xcdatamodeld */ = {
+		1855DFAE1A1D6AAB0093FA04 /* DionysusModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				18840ADD1A16D2290066119C /* DionysusXModel.xcdatamodel */,
+				1855DFAF1A1D6AAB0093FA04 /* DionysusModel.xcdatamodel */,
 			);
-			currentVersion = 18840ADD1A16D2290066119C /* DionysusXModel.xcdatamodel */;
-			path = DionysusXModel.xcdatamodeld;
+			currentVersion = 1855DFAF1A1D6AAB0093FA04 /* DionysusModel.xcdatamodel */;
+			path = DionysusModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

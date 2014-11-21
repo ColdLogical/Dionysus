@@ -23,11 +23,15 @@ class ViewController: UIViewController {
     }
 
     @IBAction func generateAuth() {
-        func successOrFailure(request: NSURLRequest, json: NSDictionary!)  -> Void {
+        func success(request: NSURLRequest, token: String!)  -> Void {
             self.updateTokenInfo()
         }
         
-        WebOperations.login(self.usernameField!.text, password: self.passwordField!.text, completion: successOrFailure, failure: successOrFailure)
+        func failure(request: NSURLRequest, json: NSDictionary!)  -> Void {
+            self.updateTokenInfo()
+        }
+        
+        WebOperations.login(success, failure: failure)
     }
     
     func updateTokenInfo() {

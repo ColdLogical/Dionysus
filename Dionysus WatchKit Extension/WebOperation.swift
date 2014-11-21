@@ -26,12 +26,12 @@ class WebOperation : NSObject, NSURLConnectionDataDelegate, NSURLConnectionDeleg
     }()
     var urlString: String?
     
-    init(URL: String) {
+    required init(URL: String) {
         super.init()
         urlString = URL
     }
     
-    convenience init(URL: String, parameters: [String:String]?) {
+    required convenience init(URL: String, parameters: [String:String]?) {
         self.init(URL: URL)
         
         if parameters != nil {

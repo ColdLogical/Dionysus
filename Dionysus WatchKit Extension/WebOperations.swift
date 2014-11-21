@@ -16,12 +16,15 @@ let kDefaultPasswordKey = "DefaultPassword"
 let kDefaultPassword = "eXsC5s87r2vM"
 let kDefaultUsernameKey = "DefaultUsername"
 let kDefaultUsername = "coldlogic@charter.net"
-let kDevicesEndpoint = "services/v1/devices"
-let kFavoritesEndpoint = "services/v1/preferences/__FavoriteChannels__"
+let kDevicesEndpoint = "api/symphony/services/v1/devices"
+let kFavoritesEndpoint = "api/symphony/services/v1/preferences/__FavoriteChannels__"
 let kLoginEndpoint = "api/symphony/auth/login"
-let kTuneChannelEndpoint = "symphony/services/v1/devices"
+let kTokenKey = "token"
+let kTuneChannelEndpoint = "api/symphony/services/v1/devices"
 let kPasswordKey = "password"
 let kUsernameKey = "username"
+
+let DataOperationClass = WebOperation.self
 
 class WebOperations {
     class func authToken() -> String? {
@@ -84,16 +87,52 @@ class WebOperations {
         return path
     }
     
-    class func login(completion: ((request: NSURLRequest, json: NSDictionary!) -> Void)?, failure: ((request: NSURLRequest, json: NSDictionary!) -> Void)?) {
+    class func devicesListURL() -> String {
+        return WebOperations.baseURL() + kDevicesEndpoint
+    }
+    
+    class func dictionaryFromPlistNamed(plistName: String!) -> NSDictionary? {
+        return NSDictionary(contentsOfFile: WebOperations.plistFileNamed(plistName)!)
+    }
+    
+    class func fetchDevices(completion: ((request: NSURLRequest, json: [Device]!) -> Void)?, failure: ((request: NSURLRequest, json: [Device]!) -> Void)?) {
+        if let auth = WebOperations.authToken() {
+            let url = WebOperations.devicesListURL()
+            let params = [kTokenKey : auth]
+            
+            let op: WebOperation = DataOperationClass(URL: url, parameters: params)
+            
+            func deviceCompletion(request: NSURLRequest, json: NSDictionary!) {
+                if let devicesJSON = json["Devices"] as? NSDictionary {
+                    if let deviceList = devicesJSON["Device"] as? [NSDictionary] {
+                        var devices = [Device]()
+                        for dict in deviceList {
+                            var d = 
+                            if let macAddress = dict[kMacAddressKey] {
+                                
+                            }
+                            devices.append(Device)
+                        }
+                    }
+                }
+            }
+            
+            op.connect(deviceCompletion, failure:nil)
+        } else {
+            println("No auth token found while trying to fetch device list")
+        }
+    }
+    
+    class func login(completion: ((request: NSURLRequest, token: String!) -> Void)?, failure: ((request: NSURLRequest, json: NSDictionary!) -> Void)?) {
         let params = WebOperations.loginParameters()
         WebOperations.login(params[kUsernameKey]!, password: params[kPasswordKey]!, completion: completion, failure: failure)
     }
     
-    class func login(username: String, password: String, completion: ((request: NSURLRequest, json: NSDictionary!) -> Void)?, failure: ((request: NSURLRequest, json: NSDictionary!) -> Void)?) {
+    class func login(username: String, password: String, completion: ((request: NSURLRequest, token: String!) -> Void)?, failure: ((request: NSURLRequest, json: NSDictionary!) -> Void)?) {
         let url = WebOperations.loginURL()
-        let params = [kUsernameKey: username, kPasswordKey: password];
+        let params = [kUsernameKey: username, kPasswordKey: password]
         
-        let op: WebOperation = WebOperation(URL: url, parameters: params)
+        let op: WebOperation = DataOperationClass(URL: url, parameters: params)
         op.request.HTTPMethod = "POST"
         
         func loginCompletion(request: NSURLRequest, json: NSDictionary!) {
@@ -104,7 +143,7 @@ class WebOperations {
                 if let token = authorized["Token"] as? String {
                     WebOperations.setAuthToken(token)
                     if completion != nil {
-                         completion!(request: request, json: authorized)
+                         completion!(request: request, token: token)
                     }
                 } else {
                     println("No Token in JSON data with request = \(request)\n\(json)")
@@ -153,6 +192,10 @@ class WebOperations {
     
     class func loginURL( ) -> String {
         return WebOperations.baseURL() + kLoginEndpoint
+    }
+    
+    class func plistFileNamed(fileName: String!) -> String? {
+        return NSBundle.mainBundle().pathForResource(fileName, ofType: "plist")
     }
     
     class func setAuthToken(newToken: String?) {

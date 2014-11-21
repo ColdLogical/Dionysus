@@ -31,7 +31,7 @@ class DataManager {
     }()
     
     lazy var managedObjectModel: NSManagedObjectModel? = {
-        if let modelURL = NSBundle.mainBundle().URLForResource("DionysusXModel", withExtension:"momd") {
+        if let modelURL = NSBundle.mainBundle().URLForResource("DionysusModel", withExtension:"momd") {
             return NSManagedObjectModel(contentsOfURL: modelURL)
         }
         assert(true, "Unable to create managed object model")
@@ -39,7 +39,7 @@ class DataManager {
     }()
     
     lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator? = {
-        let storeURL = self.applicationDocumentsDirectory().URLByAppendingPathComponent("ProjectName.sqlite")
+        let storeURL = self.applicationDocumentsDirectory().URLByAppendingPathComponent("Dionysus.sqlite")
         var error: NSError?
         if let mom = self.managedObjectModel {
             let coordinator = NSPersistentStoreCoordinator(managedObjectModel: mom)
@@ -79,5 +79,37 @@ class DataManager {
                 abort()
             }
         }
+    }
+    
+    //MARK: Helper Functions
+    func existingOrNewEntity(entityName: String!, predicate: NSPredicate?) -> AnyObject! {
+        if let results = fetchResults(entityName, predicate: predicate) {
+            assert(results.count == 1, "Cannot have multiple entities with same identifier")
+            return results[0]
+        }
+        
+        return newEntity(entityName)
+    }
+    
+    func fetchResults(entityName: String!, predicate: NSPredicate?) -> [AnyObject]? {
+        var error: NSError?
+        let fetchRequest = NSFetchRequest()
+        
+        let entity = NSEntityDescription.entityForName(entityName, inManagedObjectContext: readContext!)
+        fetchRequest.entity = entity
+        
+        if predicate != nil {
+            fetchRequest.predicate = predicate
+        }
+        
+        let fetchedObjects = readContext!.executeFetchRequest(fetchRequest, error:&error)
+        
+        return fetchedObjects
+    }
+    
+    func newEntity(entityName: String!) -> AnyObject! {
+        let newEntity: AnyObject = NSEntityDescription.insertNewObjectForEntityForName(entityName, inManagedObjectContext: writeContext!)
+        save()
+        return newEntity;
     }
 }

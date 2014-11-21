@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Dionysus Watch App.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
 		<key>Dionysus.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -28,6 +33,11 @@
 			<true/>
 		</dict>
 		<key>18840AB61A16C4F30066119C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>188A25791A1D17E2002C8AE4</key>
 		<dict>
 			<key>primary</key>
 			<true/>

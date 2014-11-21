@@ -25,6 +25,8 @@ class WebOperationsTests: XCTestCase {
     
     
     override func setUp() {
+        super.setUp()
+        
         //Setup a test config file
         let defaultConfig: NSDictionary = [kBaseURLKey: baseURL,
             kDefaultUsernameKey: username,
@@ -35,6 +37,8 @@ class WebOperationsTests: XCTestCase {
     }
     
     override func tearDown() {
+        super.tearDown()
+        
         //Remove the test config file
         let fileManager = NSFileManager.defaultManager()
         var error: NSError?
@@ -78,6 +82,10 @@ class WebOperationsTests: XCTestCase {
         XCTAssertNotNil(defaultDict, "File must be a representation of a dictionary")
     }
     
+    func testDevicesListURL() {
+        XCTAssert(WebOperations.devicesListURL() == (WebOperations.baseURL() + kDevicesEndpoint), "Devices List URL must be combination of baseURL and devices endpoint")
+    }
+    
     func testLoginParameters() {
         let params = WebOperations.loginParameters()
         XCTAssertNotNil(params[kUsernameKey], "Username cannot be nil")
@@ -116,8 +124,8 @@ class WebOperationsTests: XCTestCase {
         }
         
         var succExp = expectationWithDescription("Login Success Test")
-        func success(request: NSURLRequest, json: NSDictionary!) -> Void {
-            XCTAssertNotNil(json, "Should have recieved data")
+        func success(request: NSURLRequest, token: String!) -> Void {
+            XCTAssertNotNil(token, "Should have recieved a token")
             
             //Example Response
             //            {
@@ -130,9 +138,6 @@ class WebOperationsTests: XCTestCase {
             //                Username = "coldlogic@charter.net";
             //                ZipCode = 80219;
             //            }
-            
-            XCTAssertNotNil(json["Token"], "JSON has no Token")
-            XCTAssert(json["Fullname"] as? String == config[kDefaultUsernameKey] as? String, "This Login test must login with credentials from the configuration file")
             
             succExp.fulfill()
         }
