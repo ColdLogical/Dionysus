@@ -95,7 +95,7 @@ class WebOperations {
         return NSDictionary(contentsOfFile: WebOperations.plistFileNamed(plistName)!)
     }
     
-    class func fetchDevices(completion: ((request: NSURLRequest, json: [Device]!) -> Void)?, failure: ((request: NSURLRequest, json: [Device]!) -> Void)?) {
+    class func fetchDevices(completion: ((request: NSURLRequest, deviceList: [Device]!) -> Void)?, failure: ((request: NSURLRequest, json: [Device]!) -> Void)?) {
         if let auth = WebOperations.authToken() {
             let url = WebOperations.devicesListURL()
             let params = [kTokenKey : auth]
@@ -107,12 +107,10 @@ class WebOperations {
                     if let deviceList = devicesJSON["Device"] as? [NSDictionary] {
                         var devices = [Device]()
                         for dict in deviceList {
-                            var d = 
-                            if let macAddress = dict[kMacAddressKey] {
-                                
-                            }
-                            devices.append(Device)
+                            var d = Device.existingOrNew(dict)
+                            devices.append(d)
                         }
+//                        completion(request, deviceList: devices)
                     }
                 }
             }
