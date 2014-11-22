@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 
 let kAliasKey = "Alias"
 let kIsDefaultKey = "DefaultDevice"
@@ -15,9 +16,9 @@ let kMacAddressKey = "MacAddress"
 
 extension Device {
     class func existingOrNew(macAddress: String!) -> Device {
-        let d = DataManager.sharedInstance.existingOrNewEntity("Device", predicate: NSPredicate(format: "macAddress = %K", macAddress)) as Device
+        let d = DataManager.sharedInstance.existingOrNewEntity("Device", predicate: NSPredicate(format: "macAddress = %@", macAddress)) as Device
         
-        if d.macAddress != macAddress {
+        if d.valueForKey(kMacAddressKey) as? String != macAddress {
             //A brand new entity, so set its macAddress
             d.macAddress = macAddress
             DataManager.sharedInstance.save()
@@ -26,7 +27,7 @@ extension Device {
         return d
     }
     
-    class func existingOrNew(dictionary: NSDictionary!) -> Device {
+    class func existingOrNewFromDictionary(dictionary: NSDictionary!) -> Device {
         var d: Device?
         if let macAddress = dictionary[kMacAddressKey] as? String {
             d = Device.existingOrNew(macAddress)

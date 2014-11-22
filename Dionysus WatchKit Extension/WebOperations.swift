@@ -24,7 +24,7 @@ let kTuneChannelEndpoint = "api/symphony/services/v1/devices"
 let kPasswordKey = "password"
 let kUsernameKey = "username"
 
-let DataOperationClass = WebOperation.self
+let DataOperationClass = MockOperations.self
 
 class WebOperations {
     class func authToken() -> String? {
@@ -104,13 +104,17 @@ class WebOperations {
             
             func deviceCompletion(request: NSURLRequest, json: NSDictionary!) {
                 if let devicesJSON = json["Devices"] as? NSDictionary {
-                    if let deviceList = devicesJSON["Device"] as? [NSDictionary] {
+                    if let deviceList = devicesJSON["Device"] as? NSArray {
+                        println("deviceList = \(deviceList)")
                         var devices = [Device]()
                         for dict in deviceList {
-                            var d = Device.existingOrNew(dict)
+                            println("dict = \(dict)")
+                            var d = Device.existingOrNewFromDictionary(dict as NSDictionary)
                             devices.append(d)
                         }
-//                        completion(request, deviceList: devices)
+                        if completion != nil {
+                            completion!(request: request, deviceList: devices)
+                        }
                     }
                 }
             }

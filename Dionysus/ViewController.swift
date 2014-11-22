@@ -34,6 +34,16 @@ class ViewController: UIViewController {
         WebOperations.login(success, failure: failure)
     }
     
+    @IBAction func fetchDevices() {
+        func success(request: NSURLRequest, deviceList: [Device]!)  -> Void {
+            if deviceList.count > 0 {
+                self.tokenLabel!.text = deviceList[0].valueForKey(kAliasKey) as? String
+            }
+        }
+        
+        WebOperations.fetchDevices(success, failure: nil)
+    }
+    
     func updateTokenInfo() {
         if let token = WebOperations.authToken() {
             self.tokenLabel!.text = "Token Generated"

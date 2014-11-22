@@ -10,48 +10,41 @@ import Foundation
 import CoreData
 
 class DataManager {
-    lazy var readContext: NSManagedObjectContext? = {
-        if let coordinator = self.persistentStoreCoordinator {
-            var context = NSManagedObjectContext()
-            context.persistentStoreCoordinator = self.persistentStoreCoordinator
-            return context
-        }
-        assert(true, "Unable to create read context")
-        return nil
-    }()
-    
-    lazy var writeContext: NSManagedObjectContext? = {
-        if let coordinator = self.persistentStoreCoordinator {
-            var context = NSManagedObjectContext()
-            context.persistentStoreCoordinator = self.persistentStoreCoordinator
-            return context
-        }
-        assert(true, "Unable to create write context")
-        return nil
-    }()
-    
-    lazy var managedObjectModel: NSManagedObjectModel? = {
-        if let modelURL = NSBundle.mainBundle().URLForResource("DionysusModel", withExtension:"momd") {
-            return NSManagedObjectModel(contentsOfURL: modelURL)
-        }
-        assert(true, "Unable to create managed object model")
-        return nil
-    }()
-    
     lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator? = {
-        let storeURL = self.applicationDocumentsDirectory().URLByAppendingPathComponent("Dionysus.sqlite")
-        var error: NSError?
-        if let mom = self.managedObjectModel {
-            let coordinator = NSPersistentStoreCoordinator(managedObjectModel: mom)
-            if let finalCoordinator = coordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: nil, error: &error) {
-                return coordinator
-            } else {
-                println("Unresolved error \(error), \(error!.userInfo)")
-                abort()
-            }
+        var coordinator: NSPersistentStoreCoordinator? = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
+        let url = self.applicationDocumentsDirectory().URLByAppendingPathComponent("Dionysus.sqlite")
+        var error: NSError? = nil
+        var failureReason = "There was an error creating or loading the application's saved data."
+        
+        if coordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: nil, error: &error) == nil {
+            coordinator = nil
+            var dict = [String: AnyObject]()
+            dict[NSLocalizedDescriptionKey] = "Failed to initialize the application's saved data"
+            dict[NSLocalizedFailureReasonErrorKey] = failureReason
+            dict[NSUnderlyingErrorKey] = error
+            error = NSError(domain: "YOUR_ERROR_DOMAIN", code: 9999, userInfo: dict)
+            NSLog("Unresolved error \(error), \(error!.userInfo)")
+            abort()
         }
-        assert(true, "Unable to create persistent store")
-        return nil
+        
+        return coordinator
+    }()
+
+    lazy var context: NSManagedObjectContext? = {
+        let coordinator = self.persistentStoreCoordinator
+        
+        if coordinator == nil {
+            return nil
+        }
+        
+        var context = NSManagedObjectContext()
+        context.persistentStoreCoordinator = coordinator
+        return context
+    }()
+    
+    lazy var managedObjectModel: NSManagedObjectModel = {
+        let modelURL = NSBundle.mainBundle().URLForResource("DionysusModel", withExtension:"momd")!
+        return NSManagedObjectModel(contentsOfURL: modelURL)!
     }()
     
     class var sharedInstance: DataManager {
@@ -68,13 +61,13 @@ class DataManager {
     }
     
     func applicationDocumentsDirectory() -> NSURL {
-        return NSFileManager.defaultManager().URLsForDirectory(NSSearchPathDirectory.DocumentDirectory, inDomains: NSSearchPathDomainMask.UserDomainMask).last as NSURL
+        return NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).last as NSURL
     }
     
     func save() {
         var error: NSError?
-        if let context = writeContext {
-            if context.hasChanges && !context.save(&error) {
+        if let c = context {
+            if c.hasChanges && !c.save(&error) {
                 println("Unresolved error \(error), \(error!.userInfo)")
                 abort()
             }
@@ -83,9 +76,12 @@ class DataManager {
     
     //MARK: Helper Functions
     func existingOrNewEntity(entityName: String!, predicate: NSPredicate?) -> AnyObject! {
-        if let results = fetchResults(entityName, predicate: predicate) {
-            assert(results.count == 1, "Cannot have multiple entities with same identifier")
-            return results[0]
+        let results = fetchResults(entityName, predicate: predicate)
+        if results != nil {
+            if results!.count > 0 {
+                assert(results!.count == 1, "Cannot have multiple entities with same identifier")
+                return results![0]
+            }
         }
         
         return newEntity(entityName)
@@ -95,21 +91,27 @@ class DataManager {
         var error: NSError?
         let fetchRequest = NSFetchRequest()
         
-        let entity = NSEntityDescription.entityForName(entityName, inManagedObjectContext: readContext!)
+        let entity = NSEntityDescription.entityForName(entityName, inManagedObjectContext: context!)
         fetchRequest.entity = entity
         
         if predicate != nil {
             fetchRequest.predicate = predicate
         }
         
-        let fetchedObjects = readContext!.executeFetchRequest(fetchRequest, error:&error)
+        let fetchedObjects = context!.executeFetchRequest(fetchRequest, error:&error)
         
         return fetchedObjects
     }
     
     func newEntity(entityName: String!) -> AnyObject! {
-        let newEntity: AnyObject = NSEntityDescription.insertNewObjectForEntityForName(entityName, inManagedObjectContext: writeContext!)
+        let newEntity: AnyObject = NSEntityDescription.insertNewObjectForEntityForName(entityName, inManagedObjectContext: context!)
+        println("newEntity = \(newEntity)")
         save()
-        return newEntity;
+        
+//        if let results =  fetchResults(entityName, predicate: NSPredicate(format: "objectID == %@", newEntity.objectID)) {
+//            
+//        }
+        
+        return newEntity
     }
 }

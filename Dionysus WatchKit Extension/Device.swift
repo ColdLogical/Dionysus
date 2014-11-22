@@ -9,6 +9,7 @@
 import Foundation
 import CoreData
 
+@objc(Device)
 class Device: NSManagedObject {
 
     @NSManaged var alias: String

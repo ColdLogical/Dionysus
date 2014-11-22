@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18488E681A20015C009EC124 /* Channels.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1855DF9E1A1D6A980093FA04 /* Channels.plist */; };
+		18488E691A20015C009EC124 /* DeviceList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1855DF9F1A1D6A980093FA04 /* DeviceList.plist */; };
+		18488E6A1A20015C009EC124 /* Favorites.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1855DFA01A1D6A980093FA04 /* Favorites.plist */; };
+		18488E6B1A20015C009EC124 /* Login.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1855DFA11A1D6A980093FA04 /* Login.plist */; };
+		18488E6C1A20015C009EC124 /* SetDefault.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1855DFA21A1D6A980093FA04 /* SetDefault.plist */; };
+		18488E6D1A20015C009EC124 /* TuneToChannel.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1855DFA31A1D6A980093FA04 /* TuneToChannel.plist */; };
+		18488E6E1A20015D009EC124 /* Channels.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1855DF9E1A1D6A980093FA04 /* Channels.plist */; };
+		18488E6F1A20015D009EC124 /* DeviceList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1855DF9F1A1D6A980093FA04 /* DeviceList.plist */; };
+		18488E701A20015D009EC124 /* Favorites.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1855DFA01A1D6A980093FA04 /* Favorites.plist */; };
+		18488E711A20015D009EC124 /* Login.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1855DFA11A1D6A980093FA04 /* Login.plist */; };
+		18488E721A20015D009EC124 /* SetDefault.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1855DFA21A1D6A980093FA04 /* SetDefault.plist */; };
+		18488E731A20015D009EC124 /* TuneToChannel.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1855DFA31A1D6A980093FA04 /* TuneToChannel.plist */; };
+		18488E751A200377009EC124 /* DionysusModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFAE1A1D6AAB0093FA04 /* DionysusModel.xcdatamodeld */; };
 		1855DF961A1D2D7B0093FA04 /* Device+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DF951A1D2D7B0093FA04 /* Device+Extensions.swift */; };
 		1855DF991A1D53F70093FA04 /* DeviceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DF981A1D53F70093FA04 /* DeviceTests.swift */; };
 		1855DFA41A1D6A980093FA04 /* Channels.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1855DF9E1A1D6A980093FA04 /* Channels.plist */; };
@@ -19,7 +32,6 @@
 		1855DFB51A1D6AAB0093FA04 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFAB1A1D6AAB0093FA04 /* DataManager.swift */; };
 		1855DFB61A1D6AAB0093FA04 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFAC1A1D6AAB0093FA04 /* Device.swift */; };
 		1855DFB71A1D6AAB0093FA04 /* DionysusInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFAD1A1D6AAB0093FA04 /* DionysusInterfaceController.swift */; };
-		1855DFB81A1D6AAB0093FA04 /* DionysusModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFAE1A1D6AAB0093FA04 /* DionysusModel.xcdatamodeld */; };
 		1855DFB91A1D6AAB0093FA04 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1855DFB01A1D6AAB0093FA04 /* Images.xcassets */; };
 		1855DFBA1A1D6AAB0093FA04 /* MockOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFB11A1D6AAB0093FA04 /* MockOperations.swift */; };
 		1855DFBB1A1D6AAB0093FA04 /* WebOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFB21A1D6AAB0093FA04 /* WebOperation.swift */; };
@@ -56,13 +68,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		186ACCA51A0C491800512F12 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 186ACC871A0C491800512F12 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 186ACC8E1A0C491800512F12;
-			remoteInfo = Dionysus;
-		};
 		188A257C1A1D17E2002C8AE4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 186ACC871A0C491800512F12 /* Project object */;
@@ -76,6 +81,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = 188A256A1A1D17E1002C8AE4;
 			remoteInfo = "Dionysus WatchKit Extension";
+		};
+		188B5D451A1FB4B800397BDD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 186ACC871A0C491800512F12 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 188A25791A1D17E2002C8AE4;
+			remoteInfo = "Dionysus Watch App";
+		};
+		188B5D471A1FB4C700397BDD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 186ACC871A0C491800512F12 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 186ACC8E1A0C491800512F12;
+			remoteInfo = Dionysus;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -124,7 +143,6 @@
 		186ACCAA1A0C491800512F12 /* DionysusTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DionysusTests.swift; sourceTree = "<group>"; };
 		186ACCB61A0D62D300512F12 /* WebOperationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebOperationTests.swift; sourceTree = "<group>"; };
 		18840AB91A16C4F30066119C /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
-		18840ACB1A16C8160066119C /* original.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = original.jpg; path = ../original.jpg; sourceTree = "<group>"; };
 		188A256B1A1D17E1002C8AE4 /* Dionysus WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Dionysus WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		188A256C1A1D17E1002C8AE4 /* WatchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchKit.framework; path = System/Library/Frameworks/WatchKit.framework; sourceTree = SDKROOT; };
 		188A25701A1D17E1002C8AE4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -134,6 +152,8 @@
 		188A25801A1D17E2002C8AE4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		188A25811A1D17E2002C8AE4 /* Interface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Interface.storyboard; sourceTree = "<group>"; };
 		188A25831A1D17E2002C8AE4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		18BEF9921A1FD87E00525512 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		18BEF9931A1FD87E00525512 /* Dionysus_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dionysus_Tests.swift; sourceTree = "<group>"; };
 		18D4E1BC1A13D48C00A283E2 /* WebOperationsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebOperationsTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -184,6 +204,7 @@
 				186ACCA71A0C491800512F12 /* DionysusTests */,
 				188A256E1A1D17E1002C8AE4 /* Dionysus WatchKit Extension */,
 				188A257E1A1D17E2002C8AE4 /* Dionysus Watch App */,
+				18BEF9901A1FD87E00525512 /* Dionysus Tests */,
 				18840AB81A16C4F30066119C /* Frameworks */,
 				186ACC901A0C491800512F12 /* Products */,
 			);
@@ -284,7 +305,6 @@
 			isa = PBXGroup;
 			children = (
 				188A25811A1D17E2002C8AE4 /* Interface.storyboard */,
-				18840ACB1A16C8160066119C /* original.jpg */,
 				188A25831A1D17E2002C8AE4 /* Images.xcassets */,
 				188A257F1A1D17E2002C8AE4 /* Supporting Files */,
 			);
@@ -295,6 +315,23 @@
 			isa = PBXGroup;
 			children = (
 				188A25801A1D17E2002C8AE4 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		18BEF9901A1FD87E00525512 /* Dionysus Tests */ = {
+			isa = PBXGroup;
+			children = (
+				18BEF9931A1FD87E00525512 /* Dionysus_Tests.swift */,
+				18BEF9911A1FD87E00525512 /* Supporting Files */,
+			);
+			path = "Dionysus Tests";
+			sourceTree = "<group>";
+		};
+		18BEF9911A1FD87E00525512 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				18BEF9921A1FD87E00525512 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -332,7 +369,8 @@
 			buildRules = (
 			);
 			dependencies = (
-				186ACCA61A0C491800512F12 /* PBXTargetDependency */,
+				188B5D481A1FB4C700397BDD /* PBXTargetDependency */,
+				188B5D461A1FB4B800397BDD /* PBXTargetDependency */,
 			);
 			name = DionysusTests;
 			productName = DionysusTests;
@@ -422,9 +460,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18488E6B1A20015C009EC124 /* Login.plist in Resources */,
+				18488E6A1A20015C009EC124 /* Favorites.plist in Resources */,
+				18488E681A20015C009EC124 /* Channels.plist in Resources */,
+				18488E6C1A20015C009EC124 /* SetDefault.plist in Resources */,
+				18488E691A20015C009EC124 /* DeviceList.plist in Resources */,
 				186ACC9A1A0C491800512F12 /* Main.storyboard in Resources */,
 				186ACC9F1A0C491800512F12 /* LaunchScreen.xib in Resources */,
 				186ACC9C1A0C491800512F12 /* Images.xcassets in Resources */,
+				18488E6D1A20015C009EC124 /* TuneToChannel.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -432,6 +476,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18488E701A20015D009EC124 /* Favorites.plist in Resources */,
+				18488E6F1A20015D009EC124 /* DeviceList.plist in Resources */,
+				18488E711A20015D009EC124 /* Login.plist in Resources */,
+				18488E6E1A20015D009EC124 /* Channels.plist in Resources */,
+				18488E721A20015D009EC124 /* SetDefault.plist in Resources */,
+				18488E731A20015D009EC124 /* TuneToChannel.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -469,6 +519,7 @@
 				1855DFC01A1D6D8B0093FA04 /* WebOperations.swift in Sources */,
 				1855DFCD1A1D6D9A0093FA04 /* DataManager.swift in Sources */,
 				186ACC971A0C491800512F12 /* ViewController.swift in Sources */,
+				18488E751A200377009EC124 /* DionysusModel.xcdatamodeld in Sources */,
 				1855DFCF1A1D6D9A0093FA04 /* Device+Extensions.swift in Sources */,
 				1855DFCE1A1D6D9A0093FA04 /* Device.swift in Sources */,
 				1855DFD01A1D6D9A0093FA04 /* MockOperations.swift in Sources */,
@@ -501,7 +552,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1855DF961A1D2D7B0093FA04 /* Device+Extensions.swift in Sources */,
-				1855DFB81A1D6AAB0093FA04 /* DionysusModel.xcdatamodeld in Sources */,
 				1855DFBB1A1D6AAB0093FA04 /* WebOperation.swift in Sources */,
 				1855DFB51A1D6AAB0093FA04 /* DataManager.swift in Sources */,
 				1855DFB41A1D6AAB0093FA04 /* Channel.swift in Sources */,
@@ -516,11 +566,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		186ACCA61A0C491800512F12 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 186ACC8E1A0C491800512F12 /* Dionysus */;
-			targetProxy = 186ACCA51A0C491800512F12 /* PBXContainerItemProxy */;
-		};
 		188A257D1A1D17E2002C8AE4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 188A25791A1D17E2002C8AE4 /* Dionysus Watch App */;
@@ -530,6 +575,16 @@
 			isa = PBXTargetDependency;
 			target = 188A256A1A1D17E1002C8AE4 /* Dionysus WatchKit Extension */;
 			targetProxy = 188A25851A1D17E2002C8AE4 /* PBXContainerItemProxy */;
+		};
+		188B5D461A1FB4B800397BDD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 188A25791A1D17E2002C8AE4 /* Dionysus Watch App */;
+			targetProxy = 188B5D451A1FB4B800397BDD /* PBXContainerItemProxy */;
+		};
+		188B5D481A1FB4C700397BDD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 186ACC8E1A0C491800512F12 /* Dionysus */;
+			targetProxy = 188B5D471A1FB4C700397BDD /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -587,6 +642,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Applications/Xcode-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -624,6 +683,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Applications/Xcode-Beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;

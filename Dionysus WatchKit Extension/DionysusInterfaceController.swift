@@ -47,6 +47,16 @@ class DionysusInterfaceController: WKInterfaceController {
         dataClass.login(success, failure: failure)
     }
     
+    @IBAction func fetchDevices() {
+        func success(request: NSURLRequest, deviceList: [Device]!)  -> Void {
+            if deviceList.count > 0 {
+                self.tokenLabel!.setText(deviceList[0].alias)
+            }
+        }
+        
+        dataClass.fetchDevices(success, failure: nil)
+    }
+    
     func updateTokenInfo() {
         if let token = dataClass.authToken() {
             self.tokenLabel!.setText(dataClass.authToken()!)

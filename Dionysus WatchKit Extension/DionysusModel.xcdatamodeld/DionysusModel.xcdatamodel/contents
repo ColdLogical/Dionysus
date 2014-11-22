@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6735" systemVersion="14A389" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6735" systemVersion="14B25" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Channel" representedClassName="Channel" syncable="YES">
         <attribute name="callSign" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="channelId" optional="YES" attributeType="String" syncable="YES"/>
@@ -13,6 +13,6 @@
     </entity>
     <elements>
         <element name="Channel" positionX="-6930" positionY="-6408" width="128" height="90"/>
-        <element name="Device" positionX="-6930" positionY="-6381" width="128" height="105"/>
+        <element name="Device" positionX="-6930" positionY="-6381" width="128" height="103"/>
     </elements>
 </model>
