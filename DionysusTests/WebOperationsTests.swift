@@ -49,6 +49,9 @@ class WebOperationsTests: XCTestCase {
     }
     
     func testAuthToken() {
+        //Get Old token
+        let oldToken = userDefaults.valueForKey(kAuthTokenKey) as? String
+        
         //Alter authToken in userDefaults
         let testToken = "TOKEN"
         userDefaults.setValue(testToken, forKey: kAuthTokenKey)
@@ -56,6 +59,9 @@ class WebOperationsTests: XCTestCase {
         //Make sure the token we set gets returned
         let token = WebOperations.authToken()
         XCTAssert(token == testToken, "Token must be value found in userDefaults")
+        
+        //Reset token back to old token
+        userDefaults.setValue(oldToken, forKey:kAuthTokenKey)
     }
     
     func testBaseURL() {
@@ -87,21 +93,25 @@ class WebOperationsTests: XCTestCase {
         XCTAssert(WebOperations.devicesListURL() == (WebOperations.baseURL() + kDevicesEndpoint), "Devices List URL must be combination of baseURL and devices endpoint")
     }
     
-    func testLoginParameters() {
-        let params = WebOperations.loginParameters()
-        XCTAssertNotNil(params[kUsernameKey], "Username cannot be nil")
-        XCTAssert(params[kUsernameKey]!.isEmpty == false, "Username cannot be empty")
-        XCTAssertNotNil(params[kPasswordKey], "Password cannot be nil")
-        XCTAssert(params[kPasswordKey]!.isEmpty == false, "password cannot be empty")
-    }
-    
-    func testLoginURL() {
-        XCTAssert(WebOperations.loginURL() == (WebOperations.baseURL() + kLoginEndpoint), "Login URL must be combination of baseURL and login endpoint")
+    func testFetchDevices() {
+        WebOperations.setConfiguration(WebOperations.defaultConfigPath())
+        
+        var succExp = expectationWithDescription("Fetch Devices Success Test")
+        func success(request: NSURLRequest, deviceList: [Device]!) -> Void {
+            XCTAssertNotNil(deviceList, "Should have recieved an array, even if it is empty")
+            
+            succExp.fulfill()
+        }
+        
+        WebOperations.fetchDevices(success, failure: nil)
+        
+        waitForExpectationsWithTimeout(10) { (error: NSError!) in
+            XCTAssert(true, "Fetch Devices timed out")
+        }
     }
     
     func testLogin() {
         WebOperations.setConfiguration(WebOperations.defaultConfigPath())
-        let config = WebOperations.configuration()
         
         var failExp = expectationWithDescription("Login Fail Test")
         func failure(request: NSURLRequest, json: NSDictionary!) -> Void {
@@ -127,19 +137,6 @@ class WebOperationsTests: XCTestCase {
         var succExp = expectationWithDescription("Login Success Test")
         func success(request: NSURLRequest, token: String!) -> Void {
             XCTAssertNotNil(token, "Should have recieved a token")
-            
-            //Example Response
-            //            {
-            //                AccountNumber = 8352306990141788;
-            //                Expiration = 1447267996233;
-            //                ExpirationCookie = "Wed, 11 Nov 2015 18:53:16 UTC";
-            //                Fullname = "coldlogic@charter.net";
-            //                IssueDate = 0;
-            //                Token = "58e2dfce-e79c-4435-9b6e-5a0a21144169";
-            //                Username = "coldlogic@charter.net";
-            //                ZipCode = 80219;
-            //            }
-            
             succExp.fulfill()
         }
         
@@ -154,7 +151,23 @@ class WebOperationsTests: XCTestCase {
         }
     }
     
+    func testLoginParameters() {
+        let params = WebOperations.loginParameters()
+        XCTAssertNotNil(params[kUsernameKey], "Username cannot be nil")
+        XCTAssert(params[kUsernameKey]!.isEmpty == false, "Username cannot be empty")
+        XCTAssertNotNil(params[kPasswordKey], "Password cannot be nil")
+        XCTAssert(params[kPasswordKey]!.isEmpty == false, "password cannot be empty")
+    }
+    
+    func testLoginURL() {
+        XCTAssert(WebOperations.loginURL() == (WebOperations.baseURL() + kLoginEndpoint), "Login URL must be combination of baseURL and login endpoint")
+    }
+    
     func testSetAuthToken() {
+        //Get Old token
+        let oldToken = userDefaults.valueForKey(kAuthTokenKey) as? String
+        
+        //Setup a test token
         let testToken = "TOKEN"
         WebOperations.setAuthToken(testToken)
         
@@ -162,6 +175,9 @@ class WebOperationsTests: XCTestCase {
         
         XCTAssertNotNil(token, "Value for kAuthTokenKey cannot be nil after setting it")
         XCTAssert(token == testToken, "Token must be value found in userDefaults")
+        
+        //Reset token back to old token
+        userDefaults.setValue(oldToken, forKey:kAuthTokenKey)
     }
     
     func testSetBaseURL() {

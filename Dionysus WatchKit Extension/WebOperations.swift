@@ -95,7 +95,7 @@ public class WebOperations {
         return NSDictionary(contentsOfFile: WebOperations.plistFileNamed(plistName)!)
     }
     
-    public class func fetchDevices(completion: ((request: NSURLRequest, deviceList: [Device]!) -> Void)?, failure: ((request: NSURLRequest, json: [Device]!) -> Void)?) {
+    public class func fetchDevices(completion: ((request: NSURLRequest, deviceList: [Device]!) -> Void)?, failure: ((request: NSURLRequest, json: NSDictionary!) -> Void)?) {
         if let auth = WebOperations.authToken() {
             let url = WebOperations.devicesListURL()
             let params = [kTokenKey : auth]
@@ -103,19 +103,22 @@ public class WebOperations {
             let op: WebOperation = DataOperationClass(URL: url, parameters: params)
             
             func deviceCompletion(request: NSURLRequest, json: NSDictionary!) {
+                var devices = [Device]()
+                
+                //JSON can have 0 devices
                 if let devicesJSON = json["Devices"] as? NSDictionary {
                     if let deviceList = devicesJSON["Device"] as? NSArray {
                         println("deviceList = \(deviceList)")
-                        var devices = [Device]()
                         for dict in deviceList {
                             println("dict = \(dict)")
                             var d = Device.existingOrNewFromDictionary(dict as NSDictionary)
                             devices.append(d)
                         }
-                        if completion != nil {
-                            completion!(request: request, deviceList: devices)
-                        }
                     }
+                }
+                
+                if completion != nil {
+                    completion!(request: request, deviceList: devices)
                 }
             }
             

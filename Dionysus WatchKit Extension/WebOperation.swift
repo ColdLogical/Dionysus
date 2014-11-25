@@ -31,19 +31,34 @@ public class WebOperation : NSObject, NSURLConnectionDataDelegate, NSURLConnecti
         urlString = URL
     }
     
+    
     required convenience public init(URL: String, parameters: [String:String]?) {
         self.init(URL: URL)
         
         if parameters != nil {
-            var pString: String = String()
-            for (key, value) in parameters! {
-                if pString.utf16Count != 0 {
-                    pString += "&"
-                }
-                pString += "\(key)=\(value)"
-            }
-            request.HTTPBody = pString.dataUsingEncoding(NSASCIIStringEncoding)
+            let parameterString = WebOperation.queryString(parameters)
+            urlString! += "?" + parameterString
         }
+    }
+    
+    required convenience public init(URL: String, data: [String:String]?) {
+        self.init(URL: URL)
+        
+        if data != nil {
+            let dataString = WebOperation.queryString(data)
+            request.HTTPBody = dataString.dataUsingEncoding(NSASCIIStringEncoding)
+        }
+    }
+    
+    public class func queryString(queries: [String:String]!) -> String! {
+        var pString: String = String()
+        for (key, value) in queries! {
+            if pString.utf16Count != 0 {
+                pString += "&"
+            }
+            pString += "\(key)=\(value)"
+        }
+        return pString
     }
     
     public func connect(completion: ((request: NSURLRequest, json: NSDictionary) -> Void)?, failure: ((request: NSURLRequest, error: NSError) -> Void)?) {
