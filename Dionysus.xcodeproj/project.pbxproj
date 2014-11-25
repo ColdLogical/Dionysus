@@ -7,18 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		011A10711A24141E009307A5 /* DionysusModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFAE1A1D6AAB0093FA04 /* DionysusModel.xcdatamodeld */; };
-		011A10781A241E97009307A5 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFAB1A1D6AAB0093FA04 /* DataManager.swift */; };
-		011A107B1A241E97009307A5 /* WebOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFB21A1D6AAB0093FA04 /* WebOperation.swift */; };
-		011A107C1A241E97009307A5 /* WebOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFB31A1D6AAB0093FA04 /* WebOperations.swift */; };
 		0136B05C1A23DF190016666B /* ChannelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0136B05B1A23DF190016666B /* ChannelTests.swift */; };
 		0136B05E1A23F1B20016666B /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFAA1A1D6AAB0093FA04 /* Channel.swift */; };
 		0136B0631A23FCB80016666B /* DataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0136B0621A23FCB80016666B /* DataManagerTests.swift */; };
-		014AA2C41A24263700B81677 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFAA1A1D6AAB0093FA04 /* Channel.swift */; };
-		014AA2C51A24263700B81677 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFAC1A1D6AAB0093FA04 /* Device.swift */; };
-		014AA2C61A24265800B81677 /* Device+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DF951A1D2D7B0093FA04 /* Device+Extensions.swift */; };
-		014AA2C71A24265900B81677 /* Device+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DF951A1D2D7B0093FA04 /* Device+Extensions.swift */; };
-		014AA2C81A24265A00B81677 /* Device+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DF951A1D2D7B0093FA04 /* Device+Extensions.swift */; };
 		18488E681A20015C009EC124 /* Channels.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1855DF9E1A1D6A980093FA04 /* Channels.plist */; };
 		18488E691A20015C009EC124 /* DeviceList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1855DF9F1A1D6A980093FA04 /* DeviceList.plist */; };
 		18488E6A1A20015C009EC124 /* Favorites.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1855DFA01A1D6A980093FA04 /* Favorites.plist */; };
@@ -39,14 +30,8 @@
 		1855DFA71A1D6A980093FA04 /* Login.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1855DFA11A1D6A980093FA04 /* Login.plist */; };
 		1855DFA81A1D6A980093FA04 /* SetDefault.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1855DFA21A1D6A980093FA04 /* SetDefault.plist */; };
 		1855DFA91A1D6A980093FA04 /* TuneToChannel.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1855DFA31A1D6A980093FA04 /* TuneToChannel.plist */; };
-		1855DFB41A1D6AAB0093FA04 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFAA1A1D6AAB0093FA04 /* Channel.swift */; };
-		1855DFB51A1D6AAB0093FA04 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFAB1A1D6AAB0093FA04 /* DataManager.swift */; };
-		1855DFB61A1D6AAB0093FA04 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFAC1A1D6AAB0093FA04 /* Device.swift */; };
 		1855DFB71A1D6AAB0093FA04 /* DionysusInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFAD1A1D6AAB0093FA04 /* DionysusInterfaceController.swift */; };
 		1855DFB91A1D6AAB0093FA04 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1855DFB01A1D6AAB0093FA04 /* Images.xcassets */; };
-		1855DFBA1A1D6AAB0093FA04 /* MockOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFB11A1D6AAB0093FA04 /* MockOperations.swift */; };
-		1855DFBB1A1D6AAB0093FA04 /* WebOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFB21A1D6AAB0093FA04 /* WebOperation.swift */; };
-		1855DFBC1A1D6AAB0093FA04 /* WebOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFB31A1D6AAB0093FA04 /* WebOperations.swift */; };
 		1855DFBE1A1D6D030093FA04 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18284AC61A16DE8E00F34B4F /* CoreData.framework */; };
 		1855DFBF1A1D6D8B0093FA04 /* WebOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFB21A1D6AAB0093FA04 /* WebOperation.swift */; };
 		1855DFC01A1D6D8B0093FA04 /* WebOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFB31A1D6AAB0093FA04 /* WebOperations.swift */; };
@@ -60,6 +45,13 @@
 		186ACC9F1A0C491800512F12 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 186ACC9D1A0C491800512F12 /* LaunchScreen.xib */; };
 		186ACCAB1A0C491800512F12 /* DionysusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186ACCAA1A0C491800512F12 /* DionysusTests.swift */; };
 		186ACCB71A0D62D300512F12 /* WebOperationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186ACCB61A0D62D300512F12 /* WebOperationTests.swift */; };
+		186D46001A25171800928D1D /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFAA1A1D6AAB0093FA04 /* Channel.swift */; };
+		186D46011A25171800928D1D /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFAB1A1D6AAB0093FA04 /* DataManager.swift */; };
+		186D46021A25171800928D1D /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFAC1A1D6AAB0093FA04 /* Device.swift */; };
+		186D46031A25171800928D1D /* MockOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFB11A1D6AAB0093FA04 /* MockOperations.swift */; };
+		186D46041A25171800928D1D /* WebOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFB21A1D6AAB0093FA04 /* WebOperation.swift */; };
+		186D46051A25171800928D1D /* WebOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFB31A1D6AAB0093FA04 /* WebOperations.swift */; };
+		186D46061A25171F00928D1D /* DionysusModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFAE1A1D6AAB0093FA04 /* DionysusModel.xcdatamodeld */; };
 		188A256D1A1D17E1002C8AE4 /* WatchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 188A256C1A1D17E1002C8AE4 /* WatchKit.framework */; };
 		188A25751A1D17E2002C8AE4 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188A25741A1D17E2002C8AE4 /* NotificationController.swift */; };
 		188A257B1A1D17E2002C8AE4 /* Dionysus Watch App.app in Resources */ = {isa = PBXBuildFile; fileRef = 188A257A1A1D17E2002C8AE4 /* Dionysus Watch App.app */; };
@@ -118,7 +110,6 @@
 		0136B05B1A23DF190016666B /* ChannelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelTests.swift; sourceTree = "<group>"; };
 		0136B0621A23FCB80016666B /* DataManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManagerTests.swift; sourceTree = "<group>"; };
 		18284AC61A16DE8E00F34B4F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		1855DF951A1D2D7B0093FA04 /* Device+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Device+Extensions.swift"; sourceTree = "<group>"; };
 		1855DF981A1D53F70093FA04 /* DeviceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceTests.swift; sourceTree = "<group>"; };
 		1855DF9E1A1D6A980093FA04 /* Channels.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Channels.plist; sourceTree = "<group>"; };
 		1855DF9F1A1D6A980093FA04 /* DeviceList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DeviceList.plist; sourceTree = "<group>"; };
@@ -126,15 +117,15 @@
 		1855DFA11A1D6A980093FA04 /* Login.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Login.plist; sourceTree = "<group>"; };
 		1855DFA21A1D6A980093FA04 /* SetDefault.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SetDefault.plist; sourceTree = "<group>"; };
 		1855DFA31A1D6A980093FA04 /* TuneToChannel.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TuneToChannel.plist; sourceTree = "<group>"; };
-		1855DFAA1A1D6AAB0093FA04 /* Channel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
-		1855DFAB1A1D6AAB0093FA04 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
-		1855DFAC1A1D6AAB0093FA04 /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
+		1855DFAA1A1D6AAB0093FA04 /* Channel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Channel.swift; path = "Dionysus WatchKit Extension/Channel.swift"; sourceTree = SOURCE_ROOT; };
+		1855DFAB1A1D6AAB0093FA04 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataManager.swift; path = "Dionysus WatchKit Extension/DataManager.swift"; sourceTree = SOURCE_ROOT; };
+		1855DFAC1A1D6AAB0093FA04 /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Device.swift; path = "Dionysus WatchKit Extension/Device.swift"; sourceTree = SOURCE_ROOT; };
 		1855DFAD1A1D6AAB0093FA04 /* DionysusInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DionysusInterfaceController.swift; sourceTree = "<group>"; };
 		1855DFAF1A1D6AAB0093FA04 /* DionysusModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DionysusModel.xcdatamodel; sourceTree = "<group>"; };
 		1855DFB01A1D6AAB0093FA04 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		1855DFB11A1D6AAB0093FA04 /* MockOperations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockOperations.swift; sourceTree = "<group>"; };
-		1855DFB21A1D6AAB0093FA04 /* WebOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebOperation.swift; sourceTree = "<group>"; };
-		1855DFB31A1D6AAB0093FA04 /* WebOperations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebOperations.swift; sourceTree = "<group>"; };
+		1855DFB11A1D6AAB0093FA04 /* MockOperations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MockOperations.swift; path = "Dionysus WatchKit Extension/MockOperations.swift"; sourceTree = SOURCE_ROOT; };
+		1855DFB21A1D6AAB0093FA04 /* WebOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WebOperation.swift; path = "Dionysus WatchKit Extension/WebOperation.swift"; sourceTree = SOURCE_ROOT; };
+		1855DFB31A1D6AAB0093FA04 /* WebOperations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WebOperations.swift; path = "Dionysus WatchKit Extension/WebOperations.swift"; sourceTree = SOURCE_ROOT; };
 		186ACC8F1A0C491800512F12 /* Dionysus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dionysus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		186ACC931A0C491800512F12 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		186ACC941A0C491800512F12 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -227,9 +218,16 @@
 			children = (
 				186ACC941A0C491800512F12 /* AppDelegate.swift */,
 				186ACC961A0C491800512F12 /* ViewController.swift */,
+				1855DFAA1A1D6AAB0093FA04 /* Channel.swift */,
+				1855DFAB1A1D6AAB0093FA04 /* DataManager.swift */,
+				1855DFAC1A1D6AAB0093FA04 /* Device.swift */,
+				1855DFB11A1D6AAB0093FA04 /* MockOperations.swift */,
+				1855DFB21A1D6AAB0093FA04 /* WebOperation.swift */,
+				1855DFB31A1D6AAB0093FA04 /* WebOperations.swift */,
 				186ACC9B1A0C491800512F12 /* Images.xcassets */,
 				186ACC9D1A0C491800512F12 /* LaunchScreen.xib */,
 				186ACC981A0C491800512F12 /* Main.storyboard */,
+				1855DFAE1A1D6AAB0093FA04 /* DionysusModel.xcdatamodeld */,
 				186ACC921A0C491800512F12 /* Supporting Files */,
 			);
 			path = Dionysus;
@@ -278,17 +276,9 @@
 		188A256E1A1D17E1002C8AE4 /* Dionysus WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
-				1855DFAA1A1D6AAB0093FA04 /* Channel.swift */,
-				1855DFAB1A1D6AAB0093FA04 /* DataManager.swift */,
-				1855DFAC1A1D6AAB0093FA04 /* Device.swift */,
-				1855DF951A1D2D7B0093FA04 /* Device+Extensions.swift */,
 				1855DFAD1A1D6AAB0093FA04 /* DionysusInterfaceController.swift */,
-				1855DFB11A1D6AAB0093FA04 /* MockOperations.swift */,
 				188A25741A1D17E2002C8AE4 /* NotificationController.swift */,
-				1855DFB21A1D6AAB0093FA04 /* WebOperation.swift */,
-				1855DFB31A1D6AAB0093FA04 /* WebOperations.swift */,
 				1855DFB01A1D6AAB0093FA04 /* Images.xcassets */,
-				1855DFAE1A1D6AAB0093FA04 /* DionysusModel.xcdatamodeld */,
 				188A256F1A1D17E1002C8AE4 /* Supporting Files */,
 			);
 			path = "Dionysus WatchKit Extension";
@@ -505,7 +495,6 @@
 				1855DFC01A1D6D8B0093FA04 /* WebOperations.swift in Sources */,
 				0136B05E1A23F1B20016666B /* Channel.swift in Sources */,
 				1855DFCD1A1D6D9A0093FA04 /* DataManager.swift in Sources */,
-				014AA2C81A24265A00B81677 /* Device+Extensions.swift in Sources */,
 				186ACC971A0C491800512F12 /* ViewController.swift in Sources */,
 				18488E751A200377009EC124 /* DionysusModel.xcdatamodeld in Sources */,
 				1855DFCE1A1D6D9A0093FA04 /* Device.swift in Sources */,
@@ -519,13 +508,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				014AA2C51A24263700B81677 /* Device.swift in Sources */,
-				011A10781A241E97009307A5 /* DataManager.swift in Sources */,
-				014AA2C41A24263700B81677 /* Channel.swift in Sources */,
 				186ACCB71A0D62D300512F12 /* WebOperationTests.swift in Sources */,
-				011A107C1A241E97009307A5 /* WebOperations.swift in Sources */,
-				014AA2C71A24265900B81677 /* Device+Extensions.swift in Sources */,
-				011A107B1A241E97009307A5 /* WebOperation.swift in Sources */,
 				0136B05C1A23DF190016666B /* ChannelTests.swift in Sources */,
 				186ACCAB1A0C491800512F12 /* DionysusTests.swift in Sources */,
 				1855DF991A1D53F70093FA04 /* DeviceTests.swift in Sources */,
@@ -538,16 +521,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1855DFBB1A1D6AAB0093FA04 /* WebOperation.swift in Sources */,
-				1855DFB51A1D6AAB0093FA04 /* DataManager.swift in Sources */,
-				1855DFB41A1D6AAB0093FA04 /* Channel.swift in Sources */,
-				014AA2C61A24265800B81677 /* Device+Extensions.swift in Sources */,
-				1855DFB61A1D6AAB0093FA04 /* Device.swift in Sources */,
+				186D46051A25171800928D1D /* WebOperations.swift in Sources */,
 				188A25751A1D17E2002C8AE4 /* NotificationController.swift in Sources */,
-				1855DFBC1A1D6AAB0093FA04 /* WebOperations.swift in Sources */,
-				011A10711A24141E009307A5 /* DionysusModel.xcdatamodeld in Sources */,
-				1855DFBA1A1D6AAB0093FA04 /* MockOperations.swift in Sources */,
+				186D46041A25171800928D1D /* WebOperation.swift in Sources */,
+				186D46061A25171F00928D1D /* DionysusModel.xcdatamodeld in Sources */,
+				186D46011A25171800928D1D /* DataManager.swift in Sources */,
+				186D46001A25171800928D1D /* Channel.swift in Sources */,
+				186D46031A25171800928D1D /* MockOperations.swift in Sources */,
 				1855DFB71A1D6AAB0093FA04 /* DionysusInterfaceController.swift in Sources */,
+				186D46021A25171800928D1D /* Device.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -856,8 +838,9 @@
 				1855DFAF1A1D6AAB0093FA04 /* DionysusModel.xcdatamodel */,
 			);
 			currentVersion = 1855DFAF1A1D6AAB0093FA04 /* DionysusModel.xcdatamodel */;
-			path = DionysusModel.xcdatamodeld;
-			sourceTree = "<group>";
+			name = DionysusModel.xcdatamodeld;
+			path = "Dionysus WatchKit Extension/DionysusModel.xcdatamodeld";
+			sourceTree = SOURCE_ROOT;
 			versionGroupType = wrapper.xcdatamodel;
 		};
 /* End XCVersionGroup section */

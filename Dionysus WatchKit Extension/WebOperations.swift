@@ -8,30 +8,30 @@
 
 import Foundation
 
-let kAuthTokenKey = "AuthToken"
-let kBaseURLKey = "BaseURL"
-let kConfigPathKey = "ConfigPath"
-let kDefaultBaseURL = "http://ctva.engprod-charter.net/"
-let kDefaultPasswordKey = "DefaultPassword"
-let kDefaultPassword = "eXsC5s87r2vM"
-let kDefaultUsernameKey = "DefaultUsername"
-let kDefaultUsername = "coldlogic@charter.net"
-let kDevicesEndpoint = "api/symphony/services/v1/devices"
-let kFavoritesEndpoint = "api/symphony/services/v1/preferences/__FavoriteChannels__"
-let kLoginEndpoint = "api/symphony/auth/login"
-let kTokenKey = "token"
-let kTuneChannelEndpoint = "api/symphony/services/v1/devices"
-let kPasswordKey = "password"
-let kUsernameKey = "username"
+public let kAuthTokenKey = "AuthToken"
+public let kBaseURLKey = "BaseURL"
+public let kConfigPathKey = "ConfigPath"
+public let kDefaultBaseURL = "http://ctva.engprod-charter.net/"
+public let kDefaultPasswordKey = "DefaultPassword"
+public let kDefaultPassword = "eXsC5s87r2vM"
+public let kDefaultUsernameKey = "DefaultUsername"
+public let kDefaultUsername = "coldlogic@charter.net"
+public let kDevicesEndpoint = "api/symphony/services/v1/devices"
+public let kFavoritesEndpoint = "api/symphony/services/v1/preferences/__FavoriteChannels__"
+public let kLoginEndpoint = "api/symphony/auth/login"
+public let kTokenKey = "token"
+public let kTuneChannelEndpoint = "api/symphony/services/v1/devices"
+public let kPasswordKey = "password"
+public let kUsernameKey = "username"
 
 let DataOperationClass = WebOperation.self
 
-class WebOperations {
-    class func authToken() -> String? {
+public class WebOperations {
+    public class func authToken() -> String? {
         return WebOperations.userDefaultForKey(kAuthTokenKey)
     }
 
-    class func baseURL() -> String {
+    public class func baseURL() -> String {
         //Check to see if defaults was changed previously
         //  This provides the ability to change it in code as well as via a config file
         if let nonDefaultURL = WebOperations.userDefaultForKey(kBaseURLKey) {
@@ -46,7 +46,7 @@ class WebOperations {
         return ""
     }
     
-    class func configuration() -> NSDictionary! {
+    public class func configuration() -> NSDictionary! {
         //Get default path to config file
         var pathToConfig = WebOperations.defaultConfigPath()
         
@@ -67,7 +67,7 @@ class WebOperations {
         return NSDictionary()
     }
     
-    class func defaultConfigPath() -> String! {
+    public class func defaultConfigPath() -> String! {
         //Get path to default config file
         var path = NSBundle.mainBundle().pathForResource("DionysusConfig", ofType: "plist")
         
@@ -87,15 +87,15 @@ class WebOperations {
         return path
     }
     
-    class func devicesListURL() -> String {
+    public class func devicesListURL() -> String {
         return WebOperations.baseURL() + kDevicesEndpoint
     }
     
-    class func dictionaryFromPlistNamed(plistName: String!) -> NSDictionary? {
+    public class func dictionaryFromPlistNamed(plistName: String!) -> NSDictionary? {
         return NSDictionary(contentsOfFile: WebOperations.plistFileNamed(plistName)!)
     }
     
-    class func fetchDevices(completion: ((request: NSURLRequest, deviceList: [Device]!) -> Void)?, failure: ((request: NSURLRequest, json: [Device]!) -> Void)?) {
+    public class func fetchDevices(completion: ((request: NSURLRequest, deviceList: [Device]!) -> Void)?, failure: ((request: NSURLRequest, json: [Device]!) -> Void)?) {
         if let auth = WebOperations.authToken() {
             let url = WebOperations.devicesListURL()
             let params = [kTokenKey : auth]
@@ -125,12 +125,12 @@ class WebOperations {
         }
     }
     
-    class func login(completion: ((request: NSURLRequest, token: String!) -> Void)?, failure: ((request: NSURLRequest, json: NSDictionary!) -> Void)?) {
+    public class func login(completion: ((request: NSURLRequest, token: String!) -> Void)?, failure: ((request: NSURLRequest, json: NSDictionary!) -> Void)?) {
         let params = WebOperations.loginParameters()
         WebOperations.login(params[kUsernameKey]!, password: params[kPasswordKey]!, completion: completion, failure: failure)
     }
     
-    class func login(username: String, password: String, completion: ((request: NSURLRequest, token: String!) -> Void)?, failure: ((request: NSURLRequest, json: NSDictionary!) -> Void)?) {
+    public class func login(username: String, password: String, completion: ((request: NSURLRequest, token: String!) -> Void)?, failure: ((request: NSURLRequest, json: NSDictionary!) -> Void)?) {
         let url = WebOperations.loginURL()
         let params = [kUsernameKey: username, kPasswordKey: password]
         
@@ -166,7 +166,7 @@ class WebOperations {
         op.connect(loginCompletion, failure:nil)
     }
     
-    class func loginParameters() -> [String:String] {
+    public class func loginParameters() -> [String:String] {
         //Get configuration dictionary
         if let configDict = WebOperations.configuration() {
             var params: [String:String] = [String:String]()
@@ -192,30 +192,30 @@ class WebOperations {
         return [kPasswordKey: kDefaultPassword, kUsernameKey: kDefaultUsername]
     }
     
-    class func loginURL( ) -> String {
+    public class func loginURL( ) -> String {
         return WebOperations.baseURL() + kLoginEndpoint
     }
     
-    class func plistFileNamed(fileName: String!) -> String? {
+    public class func plistFileNamed(fileName: String!) -> String? {
         return NSBundle.mainBundle().pathForResource(fileName, ofType: "plist")
     }
     
-    class func setAuthToken(newToken: String?) {
+    public class func setAuthToken(newToken: String?) {
         WebOperations.setUserDefault(newToken, key: kAuthTokenKey)
     }
     
-    class func setBaseURL(newBaseURL: String?) {
+    public class func setBaseURL(newBaseURL: String?) {
         WebOperations.setUserDefault(newBaseURL, key: kBaseURLKey)
     }
     
-    class func setConfiguration(newPathToConfig: String?) {
+    public class func setConfiguration(newPathToConfig: String?) {
         WebOperations.setUserDefault(newPathToConfig, key: kConfigPathKey)
         
         //Upon setting a new configuration, need to reset baseURL from defaults to prevent corruption
         WebOperations.setBaseURL(nil)
     }
     
-    class func setUserDefault(value: String?, key: String) {
+    public class func setUserDefault(value: String?, key: String) {
         let userDefaults = NSUserDefaults.standardUserDefaults()
         if value != nil {
             userDefaults.setObject(value, forKey: key)
@@ -224,7 +224,7 @@ class WebOperations {
         }
     }
     
-    class func userDefaultForKey(key: String) -> String? {
+    public class func userDefaultForKey(key: String) -> String? {
         let userDefaults = NSUserDefaults.standardUserDefaults()
         return userDefaults.stringForKey(key)
     }

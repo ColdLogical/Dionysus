@@ -8,6 +8,7 @@
 
 import Foundation
 import XCTest
+import Dionysus
 
 class WebOperationsTests: XCTestCase {
     let userDefaults = NSUserDefaults()

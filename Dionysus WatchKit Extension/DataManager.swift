@@ -9,8 +9,8 @@
 import Foundation
 import CoreData
 
-class DataManager {
-    lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator = {
+public class DataManager {
+    lazy public var persistentStoreCoordinator: NSPersistentStoreCoordinator = {
         var coordinator: NSPersistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
         let url = self.applicationDocumentsDirectory().URLByAppendingPathComponent("Dionysus.sqlite")
         var error: NSError? = nil
@@ -29,19 +29,19 @@ class DataManager {
         return coordinator
     }()
 
-    lazy var context: NSManagedObjectContext = {
+    lazy public var context: NSManagedObjectContext = {
         let coordinator = self.persistentStoreCoordinator
         var context = NSManagedObjectContext()
         context.persistentStoreCoordinator = coordinator
         return context
     }()
     
-    lazy var managedObjectModel: NSManagedObjectModel = {
+    lazy public var managedObjectModel: NSManagedObjectModel = {
         let modelURL = NSBundle.mainBundle().URLForResource("DionysusModel", withExtension:"momd")!
         return NSManagedObjectModel(contentsOfURL: modelURL)!
     }()
     
-    class var sharedInstance: DataManager {
+    public class var sharedInstance: DataManager {
         struct Static {
             static var instance: DataManager?
             static var token: dispatch_once_t = 0
@@ -58,7 +58,7 @@ class DataManager {
         return NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).last as NSURL
     }
     
-    func save() {
+    public func save() {
         var error: NSError?
         if context.hasChanges && !context.save(&error) {
             println("Unresolved error \(error), \(error!.userInfo)")
@@ -67,12 +67,12 @@ class DataManager {
     }
     
     //MARK: Helper Functions
-    func delete(object: NSManagedObject!) {
+    public func delete(object: NSManagedObject!) {
         context.deleteObject(object)
         save()
     }
     
-    func existingOrNewEntity(entityName: String!, predicate: NSPredicate?) -> AnyObject! {
+    public func existingOrNewEntity(entityName: String!, predicate: NSPredicate?) -> AnyObject! {
         let results = fetchResults(entityName, predicate: predicate)
         if results != nil {
             if results!.count > 0 {
@@ -84,7 +84,7 @@ class DataManager {
         return newEntity(entityName)
     }
     
-    func fetchResults(entityName: String!, predicate: NSPredicate?) -> [AnyObject]? {
+    public func fetchResults(entityName: String!, predicate: NSPredicate?) -> [AnyObject]? {
         var error: NSError?
         let fetchRequest = NSFetchRequest()
         
@@ -100,7 +100,7 @@ class DataManager {
         return fetchedObjects
     }
     
-    func newEntity(entityName: String!) -> AnyObject! {
+    public func newEntity(entityName: String!) -> AnyObject! {
         let newEntity: AnyObject = NSEntityDescription.insertNewObjectForEntityForName(entityName, inManagedObjectContext: context)
         save()
         return newEntity

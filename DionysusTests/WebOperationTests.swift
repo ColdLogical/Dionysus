@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import Dionysus
 
 class WebOperationTests: XCTestCase {
     //Login Input just to test

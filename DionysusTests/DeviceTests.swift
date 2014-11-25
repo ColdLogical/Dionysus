@@ -7,12 +7,14 @@
 //
 
 import XCTest
+import Dionysus
 
 class DeviceTests: XCTestCase {
-    let testAlias = "TestAlias"
-    let testDVR = false
-    let testIsDefault = true
-    let testMacAddress = "YourMom"
+    let dictionary = [kAliasKey: "YourMomsAlias",
+        kMacAddressKey: "YourMom",
+        kDVRKey: true,
+        kIsDefaultKey: false]
+    var testDevice: Device?
 
     override func setUp() {
         super.setUp()
@@ -25,18 +27,13 @@ class DeviceTests: XCTestCase {
     }
 
     func testParseValues() {
-        let dictionary = [kAliasKey: testAlias,
-            kDVRKey: testDVR,
-            kIsDefaultKey: testIsDefault,
-            kMacAddressKey: testMacAddress]
-        
         let d = Device.newDevice()
         d.parseValues(dictionary)
         
-        XCTAssert(d.valueForKey("alias") as? String == testAlias, "Parsed value must equal value inputted")
-        XCTAssert(d.valueForKey("dvr") as? NSNumber == testDVR, "Parsed value must equal value inputted")
-        XCTAssert(d.valueForKey("isDefault") as? NSNumber == testIsDefault, "Parsed value must equal value inputted")
-        XCTAssert(d.valueForKey("macAddress") as? String == testMacAddress, "Parsed value must equal value inputted")
+        XCTAssert(d.valueForKey(kAlias) as? String == dictionary[kAliasKey], "Parsed value must equal value inputted")
+        XCTAssert(d.valueForKey(kDVR) as? NSNumber == dictionary[kDVRKey], "Parsed value must equal value inputted")
+        XCTAssert(d.valueForKey(kIsDefault) as? NSNumber == dictionary[kIsDefaultKey], "Parsed value must equal value inputted")
+        XCTAssert(d.valueForKey(kMacAddress) as? String == dictionary[kMacAddressKey], "Parsed value must equal value inputted")
 		
 		Device.deleteDevice(d)
     }

@@ -8,15 +8,15 @@
 
 import Foundation
 
-class WebOperation : NSObject, NSURLConnectionDataDelegate, NSURLConnectionDelegate {
-    lazy var connection: NSURLConnection! = {
+public class WebOperation : NSObject, NSURLConnectionDataDelegate, NSURLConnectionDelegate {
+    lazy public var connection: NSURLConnection! = {
         let c = NSURLConnection(request: self.request, delegate: self, startImmediately: false)
         return c
     }()
-    var completionHandler: ((request: NSURLRequest, json: NSDictionary) -> Void)?
-    var failureHandler: ((request: NSURLRequest, error: NSError) -> Void)?
-    lazy var receivedData: NSMutableData = NSMutableData()
-    lazy var request: NSMutableURLRequest! = {
+    public var completionHandler: ((request: NSURLRequest, json: NSDictionary) -> Void)?
+    public var failureHandler: ((request: NSURLRequest, error: NSError) -> Void)?
+    lazy public var receivedData: NSMutableData = NSMutableData()
+    lazy public var request: NSMutableURLRequest! = {
         let r = NSMutableURLRequest(URL: NSURL(string: self.urlString!)!)
         r.HTTPMethod = "GET"
         r.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
@@ -24,14 +24,14 @@ class WebOperation : NSObject, NSURLConnectionDataDelegate, NSURLConnectionDeleg
         r.setValue("authcookie=Spec2Jars!; ", forHTTPHeaderField:"Cookie")
         return r
     }()
-    var urlString: String?
+    public var urlString: String?
     
-    required init(URL: String) {
+    required public init(URL: String) {
         super.init()
         urlString = URL
     }
     
-    required convenience init(URL: String, parameters: [String:String]?) {
+    required convenience public init(URL: String, parameters: [String:String]?) {
         self.init(URL: URL)
         
         if parameters != nil {
@@ -46,14 +46,14 @@ class WebOperation : NSObject, NSURLConnectionDataDelegate, NSURLConnectionDeleg
         }
     }
     
-    func connect(completion: ((request: NSURLRequest, json: NSDictionary) -> Void)?, failure: ((request: NSURLRequest, error: NSError) -> Void)?) {
+    public func connect(completion: ((request: NSURLRequest, json: NSDictionary) -> Void)?, failure: ((request: NSURLRequest, error: NSError) -> Void)?) {
         completionHandler = completion
         failureHandler = failure
         connection.start()
     }
     
     //MARK: NSURLConnectionDataDelegate
-    func connection(connection: NSURLConnection, didReceiveData data: NSData) {
+    public func connection(connection: NSURLConnection, didReceiveData data: NSData) {
         receivedData.appendData(data)
     }
     
@@ -66,14 +66,14 @@ class WebOperation : NSObject, NSURLConnectionDataDelegate, NSURLConnectionDeleg
 //    }
     
     //MARK: NSURLConnectionDelegate
-    func connection(connection: NSURLConnection, didFailWithError error: NSError) {
+    public func connection(connection: NSURLConnection, didFailWithError error: NSError) {
         println("Connection Failed: \(error)")
         if failureHandler != nil {
             failureHandler!(request: connection.originalRequest, error: error)
         }
     }
     
-    func connectionDidFinishLoading(connection: NSURLConnection) {
+    public func connectionDidFinishLoading(connection: NSURLConnection) {
         var error: NSError?
         
         let jsonData: AnyObject! = NSJSONSerialization.JSONObjectWithData(receivedData, options: NSJSONReadingOptions.allZeros, error: &error)

@@ -10,10 +10,10 @@ import Foundation
 import CoreData
 
 @objc(Channel)
-class Channel: NSManagedObject {
+public class Channel: NSManagedObject {
 
-    @NSManaged var channelId: String
-    @NSManaged var callSign: String
-    @NSManaged var number: String
+    @NSManaged public var channelId: String
+    @NSManaged public var callSign: String
+    @NSManaged public var number: String
 
 }

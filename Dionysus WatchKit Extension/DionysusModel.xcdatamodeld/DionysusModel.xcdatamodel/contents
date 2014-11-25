@@ -13,6 +13,6 @@
     </entity>
     <elements>
         <element name="Channel" positionX="-6930" positionY="-6408" width="128" height="88"/>
-        <element name="Device" positionX="-6930" positionY="-6381" width="128" height="103"/>
+        <element name="Device" positionX="-6930" positionY="-6381" width="128" height="105"/>
     </elements>
 </model>

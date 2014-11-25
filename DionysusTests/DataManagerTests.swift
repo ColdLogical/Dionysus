@@ -9,6 +9,7 @@
 import UIKit
 import XCTest
 import CoreData
+import Dionysus
 
 class DataManagerTests: XCTestCase {
     let dictionary = [kAliasKey: "Alias",
@@ -21,12 +22,15 @@ class DataManagerTests: XCTestCase {
         super.setUp()
         
         let context = DataManager.sharedInstance.context
-        let e = NSEntityDescription.entityForName("Device", inManagedObjectContext: context)
-        testDevice = Device(entity: e!, insertIntoManagedObjectContext: context)
         
-        assert(testDevice != nil, "Test device cannot be nil at end of setup")
-        testDevice!.parseValues(dictionary)
-        DataManager.sharedInstance.save()
+        testDevice = NSEntityDescription.insertNewObjectForEntityForName("Device", inManagedObjectContext: context) as? Device
+        
+        if testDevice != nil {
+            testDevice!.parseValues(dictionary)
+            DataManager.sharedInstance.save()
+        } else {
+            assert(testDevice != nil, "Test device cannot be nil at end of setup")
+        }
     }
     
     override func tearDown() {
