@@ -9,12 +9,20 @@
 import Foundation
 import CoreData
 
+let kAlias = "alias"
 let kAliasKey = "Alias"
+let kIsDefault = "isDefault"
 let kIsDefaultKey = "DefaultDevice"
+let kDVR = "dvr"
 let kDVRKey = "DVR"
+let kMacAddress = "macAddress"
 let kMacAddressKey = "MacAddress"
 
 extension Device {
+    class func deleteDevice(device: Device!) {
+        DataManager.sharedInstance.delete(device)
+    }
+    
     class func existingOrNew(macAddress: String!) -> Device {
         let d = DataManager.sharedInstance.existingOrNewEntity("Device", predicate: NSPredicate(format: "macAddress = %@", macAddress)) as Device
         
@@ -47,10 +55,10 @@ extension Device {
     }
     
     func parseValues(values: NSDictionary!) {
-        self.alias = values[kAliasKey] as? String ?? ""
-        self.isDefault = values[kIsDefaultKey] as? NSNumber ?? false
-        self.dvr = values[kDVRKey] as? NSNumber ?? false
-        self.macAddress = values[kMacAddressKey] as? String ?? ""
+        self.setValue(values[kAliasKey] as? String ?? "", forKey:kAlias)
+        self.setValue(values[kIsDefaultKey] as? NSNumber ?? false, forKey:kIsDefault)
+        self.setValue(values[kDVRKey] as? NSNumber ?? false, forKey:kDVR)
+        self.setValue(values[kMacAddressKey] as? String ?? "", forKey:kMacAddress)
         
         DataManager.sharedInstance.save()
     }

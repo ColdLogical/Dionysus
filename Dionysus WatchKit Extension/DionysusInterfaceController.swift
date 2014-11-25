@@ -66,10 +66,4 @@ class DionysusInterfaceController: WKInterfaceController {
             self.tokenLabel!.setTextColor(UIColor.redColor())
         }
     }
-    
-//    func widgetMarginInsetsForProposedMarginInsets(defaultMarginInsets: UIEdgeInsets) -> UIEdgeInsets {
-//        self.tokenLabel!.setText = NSStringFromUIEdgeInsets(defaultMarginInsets)
-//        self.preferredContentSize = CGSizeMake(0,375)
-//        return UIEdgeInsetsZero
-//    }
 }

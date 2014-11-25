@@ -9,6 +9,7 @@
 import Foundation
 import CoreData
 
+@objc(Channel)
 class Channel: NSManagedObject {
 
     @NSManaged var channelId: String

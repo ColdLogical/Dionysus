@@ -6,13 +6,13 @@
         <attribute name="number" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Device" representedClassName="Device" syncable="YES">
-        <attribute name="alias" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="alias" optional="YES" attributeType="String" defaultValueString=" " syncable="YES"/>
         <attribute name="dvr" optional="YES" attributeType="Boolean" defaultValueString="0.0" syncable="YES"/>
         <attribute name="isDefault" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
-        <attribute name="macAddress" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="macAddress" optional="YES" attributeType="String" defaultValueString="YourMom" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Channel" positionX="-6930" positionY="-6408" width="128" height="90"/>
+        <element name="Channel" positionX="-6930" positionY="-6408" width="128" height="88"/>
         <element name="Device" positionX="-6930" positionY="-6381" width="128" height="103"/>
     </elements>
 </model>

@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		011A10711A24141E009307A5 /* DionysusModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFAE1A1D6AAB0093FA04 /* DionysusModel.xcdatamodeld */; };
+		011A10781A241E97009307A5 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFAB1A1D6AAB0093FA04 /* DataManager.swift */; };
+		011A107B1A241E97009307A5 /* WebOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFB21A1D6AAB0093FA04 /* WebOperation.swift */; };
+		011A107C1A241E97009307A5 /* WebOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFB31A1D6AAB0093FA04 /* WebOperations.swift */; };
+		0136B05C1A23DF190016666B /* ChannelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0136B05B1A23DF190016666B /* ChannelTests.swift */; };
+		0136B05E1A23F1B20016666B /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFAA1A1D6AAB0093FA04 /* Channel.swift */; };
+		0136B0631A23FCB80016666B /* DataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0136B0621A23FCB80016666B /* DataManagerTests.swift */; };
+		014AA2C41A24263700B81677 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFAA1A1D6AAB0093FA04 /* Channel.swift */; };
+		014AA2C51A24263700B81677 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFAC1A1D6AAB0093FA04 /* Device.swift */; };
+		014AA2C61A24265800B81677 /* Device+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DF951A1D2D7B0093FA04 /* Device+Extensions.swift */; };
+		014AA2C71A24265900B81677 /* Device+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DF951A1D2D7B0093FA04 /* Device+Extensions.swift */; };
+		014AA2C81A24265A00B81677 /* Device+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DF951A1D2D7B0093FA04 /* Device+Extensions.swift */; };
 		18488E681A20015C009EC124 /* Channels.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1855DF9E1A1D6A980093FA04 /* Channels.plist */; };
 		18488E691A20015C009EC124 /* DeviceList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1855DF9F1A1D6A980093FA04 /* DeviceList.plist */; };
 		18488E6A1A20015C009EC124 /* Favorites.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1855DFA01A1D6A980093FA04 /* Favorites.plist */; };
@@ -20,7 +32,6 @@
 		18488E721A20015D009EC124 /* SetDefault.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1855DFA21A1D6A980093FA04 /* SetDefault.plist */; };
 		18488E731A20015D009EC124 /* TuneToChannel.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1855DFA31A1D6A980093FA04 /* TuneToChannel.plist */; };
 		18488E751A200377009EC124 /* DionysusModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFAE1A1D6AAB0093FA04 /* DionysusModel.xcdatamodeld */; };
-		1855DF961A1D2D7B0093FA04 /* Device+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DF951A1D2D7B0093FA04 /* Device+Extensions.swift */; };
 		1855DF991A1D53F70093FA04 /* DeviceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DF981A1D53F70093FA04 /* DeviceTests.swift */; };
 		1855DFA41A1D6A980093FA04 /* Channels.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1855DF9E1A1D6A980093FA04 /* Channels.plist */; };
 		1855DFA51A1D6A980093FA04 /* DeviceList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1855DF9F1A1D6A980093FA04 /* DeviceList.plist */; };
@@ -39,15 +50,8 @@
 		1855DFBE1A1D6D030093FA04 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18284AC61A16DE8E00F34B4F /* CoreData.framework */; };
 		1855DFBF1A1D6D8B0093FA04 /* WebOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFB21A1D6AAB0093FA04 /* WebOperation.swift */; };
 		1855DFC01A1D6D8B0093FA04 /* WebOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFB31A1D6AAB0093FA04 /* WebOperations.swift */; };
-		1855DFC11A1D6D8C0093FA04 /* WebOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFB21A1D6AAB0093FA04 /* WebOperation.swift */; };
-		1855DFC21A1D6D8C0093FA04 /* WebOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFB31A1D6AAB0093FA04 /* WebOperations.swift */; };
-		1855DFC91A1D6D9A0093FA04 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFAB1A1D6AAB0093FA04 /* DataManager.swift */; };
-		1855DFCA1A1D6D9A0093FA04 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFAC1A1D6AAB0093FA04 /* Device.swift */; };
-		1855DFCB1A1D6D9A0093FA04 /* Device+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DF951A1D2D7B0093FA04 /* Device+Extensions.swift */; };
-		1855DFCC1A1D6D9A0093FA04 /* MockOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFB11A1D6AAB0093FA04 /* MockOperations.swift */; };
 		1855DFCD1A1D6D9A0093FA04 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFAB1A1D6AAB0093FA04 /* DataManager.swift */; };
 		1855DFCE1A1D6D9A0093FA04 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFAC1A1D6AAB0093FA04 /* Device.swift */; };
-		1855DFCF1A1D6D9A0093FA04 /* Device+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DF951A1D2D7B0093FA04 /* Device+Extensions.swift */; };
 		1855DFD01A1D6D9A0093FA04 /* MockOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFB11A1D6AAB0093FA04 /* MockOperations.swift */; };
 		186ACC951A0C491800512F12 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186ACC941A0C491800512F12 /* AppDelegate.swift */; };
 		186ACC971A0C491800512F12 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186ACC961A0C491800512F12 /* ViewController.swift */; };
@@ -62,8 +66,6 @@
 		188A25821A1D17E2002C8AE4 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 188A25811A1D17E2002C8AE4 /* Interface.storyboard */; };
 		188A25841A1D17E2002C8AE4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 188A25831A1D17E2002C8AE4 /* Images.xcassets */; };
 		188A25871A1D17E2002C8AE4 /* Dionysus WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 188A256B1A1D17E1002C8AE4 /* Dionysus WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		18D4E1B71A13CD0100A283E2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186ACC961A0C491800512F12 /* ViewController.swift */; };
-		18D4E1B81A13CD0300A283E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186ACC941A0C491800512F12 /* AppDelegate.swift */; };
 		18D4E1BD1A13D48C00A283E2 /* WebOperationsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D4E1BC1A13D48C00A283E2 /* WebOperationsTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -113,6 +115,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0136B05B1A23DF190016666B /* ChannelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelTests.swift; sourceTree = "<group>"; };
+		0136B0621A23FCB80016666B /* DataManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManagerTests.swift; sourceTree = "<group>"; };
 		18284AC61A16DE8E00F34B4F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		1855DF951A1D2D7B0093FA04 /* Device+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Device+Extensions.swift"; sourceTree = "<group>"; };
 		1855DF981A1D53F70093FA04 /* DeviceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceTests.swift; sourceTree = "<group>"; };
@@ -152,8 +156,6 @@
 		188A25801A1D17E2002C8AE4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		188A25811A1D17E2002C8AE4 /* Interface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Interface.storyboard; sourceTree = "<group>"; };
 		188A25831A1D17E2002C8AE4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		18BEF9921A1FD87E00525512 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		18BEF9931A1FD87E00525512 /* Dionysus_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dionysus_Tests.swift; sourceTree = "<group>"; };
 		18D4E1BC1A13D48C00A283E2 /* WebOperationsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebOperationsTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -204,7 +206,6 @@
 				186ACCA71A0C491800512F12 /* DionysusTests */,
 				188A256E1A1D17E1002C8AE4 /* Dionysus WatchKit Extension */,
 				188A257E1A1D17E2002C8AE4 /* Dionysus Watch App */,
-				18BEF9901A1FD87E00525512 /* Dionysus Tests */,
 				18840AB81A16C4F30066119C /* Frameworks */,
 				186ACC901A0C491800512F12 /* Products */,
 			);
@@ -245,6 +246,8 @@
 		186ACCA71A0C491800512F12 /* DionysusTests */ = {
 			isa = PBXGroup;
 			children = (
+				0136B05B1A23DF190016666B /* ChannelTests.swift */,
+				0136B0621A23FCB80016666B /* DataManagerTests.swift */,
 				1855DF981A1D53F70093FA04 /* DeviceTests.swift */,
 				186ACCAA1A0C491800512F12 /* DionysusTests.swift */,
 				18D4E1BC1A13D48C00A283E2 /* WebOperationsTests.swift */,
@@ -315,23 +318,6 @@
 			isa = PBXGroup;
 			children = (
 				188A25801A1D17E2002C8AE4 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		18BEF9901A1FD87E00525512 /* Dionysus Tests */ = {
-			isa = PBXGroup;
-			children = (
-				18BEF9931A1FD87E00525512 /* Dionysus_Tests.swift */,
-				18BEF9911A1FD87E00525512 /* Supporting Files */,
-			);
-			path = "Dionysus Tests";
-			sourceTree = "<group>";
-		};
-		18BEF9911A1FD87E00525512 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				18BEF9921A1FD87E00525512 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -517,10 +503,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				1855DFC01A1D6D8B0093FA04 /* WebOperations.swift in Sources */,
+				0136B05E1A23F1B20016666B /* Channel.swift in Sources */,
 				1855DFCD1A1D6D9A0093FA04 /* DataManager.swift in Sources */,
+				014AA2C81A24265A00B81677 /* Device+Extensions.swift in Sources */,
 				186ACC971A0C491800512F12 /* ViewController.swift in Sources */,
 				18488E751A200377009EC124 /* DionysusModel.xcdatamodeld in Sources */,
-				1855DFCF1A1D6D9A0093FA04 /* Device+Extensions.swift in Sources */,
 				1855DFCE1A1D6D9A0093FA04 /* Device.swift in Sources */,
 				1855DFD01A1D6D9A0093FA04 /* MockOperations.swift in Sources */,
 				186ACC951A0C491800512F12 /* AppDelegate.swift in Sources */,
@@ -532,18 +519,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				014AA2C51A24263700B81677 /* Device.swift in Sources */,
+				011A10781A241E97009307A5 /* DataManager.swift in Sources */,
+				014AA2C41A24263700B81677 /* Channel.swift in Sources */,
 				186ACCB71A0D62D300512F12 /* WebOperationTests.swift in Sources */,
+				011A107C1A241E97009307A5 /* WebOperations.swift in Sources */,
+				014AA2C71A24265900B81677 /* Device+Extensions.swift in Sources */,
+				011A107B1A241E97009307A5 /* WebOperation.swift in Sources */,
+				0136B05C1A23DF190016666B /* ChannelTests.swift in Sources */,
 				186ACCAB1A0C491800512F12 /* DionysusTests.swift in Sources */,
-				1855DFC11A1D6D8C0093FA04 /* WebOperation.swift in Sources */,
-				1855DFCB1A1D6D9A0093FA04 /* Device+Extensions.swift in Sources */,
 				1855DF991A1D53F70093FA04 /* DeviceTests.swift in Sources */,
-				18D4E1B71A13CD0100A283E2 /* ViewController.swift in Sources */,
-				1855DFC21A1D6D8C0093FA04 /* WebOperations.swift in Sources */,
-				18D4E1B81A13CD0300A283E2 /* AppDelegate.swift in Sources */,
-				1855DFC91A1D6D9A0093FA04 /* DataManager.swift in Sources */,
-				1855DFCC1A1D6D9A0093FA04 /* MockOperations.swift in Sources */,
+				0136B0631A23FCB80016666B /* DataManagerTests.swift in Sources */,
 				18D4E1BD1A13D48C00A283E2 /* WebOperationsTests.swift in Sources */,
-				1855DFCA1A1D6D9A0093FA04 /* Device.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -551,13 +538,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1855DF961A1D2D7B0093FA04 /* Device+Extensions.swift in Sources */,
 				1855DFBB1A1D6AAB0093FA04 /* WebOperation.swift in Sources */,
 				1855DFB51A1D6AAB0093FA04 /* DataManager.swift in Sources */,
 				1855DFB41A1D6AAB0093FA04 /* Channel.swift in Sources */,
+				014AA2C61A24265800B81677 /* Device+Extensions.swift in Sources */,
 				1855DFB61A1D6AAB0093FA04 /* Device.swift in Sources */,
 				188A25751A1D17E2002C8AE4 /* NotificationController.swift in Sources */,
 				1855DFBC1A1D6AAB0093FA04 /* WebOperations.swift in Sources */,
+				011A10711A24141E009307A5 /* DionysusModel.xcdatamodeld in Sources */,
 				1855DFBA1A1D6AAB0093FA04 /* MockOperations.swift in Sources */,
 				1855DFB71A1D6AAB0093FA04 /* DionysusInterfaceController.swift in Sources */,
 			);

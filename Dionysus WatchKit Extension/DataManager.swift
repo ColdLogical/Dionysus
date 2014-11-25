@@ -10,14 +10,13 @@ import Foundation
 import CoreData
 
 class DataManager {
-    lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator? = {
-        var coordinator: NSPersistentStoreCoordinator? = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
+    lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator = {
+        var coordinator: NSPersistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
         let url = self.applicationDocumentsDirectory().URLByAppendingPathComponent("Dionysus.sqlite")
         var error: NSError? = nil
         var failureReason = "There was an error creating or loading the application's saved data."
         
-        if coordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: nil, error: &error) == nil {
-            coordinator = nil
+        if coordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: nil, error: &error) == nil {
             var dict = [String: AnyObject]()
             dict[NSLocalizedDescriptionKey] = "Failed to initialize the application's saved data"
             dict[NSLocalizedFailureReasonErrorKey] = failureReason
@@ -30,13 +29,8 @@ class DataManager {
         return coordinator
     }()
 
-    lazy var context: NSManagedObjectContext? = {
+    lazy var context: NSManagedObjectContext = {
         let coordinator = self.persistentStoreCoordinator
-        
-        if coordinator == nil {
-            return nil
-        }
-        
         var context = NSManagedObjectContext()
         context.persistentStoreCoordinator = coordinator
         return context
@@ -66,15 +60,18 @@ class DataManager {
     
     func save() {
         var error: NSError?
-        if let c = context {
-            if c.hasChanges && !c.save(&error) {
-                println("Unresolved error \(error), \(error!.userInfo)")
-                abort()
-            }
+        if context.hasChanges && !context.save(&error) {
+            println("Unresolved error \(error), \(error!.userInfo)")
+            abort()
         }
     }
     
     //MARK: Helper Functions
+    func delete(object: NSManagedObject!) {
+        context.deleteObject(object)
+        save()
+    }
+    
     func existingOrNewEntity(entityName: String!, predicate: NSPredicate?) -> AnyObject! {
         let results = fetchResults(entityName, predicate: predicate)
         if results != nil {
@@ -91,27 +88,21 @@ class DataManager {
         var error: NSError?
         let fetchRequest = NSFetchRequest()
         
-        let entity = NSEntityDescription.entityForName(entityName, inManagedObjectContext: context!)
+        let entity = NSEntityDescription.entityForName(entityName, inManagedObjectContext: context)
         fetchRequest.entity = entity
         
         if predicate != nil {
             fetchRequest.predicate = predicate
         }
         
-        let fetchedObjects = context!.executeFetchRequest(fetchRequest, error:&error)
+        let fetchedObjects = context.executeFetchRequest(fetchRequest, error:&error)
         
         return fetchedObjects
     }
     
     func newEntity(entityName: String!) -> AnyObject! {
-        let newEntity: AnyObject = NSEntityDescription.insertNewObjectForEntityForName(entityName, inManagedObjectContext: context!)
-        println("newEntity = \(newEntity)")
+        let newEntity: AnyObject = NSEntityDescription.insertNewObjectForEntityForName(entityName, inManagedObjectContext: context)
         save()
-        
-//        if let results =  fetchResults(entityName, predicate: NSPredicate(format: "objectID == %@", newEntity.objectID)) {
-//            
-//        }
-        
         return newEntity
     }
 }

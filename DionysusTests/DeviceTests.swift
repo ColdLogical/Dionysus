@@ -30,13 +30,15 @@ class DeviceTests: XCTestCase {
             kIsDefaultKey: testIsDefault,
             kMacAddressKey: testMacAddress]
         
-        let d = Device()
+        let d = Device.newDevice()
         d.parseValues(dictionary)
         
-        XCTAssert(d.alias == testAlias, "Parsed value must equal value inputted")
-        XCTAssert(d.dvr == testDVR, "Parsed value must equal value inputted")
-        XCTAssert(d.isDefault == testIsDefault, "Parsed value must equal value inputted")
-        XCTAssert(d.macAddress == testMacAddress, "Parsed value must equal value inputted")
+        XCTAssert(d.valueForKey("alias") as? String == testAlias, "Parsed value must equal value inputted")
+        XCTAssert(d.valueForKey("dvr") as? NSNumber == testDVR, "Parsed value must equal value inputted")
+        XCTAssert(d.valueForKey("isDefault") as? NSNumber == testIsDefault, "Parsed value must equal value inputted")
+        XCTAssert(d.valueForKey("macAddress") as? String == testMacAddress, "Parsed value must equal value inputted")
+		
+		Device.deleteDevice(d)
     }
 
 }

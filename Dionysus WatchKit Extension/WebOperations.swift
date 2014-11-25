@@ -24,7 +24,7 @@ let kTuneChannelEndpoint = "api/symphony/services/v1/devices"
 let kPasswordKey = "password"
 let kUsernameKey = "username"
 
-let DataOperationClass = MockOperations.self
+let DataOperationClass = WebOperation.self
 
 class WebOperations {
     class func authToken() -> String? {
