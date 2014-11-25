@@ -116,8 +116,6 @@ class DataManagerTests: XCTestCase {
         let d: Device = DataManager.sharedInstance.newEntity("Device") as Device
         let c: Channel = DataManager.sharedInstance.newEntity("Channel") as Channel
         
-        DataManager.sharedInstance.save()
-        
         //Check that they exist
         let context = DataManager.sharedInstance.context
         XCTAssert(d == context.objectWithID(d.objectID), "New object must exist in context")
