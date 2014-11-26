@@ -52,6 +52,7 @@
 		186D46041A25171800928D1D /* WebOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFB21A1D6AAB0093FA04 /* WebOperation.swift */; };
 		186D46051A25171800928D1D /* WebOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFB31A1D6AAB0093FA04 /* WebOperations.swift */; };
 		186D46061A25171F00928D1D /* DionysusModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFAE1A1D6AAB0093FA04 /* DionysusModel.xcdatamodeld */; };
+		186D46081A26760B00928D1D /* NSDictionary+XML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186D46071A26760B00928D1D /* NSDictionary+XML.swift */; };
 		188A256D1A1D17E1002C8AE4 /* WatchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 188A256C1A1D17E1002C8AE4 /* WatchKit.framework */; };
 		188A25751A1D17E2002C8AE4 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188A25741A1D17E2002C8AE4 /* NotificationController.swift */; };
 		188A257B1A1D17E2002C8AE4 /* Dionysus Watch App.app in Resources */ = {isa = PBXBuildFile; fileRef = 188A257A1A1D17E2002C8AE4 /* Dionysus Watch App.app */; };
@@ -137,6 +138,7 @@
 		186ACCA91A0C491800512F12 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		186ACCAA1A0C491800512F12 /* DionysusTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DionysusTests.swift; sourceTree = "<group>"; };
 		186ACCB61A0D62D300512F12 /* WebOperationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebOperationTests.swift; sourceTree = "<group>"; };
+		186D46071A26760B00928D1D /* NSDictionary+XML.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDictionary+XML.swift"; sourceTree = "<group>"; };
 		18840AB91A16C4F30066119C /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		188A256B1A1D17E1002C8AE4 /* Dionysus WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Dionysus WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		188A256C1A1D17E1002C8AE4 /* WatchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchKit.framework; path = System/Library/Frameworks/WatchKit.framework; sourceTree = SDKROOT; };
@@ -217,17 +219,18 @@
 			isa = PBXGroup;
 			children = (
 				186ACC941A0C491800512F12 /* AppDelegate.swift */,
-				186ACC961A0C491800512F12 /* ViewController.swift */,
 				1855DFAA1A1D6AAB0093FA04 /* Channel.swift */,
 				1855DFAB1A1D6AAB0093FA04 /* DataManager.swift */,
 				1855DFAC1A1D6AAB0093FA04 /* Device.swift */,
 				1855DFB11A1D6AAB0093FA04 /* MockOperations.swift */,
+				186D46071A26760B00928D1D /* NSDictionary+XML.swift */,
+				186ACC961A0C491800512F12 /* ViewController.swift */,
 				1855DFB21A1D6AAB0093FA04 /* WebOperation.swift */,
 				1855DFB31A1D6AAB0093FA04 /* WebOperations.swift */,
 				186ACC9B1A0C491800512F12 /* Images.xcassets */,
+				1855DFAE1A1D6AAB0093FA04 /* DionysusModel.xcdatamodeld */,
 				186ACC9D1A0C491800512F12 /* LaunchScreen.xib */,
 				186ACC981A0C491800512F12 /* Main.storyboard */,
-				1855DFAE1A1D6AAB0093FA04 /* DionysusModel.xcdatamodeld */,
 				186ACC921A0C491800512F12 /* Supporting Files */,
 			);
 			path = Dionysus;
@@ -496,6 +499,7 @@
 				0136B05E1A23F1B20016666B /* Channel.swift in Sources */,
 				1855DFCD1A1D6D9A0093FA04 /* DataManager.swift in Sources */,
 				186ACC971A0C491800512F12 /* ViewController.swift in Sources */,
+				186D46081A26760B00928D1D /* NSDictionary+XML.swift in Sources */,
 				18488E751A200377009EC124 /* DionysusModel.xcdatamodeld in Sources */,
 				1855DFCE1A1D6D9A0093FA04 /* Device.swift in Sources */,
 				1855DFD01A1D6D9A0093FA04 /* MockOperations.swift in Sources */,

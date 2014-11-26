@@ -93,6 +93,8 @@ class WebOperationsTests: XCTestCase {
         XCTAssert(WebOperations.devicesListURL() == (WebOperations.baseURL() + kDevicesEndpoint), "Devices List URL must be combination of baseURL and devices endpoint")
     }
     
+    func testTuneToChannel
+    
     func testFetchDevices() {
         WebOperations.setConfiguration(WebOperations.defaultConfigPath())
         
