@@ -11,11 +11,12 @@ import Foundation
 public let kAuthTokenKey = "AuthToken"
 public let kBaseURLKey = "BaseURL"
 public let kConfigPathKey = "ConfigPath"
+public let kControlPlaneRequestKey = "ControlPlaneRequest"
 public let kDefaultBaseURL = "http://ctva.engprod-charter.net/"
 public let kDefaultPasswordKey = "DefaultPassword"
-public let kDefaultPassword = "eXsC5s87r2vM"
+public let kDefaultPassword = "Testing1" //"eXsC5s87r2vM"
 public let kDefaultUsernameKey = "DefaultUsername"
-public let kDefaultUsername = "coldlogic@charter.net"
+public let kDefaultUsername = "michudatest@charter.net" //"coldlogic@charter.net"
 public let kDevicesEndpoint = "api/symphony/services/v1/devices"
 public let kFavoritesEndpoint = "api/symphony/services/v1/preferences/__FavoriteChannels__"
 public let kLoginEndpoint = "api/symphony/auth/login"
@@ -225,6 +226,52 @@ public class WebOperations {
         } else {
             userDefaults.removeObjectForKey(key)
         }
+    }
+    
+    public class func tuneDictionary(channel: String!, macAddress: String!) -> NSDictionary! {
+        //Example XML:
+        //    <ControlPlaneRequest>
+        //        <MacAddress>0000010D32F9</MacAddress>
+        //        <Action>tune</Action>
+        //        <Channel>742</Channel>
+        //    </ControlPlaneRequest>
+        
+        return [kControlPlaneRequestKey:
+            [ kMacAddressKey: macAddress,
+                  kActionKey: "tune",
+                 kChannelKey: channel ]]
+    }
+    
+    public class func tuneToChannel(channel: String!, deviceMacAddress: String!, completion: ((request: NSURLRequest, successful: Bool!) -> Void)?, failure: ((request: NSURLRequest, json: NSDictionary!) -> Void)?) {
+        if let auth = WebOperations.authToken() {
+            let params = [kTokenKey : auth]
+            let url = WebOperations.tuneURL()
+            let data = WebOperations.tuneDictionary(channel, macAddress: deviceMacAddress)
+            
+            let op = DataOperationClass(URL: url, parameters: params, xmlDictionary: data)
+            
+            func tuneCompletion(request: NSURLRequest, json: NSDictionary!) {
+                var result = false
+                
+                if let code = json["Code"] as? String {
+                    if code == "Ok" {
+                        result = true
+                    }
+                }
+                
+                if completion != nil {
+                    completion!(request: request, successful: result)
+                }
+            }
+            
+            op.connect(tuneCompletion, failure: nil)
+        } else {
+            println("No Auth Token found when trying to tune channel")
+        }
+    }
+    
+    public class func tuneURL() -> String {
+        return WebOperations.baseURL() + kTuneChannelEndpoint
     }
     
     public class func userDefaultForKey(key: String) -> String? {

@@ -9,6 +9,8 @@
 import Foundation
 import CoreData
 
+public let kChannelKey = "Channel"
+
 @objc(Channel)
 public class Channel: NSManagedObject {
 

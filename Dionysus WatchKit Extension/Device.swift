@@ -9,6 +9,7 @@
 import Foundation
 import CoreData
 
+public let kActionKey = "Action"
 public let kAlias = "alias"
 public let kAliasKey = "Alias"
 public let kIsDefault = "isDefault"

@@ -21,8 +21,10 @@ class WebOperationsTests: XCTestCase {
     let baseURL = "OmgCoolBaseURL"
     let password = "evenCoolerPassword"
     let username = "superCoolUsername"
-    let workingPassword = "eXsC5s87r2vM"
-    let workingUsername = "coldlogic@charter.net"
+    let workingChannel = "11069"
+    let workingDevice = "000004A8C1BE"
+    let workingPassword = "Testing1"
+    let workingUsername = "michudatest@charter.net"
     
     
     override func setUp() {
@@ -93,13 +95,13 @@ class WebOperationsTests: XCTestCase {
         XCTAssert(WebOperations.devicesListURL() == (WebOperations.baseURL() + kDevicesEndpoint), "Devices List URL must be combination of baseURL and devices endpoint")
     }
     
-    func testTuneToChannel
-    
     func testFetchDevices() {
+        //This is an integration test
+        //  Set default config path so the operation hits real services
         WebOperations.setConfiguration(WebOperations.defaultConfigPath())
         
         var succExp = expectationWithDescription("Fetch Devices Success Test")
-        func success(request: NSURLRequest, deviceList: [Device]!) -> Void {
+        func success(request: NSURLRequest, deviceList: [Device]!) {
             XCTAssertNotNil(deviceList, "Should have recieved an array, even if it is empty")
             
             succExp.fulfill()
@@ -113,10 +115,12 @@ class WebOperationsTests: XCTestCase {
     }
     
     func testLogin() {
+        //This is an integration test
+        //  Set default config path so the operation hits real services
         WebOperations.setConfiguration(WebOperations.defaultConfigPath())
         
         var failExp = expectationWithDescription("Login Fail Test")
-        func failure(request: NSURLRequest, json: NSDictionary!) -> Void {
+        func failure(request: NSURLRequest, json: NSDictionary!) {
             XCTAssertNotNil(json, "Should have recieved data")
             
             //Example Response
@@ -137,7 +141,7 @@ class WebOperationsTests: XCTestCase {
         }
         
         var succExp = expectationWithDescription("Login Success Test")
-        func success(request: NSURLRequest, token: String!) -> Void {
+        func success(request: NSURLRequest, token: String!) {
             XCTAssertNotNil(token, "Should have recieved a token")
             succExp.fulfill()
         }
@@ -202,6 +206,51 @@ class WebOperationsTests: XCTestCase {
         WebOperations.setUserDefault(value, key: key)
         
         XCTAssert(userDefaults.valueForKey(key) as? String == value, "Value in user defaults must equal value that was set")
+    }
+    
+    func testTuneDictionary() {
+        let macAddress = "YourMomsMacAddress"
+        let channel = "Channel7"
+        
+        //Get a tune dictionary
+        let tuneDict = WebOperations.tuneDictionary(channel, macAddress: macAddress)
+        
+        //Make sure its in a root dictionary
+        XCTAssertNotNil(tuneDict[kControlPlaneRequestKey], "Tune dictionary must have a root dictionary under the control plane request key")
+        let rootDict = tuneDict[kControlPlaneRequestKey] as NSDictionary
+        
+        //Check mac address
+        XCTAssert(rootDict[kMacAddressKey] as? String == macAddress, "MacAddress has to be equal to value passed in")
+        
+        //Check channel
+        XCTAssert(rootDict[kChannelKey] as? String == channel, "Channel has to be equal to value passed in")
+        
+        //Check it is a tune action
+        XCTAssert(rootDict[kActionKey] as? String == "tune", "Action must be tune")
+    }
+    
+    func testTuneToChannel() {
+        //This is an integration test
+        //  Set default config path so the operation hits real services
+        WebOperations.setConfiguration(WebOperations.defaultConfigPath())
+        
+        //Operation should return a success
+        var succExp = expectationWithDescription("Tune Channel Success Test")
+        func success(request: NSURLRequest, successful: Bool!) {
+            XCTAssert(successful == true, "Did not successfully tune to channel")
+            
+            succExp.fulfill()
+        }
+        
+        WebOperations.tuneToChannel(workingChannel, deviceMacAddress: workingDevice, completion: success, failure: nil)
+        
+        waitForExpectationsWithTimeout(10) { (error: NSError!) in
+            XCTAssert(true, "Tune to Channel timed out")
+        }
+    }
+    
+    func testTuneURL() {
+        XCTAssert(WebOperations.tuneURL() == (WebOperations.baseURL() + kTuneChannelEndpoint), "Tune URL must be combination of baseURL and tune channel endpoint")
     }
     
     func testUserDefaultValue() {

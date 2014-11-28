@@ -23,11 +23,11 @@ class ViewController: UIViewController {
     }
 
     @IBAction func generateAuth() {
-        func success(request: NSURLRequest, token: String!)  -> Void {
+        func success(request: NSURLRequest, token: String!) {
             self.updateTokenInfo()
         }
         
-        func failure(request: NSURLRequest, json: NSDictionary!)  -> Void {
+        func failure(request: NSURLRequest, json: NSDictionary!) {
             self.updateTokenInfo()
         }
         
@@ -35,7 +35,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func fetchDevices() {
-        func success(request: NSURLRequest, deviceList: [Device]!)  -> Void {
+        func success(request: NSURLRequest, deviceList: [Device]!) {
             if deviceList.count > 0 {
                 self.tokenLabel!.text = deviceList[0].valueForKey(kAliasKey) as? String
             }

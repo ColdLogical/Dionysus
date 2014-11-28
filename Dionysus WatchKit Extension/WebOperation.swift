@@ -31,25 +31,41 @@ public class WebOperation : NSObject, NSURLConnectionDataDelegate, NSURLConnecti
         urlString = URL
     }
     
-    
-    required convenience public init(URL: String, parameters: [String:String]?) {
+    //MARK: Initializers
+    required convenience public init(URL: String, parameters: [String:String]?, data: [String:String]?, xmlDictionary: NSDictionary?) {
         self.init(URL: URL)
         
         if parameters != nil {
             let parameterString = WebOperation.queryString(parameters)
             urlString! += "?" + parameterString
         }
-    }
-    
-    required convenience public init(URL: String, data: [String:String]?) {
-        self.init(URL: URL)
         
         if data != nil {
             let dataString = WebOperation.queryString(data)
-            request.HTTPBody = dataString.dataUsingEncoding(NSASCIIStringEncoding)
+            self.appendStringToData(dataString)
+            request.HTTPMethod = "POST"
+        }
+        
+        if xmlDictionary != nil {
+            let dataString = xmlDictionary!.XML()
+            self.appendStringToData(dataString)
+            request.HTTPMethod = "POST"
         }
     }
     
+    required convenience public init(URL: String, data: [String:String]?) {
+        self.init(URL: URL, parameters: nil, data: data, xmlDictionary: nil)
+    }
+    
+    required convenience public init(URL: String, parameters: [String:String]?) {
+        self.init(URL: URL, parameters: parameters, data: nil, xmlDictionary: nil)
+    }
+    
+    required convenience public init(URL: String, parameters: [String:String]?, xmlDictionary: NSDictionary?) {
+        self.init(URL: URL, parameters: parameters, data: nil, xmlDictionary: xmlDictionary)
+    }
+    
+    //MARK: Class functions
     public class func queryString(queries: [String:String]!) -> String! {
         var pString: String = String()
         for (key, value) in queries! {
@@ -59,6 +75,18 @@ public class WebOperation : NSObject, NSURLConnectionDataDelegate, NSURLConnecti
             pString += "\(key)=\(value)"
         }
         return pString
+    }
+    
+    //MARK: Instance Operations
+    public func appendStringToData(string: String!) {
+        let mutableData = NSMutableData()
+        mutableData.appendData(string.dataUsingEncoding(NSASCIIStringEncoding)!)
+        
+        if let currentBody = request.HTTPBody {
+            mutableData.appendData(currentBody)
+        }
+        
+        request.HTTPBody = mutableData
     }
     
     public func connect(completion: ((request: NSURLRequest, json: NSDictionary) -> Void)?, failure: ((request: NSURLRequest, error: NSError) -> Void)?) {
@@ -71,14 +99,6 @@ public class WebOperation : NSObject, NSURLConnectionDataDelegate, NSURLConnecti
     public func connection(connection: NSURLConnection, didReceiveData data: NSData) {
         receivedData.appendData(data)
     }
-    
-//    func connection(connection: NSURLConnection, bytesWritten: Int, totalBytesWritten: Int, totalBytesExpectedToWrite: Int) {
-//
-//    }
-//    
-//    func connection(connection: NSURLConnection, didReceiveResponse response: NSURLResponse) {
-//        
-//    }
     
     //MARK: NSURLConnectionDelegate
     public func connection(connection: NSURLConnection, didFailWithError error: NSError) {
@@ -101,24 +121,4 @@ public class WebOperation : NSObject, NSURLConnectionDataDelegate, NSURLConnecti
         
         receivedData = NSMutableData()
     }
-    
-//    func connection(connection: NSURLConnection, willSendRequestForAuthenticationChallenge challenge: NSURLAuthenticationChallenge) {
-//
-//    }
-//    
-//    func connectionShouldUseCredentialStorage(connection: NSURLConnection) -> Bool {
-//        return true
-//    }
-//    
-//    func connection(connection: NSURLConnection, willSendRequest request: NSURLRequest, redirectResponse response: NSURLResponse?) -> NSURLRequest? {
-//        
-//    }
-//    
-//    func connection(connection: NSURLConnection, needNewBodyStream request: NSURLRequest) -> NSInputStream? {
-//        
-//    }
-//    
-//    func connection(connection: NSURLConnection, willCacheResponse cachedResponse: NSCachedURLResponse) -> NSCachedURLResponse? {
-//        
-//    }
 }
