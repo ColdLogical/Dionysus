@@ -1,5 +1,5 @@
 //
-//  NSDicitonary+XMLTests.swift
+//  NSDictionary+XMLTests.swift
 //  Dionysus
 //
 //  Created by Cold Logic on 11/28/14.
@@ -10,7 +10,7 @@ import UIKit
 import XCTest
 import Dionysus
 
-class NSDicitonary_XMLTests: XCTestCase {
+class NSDictionary_XMLTests: XCTestCase {
     let dictionary: NSDictionary = ["I Dont Like": "Your Mom"]
 
     override func setUp() {
