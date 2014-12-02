@@ -40,7 +40,7 @@ class DionysusInterfaceController: WKInterfaceController {
             self.updateTokenInfo()
         }
         
-        func failure(request: NSURLRequest, json: NSDictionary!) {
+        func failure(request: NSURLRequest, error: NSError) {
             self.updateTokenInfo()
         }
         

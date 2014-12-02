@@ -143,7 +143,7 @@ class WebOperationTests: XCTestCase {
         XCTAssertNotNil(data, "HTTPBody cannot be nil")
         
         //Should be a POST request
-        XCTAssert(webOp.request.HTTPMethod == "POST", "Request must be a post request")
+        XCTAssert(webOp.request.HTTPMethod == "PUT", "Request must be a post request")
         
         //Check to see if its set correctly
         if var dataString = NSString(data: data!, encoding: NSASCIIStringEncoding) {

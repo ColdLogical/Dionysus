@@ -21,7 +21,7 @@ class WebOperationsTests: XCTestCase {
     let baseURL = "OmgCoolBaseURL"
     let password = "evenCoolerPassword"
     let username = "superCoolUsername"
-    let workingChannel = "11069"
+    let workingChannel = "5"
     let workingDevice = "000004A8C1BE"
     let workingPassword = "Testing1"
     let workingUsername = "michudatest@charter.net"
@@ -100,16 +100,19 @@ class WebOperationsTests: XCTestCase {
         //  Set default config path so the operation hits real services
         WebOperations.setConfiguration(WebOperations.defaultConfigPath())
         
-        var succExp = expectationWithDescription("Fetch Devices Success Test")
+        var connectExp = expectationWithDescription("Fetch Devices Success Test")
         func success(request: NSURLRequest, deviceList: [Device]!) {
             XCTAssertNotNil(deviceList, "Should have recieved an array, even if it is empty")
-            
-            succExp.fulfill()
+            connectExp.fulfill()
         }
         
-        WebOperations.fetchDevices(success, failure: nil)
+        func failure(request: NSURLRequest, error: NSError) {
+            connectExp.fulfill()
+        }
         
-        waitForExpectationsWithTimeout(10) { (error: NSError!) in
+        WebOperations.fetchDevices(success, failure: failure)
+        
+        waitForExpectationsWithTimeout(60) { (error: NSError!) in
             XCTAssert(true, "Fetch Devices timed out")
         }
     }
@@ -120,8 +123,8 @@ class WebOperationsTests: XCTestCase {
         WebOperations.setConfiguration(WebOperations.defaultConfigPath())
         
         var failExp = expectationWithDescription("Login Fail Test")
-        func failure(request: NSURLRequest, json: NSDictionary!) {
-            XCTAssertNotNil(json, "Should have recieved data")
+        func failure(request: NSURLRequest, error: NSError!) {
+            XCTAssertNotNil(error, "Should have recieved data")
             
             //Example Response
             //            {
@@ -135,7 +138,11 @@ class WebOperationsTests: XCTestCase {
             //                TransactionId = "ac1ebcbf-1415991010753-85";
             //            }
             
-            XCTAssertNotNil(json["Code"], "Failed Login JSON must have a Code")
+            if let errorInfo = error.userInfo  {
+                if let json = errorInfo[kErrorResponseKey] as? NSDictionary {
+                    XCTAssertNotNil(json["Code"], "Failed Login JSON must have a Code")
+                }
+            }
             
             failExp.fulfill()
         }
@@ -235,16 +242,20 @@ class WebOperationsTests: XCTestCase {
         WebOperations.setConfiguration(WebOperations.defaultConfigPath())
         
         //Operation should return a success
-        var succExp = expectationWithDescription("Tune Channel Success Test")
+        var connectExp = expectationWithDescription("Tune Channel Success Test")
         func success(request: NSURLRequest, successful: Bool!) {
             XCTAssert(successful == true, "Did not successfully tune to channel")
             
-            succExp.fulfill()
+            connectExp.fulfill()
         }
         
-        WebOperations.tuneToChannel(workingChannel, deviceMacAddress: workingDevice, completion: success, failure: nil)
+        func failure(request: NSURLRequest, error: NSError) {
+            connectExp.fulfill()
+        }
         
-        waitForExpectationsWithTimeout(10) { (error: NSError!) in
+        WebOperations.tuneToChannel(workingChannel, deviceMacAddress: workingDevice, completion: success, failure: failure)
+        
+        waitForExpectationsWithTimeout(60) { (error: NSError!) in
             XCTAssert(true, "Tune to Channel timed out")
         }
     }

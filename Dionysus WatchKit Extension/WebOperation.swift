@@ -49,7 +49,8 @@ public class WebOperation : NSObject, NSURLConnectionDataDelegate, NSURLConnecti
         if xmlDictionary != nil {
             let dataString = xmlDictionary!.XML()
             self.appendStringToData(dataString)
-            request.HTTPMethod = "POST"
+            request.HTTPMethod = "PUT"
+            request.setValue("application/xml", forHTTPHeaderField: "Content-Type")
         }
     }
     
@@ -111,14 +112,29 @@ public class WebOperation : NSObject, NSURLConnectionDataDelegate, NSURLConnecti
     public func connectionDidFinishLoading(connection: NSURLConnection) {
         var error: NSError?
         
-        let jsonData: AnyObject! = NSJSONSerialization.JSONObjectWithData(receivedData, options: NSJSONReadingOptions.allZeros, error: &error)
-        println("Connection Succeeded: \(jsonData)")
-        if error == nil {
-            if completionHandler != nil {
-                completionHandler!(request: connection.originalRequest, json: jsonData as NSDictionary)
+        if let jsonData: AnyObject = NSJSONSerialization.JSONObjectWithData(receivedData, options: NSJSONReadingOptions.allZeros, error: &error) {
+            println("Connection Succeeded: \(jsonData)")
+            
+            if error == nil {
+                if completionHandler != nil {
+                    completionHandler!(request: connection.originalRequest, json: jsonData as NSDictionary)
+                }
             }
+        } else {
+            println("Connection Succeeded, but no JSON found: \(NSString(data: receivedData, encoding: NSASCIIStringEncoding))")
         }
         
         receivedData = NSMutableData()
+    }
+    
+    public func connection(connection: NSURLConnection, canAuthenticateAgainstProtectionSpace protectionSpace: NSURLProtectionSpace) -> Bool {
+        return protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust
+    }
+    
+    public func connection(connection: NSURLConnection, didReceiveAuthenticationChallenge challenge: NSURLAuthenticationChallenge) {
+        if challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust {
+            let credential = NSURLCredential(forTrust: challenge.protectionSpace.serverTrust)
+            challenge.sender.useCredential(credential, forAuthenticationChallenge: challenge)
+        }
     }
 }
