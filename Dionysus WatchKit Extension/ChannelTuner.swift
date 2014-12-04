@@ -25,7 +25,7 @@ class ChannelTuner: WKInterfaceController {
     @IBOutlet var eightButton: WKInterfaceButton?
     @IBOutlet var nineButton: WKInterfaceButton?
     
-    var currentInput: String?
+    lazy var currentInput: String? = String()
     
     override init(context: AnyObject?) {
         super.init(context: context)
@@ -44,25 +44,34 @@ class ChannelTuner: WKInterfaceController {
     }
     
     func addNumber(input: String!) {
-        if currentInput == nil {
-            currentInput = input
-            inputLabel!.setText(currentInput)
-        } else {
-            if currentInput!.lengthOfBytesUsingEncoding(NSASCIIStringEncoding) < 3 {
-                currentInput! += input
-                inputLabel!.setText(currentInput!)
-            }
+        if currentInput!.lengthOfBytesUsingEncoding(NSASCIIStringEncoding) < 3 {
+            currentInput! += input
+            inputLabel!.setText(currentInput!)
+            
+            updateCallSign()
         }
     }
     
     @IBAction func clear() {
-        currentInput = nil
+        currentInput = String()
         inputLabel!.setText("---")
         channelLabel!.setText("")
     }
     
     @IBAction func sendToTv() {
         WebOperations.tuneToChannel(currentInput!, deviceMacAddress: "000004A8C1BE", completion: nil, failure: nil)
+    }
+    
+    func updateCallSign() {
+        if let results = DataManager.sharedInstance.fetchResults(kChannelKey, predicate: NSPredicate(format: "number = %@", currentInput!)) {
+            if results.count > 0 {
+                if let channel = results[0] as? Channel {
+                    channelLabel!.setText(channel.valueForKey(kCallSign) as? String)
+                }
+            } else {
+                channelLabel!.setText("")
+            }
+        }
     }
     
     //MARK: Button Presses

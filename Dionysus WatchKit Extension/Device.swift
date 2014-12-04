@@ -12,6 +12,7 @@ import CoreData
 public let kActionKey = "Action"
 public let kAlias = "alias"
 public let kAliasKey = "Alias"
+public let kDeviceKey = "Device"
 public let kIsDefault = "isDefault"
 public let kIsDefaultKey = "DefaultDevice"
 public let kDVR = "dvr"
@@ -32,7 +33,7 @@ public class Device: NSManagedObject {
     }
     
     public class func existingOrNew(macAddress: String!) -> Device {
-        let d = DataManager.sharedInstance.existingOrNewEntity("Device", predicate: NSPredicate(format: "macAddress = %@", macAddress)) as Device
+        let d = DataManager.sharedInstance.existingOrNewEntity(kDeviceKey, predicate: NSPredicate(format: "macAddress = %@", macAddress)) as Device
         
         if d.valueForKey(kMacAddressKey) as? String != macAddress {
             //A brand new entity, so set its macAddress
@@ -59,7 +60,7 @@ public class Device: NSManagedObject {
     }
     
     public class func newDevice() -> Device {
-        return DataManager.sharedInstance.newEntity("Device") as Device
+        return DataManager.sharedInstance.newEntity(kDeviceKey) as Device
     }
     
     public func parseValues(values: NSDictionary!) {

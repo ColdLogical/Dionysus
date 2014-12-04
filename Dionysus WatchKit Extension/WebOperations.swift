@@ -21,6 +21,7 @@ public let kDevicesEndpoint = "symphony/services/v1/devices"
 public let kErrorResponseKey = "ErrorReponse"
 public let kFavoritesEndpoint = "symphony/services/v1/preferences/__FavoriteChannels__"
 public let kLoginEndpoint = "symphony/auth/login"
+public let kStreamableChannelsEndpoint = "symphony/services/v1/catalog/video/streamableChannels"
 public let kTokenKey = "token"
 public let kTuneChannelEndpoint = "symphony/services/v1/devices"
 public let kPasswordKey = "password"
@@ -46,6 +47,10 @@ public class WebOperations {
         
         assert(true, "No Base URL Found")
         return ""
+    }
+    
+    public class func channelsListURL() -> String {
+        return WebOperations.baseURL() + kStreamableChannelsEndpoint
     }
     
     public class func configuration() -> NSDictionary! {
@@ -102,7 +107,7 @@ public class WebOperations {
             let url = WebOperations.devicesListURL()
             let params = [kTokenKey : auth]
             
-            let devicesOp: WebOperation = DataOperationClass(URL: url, parameters: params)
+            let op: WebOperation = DataOperationClass(URL: url, parameters: params)
             
             func deviceCompletion(request: NSURLRequest, json: NSDictionary!) {
                 var devices = [Device]()
@@ -124,11 +129,49 @@ public class WebOperations {
                 }
             }
             
-            devicesOp.connect(deviceCompletion, failure:failure)
+            op.connect(deviceCompletion, failure:failure)
         } else {
             println("No auth token found while trying to fetch device list")
             if failure != nil {
                 failure!(request: NSURLRequest(), error: NSError(domain: "Muldor", code: 1001, userInfo: [ NSLocalizedDescriptionKey: "No auth token found while trying to fetch device list"]))
+            }
+        }
+    }
+    
+    public class func fetchStreamableChannels(completion: ((request: NSURLRequest, channelList: [Channel]!) -> Void)?, failure: ((request: NSURLRequest, error: NSError) -> Void)?) {
+        if let auth = WebOperations.authToken() {
+            let url = WebOperations.channelsListURL()
+            let params = [kTokenKey : auth]
+            
+            let op: WebOperation = DataOperationClass(URL: url, parameters: params)
+            
+            func channelCompletion(request: NSURLRequest, json: NSDictionary!) {
+                var channels = [Channel]()
+                
+                //JSON can have 0 channels
+                if let guidePeriod = json["GuidePeriod"] as? NSArray {
+                    for dict in guidePeriod {
+                        if let channelLineupArray = dict["ChannelLineup"] as? NSArray {
+                            for channelInfoDict in channelLineupArray {
+                                if let channelDict = channelInfoDict[kChannelKey] as? NSDictionary {
+                                    var c = Channel.existingOrNewFromDictionary(channelDict)
+                                    channels.append(c)
+                                }
+                            }
+                        }
+                    }
+                }
+                
+                if completion != nil {
+                    completion!(request: request, channelList: channels)
+                }
+            }
+            
+            op.connect(channelCompletion, failure:failure)
+        } else {
+            println("No auth token found while trying to fetch streamable channel list")
+            if failure != nil {
+                failure!(request: NSURLRequest(), error: NSError(domain: "Muldor", code: 1001, userInfo: [ NSLocalizedDescriptionKey: "No auth token found while trying to fetch streamable channel list"]))
             }
         }
     }
@@ -142,8 +185,8 @@ public class WebOperations {
         let url = WebOperations.loginURL()
         let params = [kUsernameKey: username, kPasswordKey: password]
         
-        let loginOp: WebOperation = DataOperationClass(URL: url, parameters: params)
-        loginOp.request.HTTPMethod = "POST"
+        let op: WebOperation = DataOperationClass(URL: url, parameters: params)
+        op.request.HTTPMethod = "POST"
         
         func loginCompletion(request: NSURLRequest, json: NSDictionary!) {
             var data: NSDictionary = json as NSDictionary
@@ -172,7 +215,7 @@ public class WebOperations {
             }
         }
         
-        loginOp.connect(loginCompletion, failure:nil)
+        op.connect(loginCompletion, failure:nil)
     }
     
     public class func loginParameters() -> [String:String] {
@@ -253,7 +296,7 @@ public class WebOperations {
             let url = WebOperations.tuneURL()
             let data = WebOperations.tuneDictionary(channel, macAddress: deviceMacAddress)
             
-            let tuneOp = DataOperationClass(URL: url, parameters: params, xmlDictionary: data)
+            let op = DataOperationClass(URL: url, parameters: params, xmlDictionary: data)
             
             func tuneCompletion(request: NSURLRequest, json: NSDictionary!) {
                 var result = false
@@ -269,7 +312,7 @@ public class WebOperations {
                 }
             }
             
-            tuneOp.connect(tuneCompletion, failure: nil)
+            op.connect(tuneCompletion, failure: nil)
         } else {
             println("No Auth Token found when trying to tune channel")
             if failure != nil {

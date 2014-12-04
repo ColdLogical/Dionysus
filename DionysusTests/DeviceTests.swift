@@ -52,7 +52,7 @@ class DeviceTests: XCTestCase {
         
         let entity = NSEntityDescription.entityForName("Device", inManagedObjectContext: context)
         fetchRequest.entity = entity
-        fetchRequest.predicate = NSPredicate(format: "macAddress == %@", dictionary[kMacAddressKey] as String)
+        fetchRequest.predicate = NSPredicate(format: "macAddress == %@", dictionary[kMacAddressKey]! as String)
         
         let fetchedObjects = context.executeFetchRequest(fetchRequest, error:&error)
         
@@ -61,7 +61,7 @@ class DeviceTests: XCTestCase {
     
     func testExistingOrNew() {
         //Try to get an existing device
-        let existingDevice = Device.existingOrNew(dictionary[kMacAddressKey] as? String)
+        let existingDevice = Device.existingOrNew(dictionary[kMacAddressKey]! as String)
         
         //Make sure it is the existing one
         XCTAssert(existingDevice.objectID == testDevice!.objectID, "Must return existing instance of device with unique identfier")
@@ -72,7 +72,7 @@ class DeviceTests: XCTestCase {
         context.deleteObject(existingDevice)
         
         //Try to get a new one
-        let newDevice = Device.existingOrNew(dictionary[kMacAddressKey] as? String)
+        let newDevice = Device.existingOrNew(dictionary[kMacAddressKey]! as String)
         
         //Make sure its new
         XCTAssert(newDevice.objectID != oldID, "Must return a new instance if none exists")

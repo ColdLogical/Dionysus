@@ -70,6 +70,10 @@ class WebOperationsTests: XCTestCase {
         XCTAssert(WebOperations.baseURL() == baseURL, "BaseURL return must equal that of the config file")
     }
     
+    func testChannelsListURL() {
+        XCTAssert(WebOperations.channelsListURL() == (WebOperations.baseURL() + kStreamableChannelsEndpoint), "Channels List URL must be combination of baseURL and streamable channels endpoint")
+    }
+    
     func testConfiguration() {
         let config = WebOperations.configuration()
         XCTAssertNotNil(config, "Configuration must return a dictionary")
@@ -114,6 +118,28 @@ class WebOperationsTests: XCTestCase {
         
         waitForExpectationsWithTimeout(60) { (error: NSError!) in
             XCTAssert(true, "Fetch Devices timed out")
+        }
+    }
+    
+    func testFetchStreamableChannels() {
+        //This is an integration test
+        //  Set default config path so the operation hits real services
+        WebOperations.setConfiguration(WebOperations.defaultConfigPath())
+        
+        var connectExp = expectationWithDescription("Fetch Devices Success Test")
+        func success(request: NSURLRequest, channelList: [Channel]!) {
+            XCTAssertNotNil(channelList, "Should have recieved an array, even if it is empty")
+            connectExp.fulfill()
+        }
+        
+        func failure(request: NSURLRequest, error: NSError) {
+            connectExp.fulfill()
+        }
+        
+        WebOperations.fetchStreamableChannels(success, failure: failure)
+        
+        waitForExpectationsWithTimeout(60) { (error: NSError!) in
+            XCTAssert(true, "Fetch Streamable Channels timed out")
         }
     }
     
