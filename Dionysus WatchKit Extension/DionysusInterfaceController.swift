@@ -13,13 +13,13 @@ class DionysusInterfaceController: WKInterfaceController {
     
     override init(context: AnyObject?) {
         super.init(context: context)
+        WebOperations.fetchChannels(nil, failure: nil)
     }
     
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
         NSLog("%@ will activate", self)
-        WebOperations.fetchStreamableChannels(nil, failure: nil)
     }
     
     override func didDeactivate() {

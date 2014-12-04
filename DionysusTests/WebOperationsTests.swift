@@ -50,6 +50,20 @@ class WebOperationsTests: XCTestCase {
         WebOperations.setConfiguration(WebOperations.defaultConfigPath())
     }
     
+    func testAuthorizedRequest() {
+        //This is an integration test
+        //  Set default config path so the operation hits real services
+        WebOperations.setConfiguration(WebOperations.defaultConfigPath())
+        
+        //Remove the key to force login
+        userDefaults.removeObjectForKey(kAuthTokenKey)
+        
+        WebOperations.authorizedRequest() {
+            let token = self.userDefaults.valueForKey(kAuthTokenKey) as? String
+            XCTAssertNotNil(token, "Auth Token cannot be nil after authorized request completes")
+        }
+    }
+    
     func testAuthToken() {
         //Get Old token
         let oldToken = userDefaults.valueForKey(kAuthTokenKey) as? String
@@ -71,7 +85,7 @@ class WebOperationsTests: XCTestCase {
     }
     
     func testChannelsListURL() {
-        XCTAssert(WebOperations.channelsListURL() == (WebOperations.baseURL() + kStreamableChannelsEndpoint), "Channels List URL must be combination of baseURL and streamable channels endpoint")
+        XCTAssert(WebOperations.channelsListURL() == (WebOperations.baseURL() + kLineupsEndpoint), "Channels List URL must be combination of baseURL and lineups endpoint")
     }
     
     func testConfiguration() {
@@ -121,7 +135,7 @@ class WebOperationsTests: XCTestCase {
         }
     }
     
-    func testFetchStreamableChannels() {
+    func testFetchChannels() {
         //This is an integration test
         //  Set default config path so the operation hits real services
         WebOperations.setConfiguration(WebOperations.defaultConfigPath())
@@ -136,10 +150,10 @@ class WebOperationsTests: XCTestCase {
             connectExp.fulfill()
         }
         
-        WebOperations.fetchStreamableChannels(success, failure: failure)
+        WebOperations.fetchChannels(success, failure: failure)
         
         waitForExpectationsWithTimeout(60) { (error: NSError!) in
-            XCTAssert(true, "Fetch Streamable Channels timed out")
+            XCTAssert(true, "Fetch Channels timed out")
         }
     }
     

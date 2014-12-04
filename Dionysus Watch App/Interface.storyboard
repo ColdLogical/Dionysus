@@ -142,7 +142,7 @@
                                                                     <label width="1" height="0.69999999999999996" alignment="center" verticalAlignment="center" text="---" textAlignment="center" id="sSn-NU-Ip0" userLabel="Current Input">
                                                                         <fontDescription key="font" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="28"/>
                                                                     </label>
-                                                                    <label width="1" height="0.29999999999999999" alignment="center" verticalAlignment="center" textAlignment="center" id="Saq-hD-oVo" userLabel="Channel Label"/>
+                                                                    <label width="1" height="0.29999999999999999" alignment="center" verticalAlignment="center" textAlignment="center" minimumScaleFactor="0.50000000000000011" id="Saq-hD-oVo" userLabel="Channel Label"/>
                                                                 </items>
                                                             </group>
                                                             <connections>

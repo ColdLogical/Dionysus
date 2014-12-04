@@ -21,7 +21,7 @@ public let kDevicesEndpoint = "symphony/services/v1/devices"
 public let kErrorResponseKey = "ErrorReponse"
 public let kFavoritesEndpoint = "symphony/services/v1/preferences/__FavoriteChannels__"
 public let kLoginEndpoint = "symphony/auth/login"
-public let kStreamableChannelsEndpoint = "symphony/services/v1/catalog/video/streamableChannels"
+public let kLineupsEndpoint = "symphony/services/v1/catalog/video/guide/lineups"
 public let kTokenKey = "token"
 public let kTuneChannelEndpoint = "symphony/services/v1/devices"
 public let kPasswordKey = "password"
@@ -30,6 +30,24 @@ public let kUsernameKey = "username"
 let DataOperationClass = WebOperation.self
 
 public class WebOperations {
+    public class func authorizedRequest(loggedIn: (()-> Void)!) {
+        if WebOperations.authToken() != nil {
+            loggedIn()
+        } else {
+            println("No auth token found while trying to do an authorized request")
+        
+            func loginCompletion(request: NSURLRequest, token: String!)  {
+                loggedIn()
+            }
+            
+            func loginFailure(request: NSURLRequest, error: NSError) {
+                loggedIn()
+            }
+            
+            WebOperations.login(loginCompletion, failure: loginFailure)
+        }
+    }
+    
     public class func authToken() -> String? {
         return WebOperations.userDefaultForKey(kAuthTokenKey)
     }
@@ -50,7 +68,7 @@ public class WebOperations {
     }
     
     public class func channelsListURL() -> String {
-        return WebOperations.baseURL() + kStreamableChannelsEndpoint
+        return WebOperations.baseURL() + kLineupsEndpoint
     }
     
     public class func configuration() -> NSDictionary! {
@@ -102,78 +120,84 @@ public class WebOperations {
         return NSDictionary(contentsOfFile: WebOperations.plistFileNamed(plistName)!)
     }
     
-    public class func fetchDevices(completion: ((request: NSURLRequest, deviceList: [Device]!) -> Void)?, failure: ((request: NSURLRequest, error: NSError) -> Void)?) {
-        if let auth = WebOperations.authToken() {
-            let url = WebOperations.devicesListURL()
-            let params = [kTokenKey : auth]
-            
-            let op: WebOperation = DataOperationClass(URL: url, parameters: params)
-            
-            func deviceCompletion(request: NSURLRequest, json: NSDictionary!) {
-                var devices = [Device]()
+    public class func fetchChannels(completion: ((request: NSURLRequest, channelList: [Channel]!) -> Void)?, failure: ((request: NSURLRequest, error: NSError) -> Void)?) {
+        authorizedRequest() {
+            if let auth = WebOperations.authToken() {
+                let url = WebOperations.channelsListURL()
+                let params = [kTokenKey : auth]
                 
-                //JSON can have 0 devices
-                if let devicesJSON = json["Devices"] as? NSDictionary {
-                    if let deviceList = devicesJSON["Device"] as? NSArray {
-                        println("deviceList = \(deviceList)")
-                        for dict in deviceList {
-                            println("dict = \(dict)")
-                            var d = Device.existingOrNewFromDictionary(dict as NSDictionary)
-                            devices.append(d)
-                        }
-                    }
-                }
+                let op: WebOperation = DataOperationClass(URL: url, parameters: params)
                 
-                if completion != nil {
-                    completion!(request: request, deviceList: devices)
-                }
-            }
-            
-            op.connect(deviceCompletion, failure:failure)
-        } else {
-            println("No auth token found while trying to fetch device list")
-            if failure != nil {
-                failure!(request: NSURLRequest(), error: NSError(domain: "Muldor", code: 1001, userInfo: [ NSLocalizedDescriptionKey: "No auth token found while trying to fetch device list"]))
-            }
-        }
-    }
-    
-    public class func fetchStreamableChannels(completion: ((request: NSURLRequest, channelList: [Channel]!) -> Void)?, failure: ((request: NSURLRequest, error: NSError) -> Void)?) {
-        if let auth = WebOperations.authToken() {
-            let url = WebOperations.channelsListURL()
-            let params = [kTokenKey : auth]
-            
-            let op: WebOperation = DataOperationClass(URL: url, parameters: params)
-            
-            func channelCompletion(request: NSURLRequest, json: NSDictionary!) {
-                var channels = [Channel]()
-                
-                //JSON can have 0 channels
-                if let guidePeriod = json["GuidePeriod"] as? NSArray {
-                    for dict in guidePeriod {
-                        if let channelLineupArray = dict["ChannelLineup"] as? NSArray {
-                            for channelInfoDict in channelLineupArray {
-                                if let channelDict = channelInfoDict[kChannelKey] as? NSDictionary {
-                                    var c = Channel.existingOrNewFromDictionary(channelDict)
-                                    channels.append(c)
+                func channelCompletion(request: NSURLRequest, json: NSDictionary!) {
+                    var channels = [Channel]()
+                    
+                    //JSON can have 0 channels
+                    if let guidePeriod = json["GuidePeriod"] as? NSArray {
+                        for dict in guidePeriod {
+                            if let channelLineupArray = dict["ChannelLineup"] as? NSArray {
+                                for channelInfoDict in channelLineupArray {
+                                    if let channelDict = channelInfoDict[kChannelKey] as? NSDictionary {
+                                        var c = Channel.existingOrNewFromDictionary(channelDict)
+                                        channels.append(c)
+                                    }
                                 }
                             }
                         }
                     }
+                    
+                    if completion != nil {
+                        completion!(request: request, channelList: channels)
+                    }
                 }
                 
-                if completion != nil {
-                    completion!(request: request, channelList: channels)
+                op.connect(channelCompletion, failure:failure)
+            } else {
+                if failure != nil {
+                    failure!(request: NSURLRequest(), error: NSError(domain: "Muldor", code: 1001, userInfo: [ NSLocalizedDescriptionKey: "No auth token found while trying to fetch channel list"]))
                 }
             }
-            
-            op.connect(channelCompletion, failure:failure)
-        } else {
-            println("No auth token found while trying to fetch streamable channel list")
-            if failure != nil {
-                failure!(request: NSURLRequest(), error: NSError(domain: "Muldor", code: 1001, userInfo: [ NSLocalizedDescriptionKey: "No auth token found while trying to fetch streamable channel list"]))
+        }
+    }
+    
+    public class func fetchDevices(completion: ((request: NSURLRequest, deviceList: [Device]!) -> Void)?, failure: ((request: NSURLRequest, error: NSError) -> Void)?) {
+        authorizedRequest() {
+            if let auth = WebOperations.authToken() {
+                let url = WebOperations.devicesListURL()
+                let params = [kTokenKey : WebOperations.authToken()!]
+                
+                let op: WebOperation = DataOperationClass(URL: url, parameters: params)
+                
+                func deviceCompletion(request: NSURLRequest, json: NSDictionary!) {
+                    var devices = [Device]()
+                    
+                    //JSON can have 0 devices
+                    if let devicesJSON = json["Devices"] as? NSDictionary {
+                        if let deviceList = devicesJSON["Device"] as? NSArray {
+                            println("deviceList = \(deviceList)")
+                            for dict in deviceList {
+                                println("dict = \(dict)")
+                                var d = Device.existingOrNewFromDictionary(dict as NSDictionary)
+                                devices.append(d)
+                            }
+                        }
+                    }
+                    
+                    if completion != nil {
+                        completion!(request: request, deviceList: devices)
+                    }
+                }
+                
+                op.connect(deviceCompletion, failure:failure)
+            } else {
+                if failure != nil {
+                    failure!(request: NSURLRequest(), error: NSError(domain: "Muldor", code: 1001, userInfo: [ NSLocalizedDescriptionKey: "No auth token found while trying to fetch device list"]))
+                }
             }
         }
+    }
+    
+    public class func fetchDevicesWithCurrentToken(completion: ((request: NSURLRequest, deviceList: [Device]!) -> Void)?, failure: ((request: NSURLRequest, error: NSError) -> Void)?) {
+        
     }
     
     public class func login(completion: ((request: NSURLRequest, token: String!) -> Void)?, failure: ((request: NSURLRequest, error: NSError) -> Void)?) {
