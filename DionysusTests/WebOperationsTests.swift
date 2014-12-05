@@ -113,6 +113,32 @@ class WebOperationsTests: XCTestCase {
         XCTAssert(WebOperations.devicesListURL() == (WebOperations.baseURL() + kDevicesEndpoint), "Devices List URL must be combination of baseURL and devices endpoint")
     }
     
+    func testFavoritesURL() {
+        XCTAssert(WebOperations.favoritesURL() == (WebOperations.baseURL() + kFavoritesEndpoint), "Favorites URL must be combination of baseURL and favorites endpoint")
+    }
+    
+    func testFetchChannels() {
+        //This is an integration test
+        //  Set default config path so the operation hits real services
+        WebOperations.setConfiguration(WebOperations.defaultConfigPath())
+        
+        var connectExp = expectationWithDescription("Fetch Devices Success Test")
+        func success(request: NSURLRequest, channelList: [Channel]!) {
+            XCTAssertNotNil(channelList, "Should have recieved an array, even if it is empty")
+            connectExp.fulfill()
+        }
+        
+        func failure(request: NSURLRequest, error: NSError) {
+            connectExp.fulfill()
+        }
+        
+        WebOperations.fetchChannels(success, failure: failure)
+        
+        waitForExpectationsWithTimeout(60) { (error: NSError!) in
+            XCTAssert(true, "Fetch Channels timed out")
+        }
+    }
+    
     func testFetchDevices() {
         //This is an integration test
         //  Set default config path so the operation hits real services
@@ -135,14 +161,14 @@ class WebOperationsTests: XCTestCase {
         }
     }
     
-    func testFetchChannels() {
+    func testFetchFavorites() {
         //This is an integration test
         //  Set default config path so the operation hits real services
         WebOperations.setConfiguration(WebOperations.defaultConfigPath())
         
-        var connectExp = expectationWithDescription("Fetch Devices Success Test")
-        func success(request: NSURLRequest, channelList: [Channel]!) {
-            XCTAssertNotNil(channelList, "Should have recieved an array, even if it is empty")
+        var connectExp = expectationWithDescription("Fetch Favorites Success Test")
+        func success(request: NSURLRequest, favorites: [Channel]!) {
+            XCTAssertNotNil(favorites, "Should have recieved an array, even if it is empty")
             connectExp.fulfill()
         }
         
@@ -150,10 +176,10 @@ class WebOperationsTests: XCTestCase {
             connectExp.fulfill()
         }
         
-        WebOperations.fetchChannels(success, failure: failure)
+        WebOperations.fetchFavorites(success, failure: failure)
         
         waitForExpectationsWithTimeout(60) { (error: NSError!) in
-            XCTAssert(true, "Fetch Channels timed out")
+            XCTAssert(true, "Fetch Favorites timed out")
         }
     }
     

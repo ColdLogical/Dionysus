@@ -14,15 +14,25 @@ public let kCallSignKey = "CallSignDisplayLabel"
 public let kChannelId = "channelId"
 public let kChannelKey = "Channel"
 public let kChannelIdKey = "ChannelId"
+public let kIsFavorite = "isFavorite"
 public let kNumber = "number"
-public let kNumberKey = "ChannelNumber" 
+public let kNumberKey = "ChannelNumber"
 
 @objc(Channel)
 public class Channel: NSManagedObject {
 
     @NSManaged public var channelId: String
     @NSManaged public var callSign: String
+    @NSManaged public var isFavorite: NSNumber
     @NSManaged public var number: String
+    
+    public class func allFavorites() -> [Channel] {
+        if let results = DataManager.sharedInstance.fetchResults(kChannelKey, predicate: NSPredicate(format: "isFavorite = %@", true)) as? [Channel] {
+            return results
+        }
+        
+        return [Channel]()
+    }
     
     public class func deleteChannel(channel: Channel!) {
         DataManager.sharedInstance.delete(channel)

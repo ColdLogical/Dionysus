@@ -120,6 +120,10 @@ public class WebOperations {
         return NSDictionary(contentsOfFile: WebOperations.plistFileNamed(plistName)!)
     }
     
+    public class func favoritesURL() -> String {
+        return WebOperations.baseURL() + kFavoritesEndpoint
+    }
+    
     public class func fetchChannels(completion: ((request: NSURLRequest, channelList: [Channel]!) -> Void)?, failure: ((request: NSURLRequest, error: NSError) -> Void)?) {
         authorizedRequest() {
             if let auth = WebOperations.authToken() {
@@ -163,7 +167,7 @@ public class WebOperations {
         authorizedRequest() {
             if let auth = WebOperations.authToken() {
                 let url = WebOperations.devicesListURL()
-                let params = [kTokenKey : WebOperations.authToken()!]
+                let params = [kTokenKey : auth]
                 
                 let op: WebOperation = DataOperationClass(URL: url, parameters: params)
                 
@@ -173,9 +177,7 @@ public class WebOperations {
                     //JSON can have 0 devices
                     if let devicesJSON = json["Devices"] as? NSDictionary {
                         if let deviceList = devicesJSON["Device"] as? NSArray {
-                            println("deviceList = \(deviceList)")
                             for dict in deviceList {
-                                println("dict = \(dict)")
                                 var d = Device.existingOrNewFromDictionary(dict as NSDictionary)
                                 devices.append(d)
                             }
@@ -196,8 +198,47 @@ public class WebOperations {
         }
     }
     
-    public class func fetchDevicesWithCurrentToken(completion: ((request: NSURLRequest, deviceList: [Device]!) -> Void)?, failure: ((request: NSURLRequest, error: NSError) -> Void)?) {
-        
+    public class func fetchFavorites(completion: ((request: NSURLRequest, favorites: [Channel]!) -> Void)?, failure: ((request: NSURLRequest, error: NSError) -> Void)?) {
+        authorizedRequest() {
+            if let auth = WebOperations.authToken() {
+                let url = WebOperations.favoritesURL()
+                let params = [kTokenKey : auth]
+                
+                let op: WebOperation = DataOperationClass(URL: url, parameters: params)
+                
+                func favoritesCompletion(request: NSURLRequest, json: NSDictionary!) {
+                    //Remove all the old favorites, because we are going to set everything we get to the new favorites
+                    for oldFavorite in Channel.allFavorites() {
+                        oldFavorite.setValue(false, forKey: kIsFavorite)
+                    }
+                    
+                    var favorites = [Channel]()
+                    
+                    //JSON can have 0 devices
+                    if let preferences = json["Preference"] as? NSArray {
+                        for dict in preferences {
+                            if let channelIds = dict["Value"] as? String {
+                                for cId in channelIds.componentsSeparatedByString(",") {
+                                    var f = Channel.existingOrNew(cId)
+                                    f.setValue(true, forKey: kIsFavorite)
+                                    favorites.append(f)
+                                }
+                            }
+                        }
+                    }
+                    
+                    if completion != nil {
+                        completion!(request: request, favorites: favorites)
+                    }
+                }
+                
+                op.connect(favoritesCompletion, failure:failure)
+            } else {
+                if failure != nil {
+                    failure!(request: NSURLRequest(), error: NSError(domain: "Muldor", code: 1001, userInfo: [ NSLocalizedDescriptionKey: "No auth token found while trying to fetch favorite channels"]))
+                }
+            }
+        }
     }
     
     public class func login(completion: ((request: NSURLRequest, token: String!) -> Void)?, failure: ((request: NSURLRequest, error: NSError) -> Void)?) {

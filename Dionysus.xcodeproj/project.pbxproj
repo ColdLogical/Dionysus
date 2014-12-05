@@ -12,7 +12,7 @@
 		0136B0631A23FCB80016666B /* DataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0136B0621A23FCB80016666B /* DataManagerTests.swift */; };
 		018F97D01A28F6FA00E51069 /* NSDictionary+XML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186D46071A26760B00928D1D /* NSDictionary+XML.swift */; };
 		01ACBDE81A292C600029230A /* NSDictionary+XMLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01ACBDE71A292C5F0029230A /* NSDictionary+XMLTests.swift */; };
-		18025E081A2FEA5B006ADD49 /* ChannelTuner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18025E071A2FEA5B006ADD49 /* ChannelTuner.swift */; };
+		18025E081A2FEA5B006ADD49 /* ChannelTunerInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18025E071A2FEA5B006ADD49 /* ChannelTunerInterfaceController.swift */; };
 		18488E681A20015C009EC124 /* Channels.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1855DF9E1A1D6A980093FA04 /* Channels.plist */; };
 		18488E691A20015C009EC124 /* DeviceList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1855DF9F1A1D6A980093FA04 /* DeviceList.plist */; };
 		18488E6A1A20015C009EC124 /* Favorites.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1855DFA01A1D6A980093FA04 /* Favorites.plist */; };
@@ -41,6 +41,8 @@
 		1855DFCD1A1D6D9A0093FA04 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFAB1A1D6AAB0093FA04 /* DataManager.swift */; };
 		1855DFCE1A1D6D9A0093FA04 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFAC1A1D6AAB0093FA04 /* Device.swift */; };
 		1855DFD01A1D6D9A0093FA04 /* MockOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFB11A1D6AAB0093FA04 /* MockOperations.swift */; };
+		1861299F1A3222EB00D15E91 /* FavoritesInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1861299E1A3222EB00D15E91 /* FavoritesInterfaceController.swift */; };
+		186129A11A32287A00D15E91 /* FavoriteChannelRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186129A01A32287A00D15E91 /* FavoriteChannelRow.swift */; };
 		186ACC951A0C491800512F12 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186ACC941A0C491800512F12 /* AppDelegate.swift */; };
 		186ACC971A0C491800512F12 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186ACC961A0C491800512F12 /* ViewController.swift */; };
 		186ACC9A1A0C491800512F12 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 186ACC981A0C491800512F12 /* Main.storyboard */; };
@@ -114,7 +116,7 @@
 		0136B05B1A23DF190016666B /* ChannelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelTests.swift; sourceTree = "<group>"; };
 		0136B0621A23FCB80016666B /* DataManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManagerTests.swift; sourceTree = "<group>"; };
 		01ACBDE71A292C5F0029230A /* NSDictionary+XMLTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDictionary+XMLTests.swift"; sourceTree = "<group>"; };
-		18025E071A2FEA5B006ADD49 /* ChannelTuner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelTuner.swift; sourceTree = "<group>"; };
+		18025E071A2FEA5B006ADD49 /* ChannelTunerInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelTunerInterfaceController.swift; sourceTree = "<group>"; };
 		18284AC61A16DE8E00F34B4F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		1855DF981A1D53F70093FA04 /* DeviceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceTests.swift; sourceTree = "<group>"; };
 		1855DF9E1A1D6A980093FA04 /* Channels.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Channels.plist; sourceTree = "<group>"; };
@@ -132,6 +134,8 @@
 		1855DFB11A1D6AAB0093FA04 /* MockOperations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MockOperations.swift; path = "Dionysus WatchKit Extension/MockOperations.swift"; sourceTree = SOURCE_ROOT; };
 		1855DFB21A1D6AAB0093FA04 /* WebOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WebOperation.swift; path = "Dionysus WatchKit Extension/WebOperation.swift"; sourceTree = SOURCE_ROOT; };
 		1855DFB31A1D6AAB0093FA04 /* WebOperations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WebOperations.swift; path = "Dionysus WatchKit Extension/WebOperations.swift"; sourceTree = SOURCE_ROOT; };
+		1861299E1A3222EB00D15E91 /* FavoritesInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesInterfaceController.swift; sourceTree = "<group>"; };
+		186129A01A32287A00D15E91 /* FavoriteChannelRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteChannelRow.swift; sourceTree = "<group>"; };
 		186ACC8F1A0C491800512F12 /* Dionysus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dionysus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		186ACC931A0C491800512F12 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		186ACC941A0C491800512F12 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -285,8 +289,10 @@
 		188A256E1A1D17E1002C8AE4 /* Dionysus WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
+				18025E071A2FEA5B006ADD49 /* ChannelTunerInterfaceController.swift */,
 				1855DFAD1A1D6AAB0093FA04 /* DionysusInterfaceController.swift */,
-				18025E071A2FEA5B006ADD49 /* ChannelTuner.swift */,
+				186129A01A32287A00D15E91 /* FavoriteChannelRow.swift */,
+				1861299E1A3222EB00D15E91 /* FavoritesInterfaceController.swift */,
 				188A25741A1D17E2002C8AE4 /* NotificationController.swift */,
 				1855DFB01A1D6AAB0093FA04 /* Images.xcassets */,
 				188A256F1A1D17E1002C8AE4 /* Supporting Files */,
@@ -539,9 +545,11 @@
 				186D46061A25171F00928D1D /* DionysusModel.xcdatamodeld in Sources */,
 				018F97D01A28F6FA00E51069 /* NSDictionary+XML.swift in Sources */,
 				186D46011A25171800928D1D /* DataManager.swift in Sources */,
-				18025E081A2FEA5B006ADD49 /* ChannelTuner.swift in Sources */,
+				18025E081A2FEA5B006ADD49 /* ChannelTunerInterfaceController.swift in Sources */,
 				186D46001A25171800928D1D /* Channel.swift in Sources */,
 				186D46031A25171800928D1D /* MockOperations.swift in Sources */,
+				186129A11A32287A00D15E91 /* FavoriteChannelRow.swift in Sources */,
+				1861299F1A3222EB00D15E91 /* FavoritesInterfaceController.swift in Sources */,
 				1855DFB71A1D6AAB0093FA04 /* DionysusInterfaceController.swift in Sources */,
 				186D46021A25171800928D1D /* Device.swift in Sources */,
 			);

@@ -15,9 +15,9 @@
                                 <items>
                                     <group width="0.050000000000000003" height="1" alignment="left" spacing="0.0" id="DhE-We-0Xb"/>
                                     <imageView width="0.14999999999999999" height="1" alignment="left" image="channelTuner" contentMode="scaleAspectFit" id="deS-VW-L5Z"/>
-                                    <group width="0.050000000000000003" height="1" alignment="left" id="epb-Iy-vxl"/>
-                                    <label width="0.75" height="1" alignment="left" text="Channel Tuner" id="76V-KG-pW3">
-                                        <fontDescription key="font" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
+                                    <group width="0.02" height="1" alignment="left" id="epb-Iy-vxl"/>
+                                    <label width="0.75" height="1" alignment="left" text="Channel Tuner" minimumScaleFactor="0.5" id="76V-KG-pW3">
+                                        <fontDescription key="font" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
                                     </label>
                                 </items>
                             </group>
@@ -28,15 +28,33 @@
                         <separator width="0.80000000000000004" alignment="center" id="i28-KW-UG0">
                             <color key="color" red="0.050980392156862744" green="0.094117647058823528" blue="0.14117647058823529" alpha="1" colorSpace="calibratedRGB"/>
                         </separator>
+                        <button alignment="left" id="Wfp-34-3fK">
+                            <group key="contentGroup" width="1" height="0.25" alignment="left" id="OVf-P3-jy7">
+                                <items>
+                                    <group width="0.050000000000000003" height="1" alignment="left" spacing="0.0" id="Bsy-Jb-uG4"/>
+                                    <imageView width="0.14999999999999999" height="1" alignment="left" image="favorites" contentMode="scaleAspectFit" id="Qof-3t-SGU"/>
+                                    <group width="0.02" height="1" alignment="left" id="Ek0-92-NSN"/>
+                                    <label width="0.75" height="1" alignment="left" text="Favorites" minimumScaleFactor="0.5" id="hjf-ZP-Q7L">
+                                        <fontDescription key="font" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
+                                    </label>
+                                </items>
+                            </group>
+                            <connections>
+                                <segue destination="tjL-yY-qXQ" kind="push" id="OjX-Rc-IZx"/>
+                            </connections>
+                        </button>
+                        <separator width="0.80000000000000004" alignment="center" id="SqU-gX-on0">
+                            <color key="color" red="0.050980392159999999" green="0.094117647060000004" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
+                        </separator>
                     </items>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="214" y="289"/>
+            <point key="canvasLocation" x="237" y="288"/>
         </scene>
-        <!--Channel Tuner-->
+        <!--Channel Tuner Interface Controller-->
         <scene sceneID="yih-b9-Wfp">
             <objects>
-                <controller id="lzg-49-1g1" customClass="ChannelTuner" customModule="Dionysus_WatchKit_Extension">
+                <controller id="lzg-49-1g1" customClass="ChannelTunerInterfaceController" customModule="Dionysus_WatchKit_Extension">
                     <items>
                         <group width="1" height="1" alignment="left" layout="vertical" spacing="0.0" hasDetent="YES" id="qZa-I8-d10">
                             <items>
@@ -244,7 +262,61 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="489" y="289"/>
+            <point key="canvasLocation" x="488" y="12"/>
+        </scene>
+        <!--Favorites-->
+        <scene sceneID="qWl-ly-F2h">
+            <objects>
+                <controller identifier="FavoriteChannels" title="Favorites" id="tjL-yY-qXQ" customClass="FavoritesInterfaceController" customModule="Dionysus_WatchKit_Extension">
+                    <items>
+                        <table alignment="left" layout="vertical" id="NlB-rW-xYk">
+                            <items>
+                                <tableRow identifier="FavoriteChannel" id="xf8-Ro-ppe" customClass="FavoriteChannelRow" customModule="Dionysus_WatchKit_Extension">
+                                    <group key="rootItem" width="1" alignment="right" layout="vertical" id="YJn-6y-Ham">
+                                        <items>
+                                            <group width="1" alignment="left" id="dwz-CQ-7Ir">
+                                                <items>
+                                                    <group width="0.29999999999999999" height="1" alignment="left" id="Tq2-vs-DzW" userLabel="Logo">
+                                                        <items>
+                                                            <imageView alignment="center" verticalAlignment="center" id="BOa-DG-Cik" userLabel="Network Image"/>
+                                                        </items>
+                                                    </group>
+                                                    <group width="0.69999999999999996" alignment="left" layout="vertical" spacing="2" id="St8-Zu-Mjd" userLabel="Labels">
+                                                        <items>
+                                                            <label width="1" alignment="left" text="Title" id="USz-Mj-AO9" userLabel="Title">
+                                                                <fontDescription key="font" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                                            </label>
+                                                            <label width="1" alignment="left" text="Episode Info" id="Wlu-mb-kqx" userLabel="Episode Info">
+                                                                <fontDescription key="font" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                                            </label>
+                                                            <label width="1" alignment="left" text="Time Info" id="7kJ-ll-Zxr" userLabel="Time and Network Info">
+                                                                <fontDescription key="font" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                                            </label>
+                                                        </items>
+                                                    </group>
+                                                </items>
+                                            </group>
+                                            <separator width="0.75" alignment="right" id="n2Y-jM-fpw">
+                                                <color key="color" red="0.050980392159999999" green="0.094117647060000004" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
+                                            </separator>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="episodeLabel" destination="Wlu-mb-kqx" id="khk-nE-eFV"/>
+                                        <outlet property="networkImage" destination="BOa-DG-Cik" id="jaE-G9-3r7"/>
+                                        <outlet property="timeLabel" destination="7kJ-ll-Zxr" id="pxN-Mm-6s2"/>
+                                        <outlet property="titleLabel" destination="USz-Mj-AO9" id="G3R-hi-GKr"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="table" destination="NlB-rW-xYk" id="OBb-Wo-tzo"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="488" y="288"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">

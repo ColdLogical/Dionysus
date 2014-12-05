@@ -3,6 +3,7 @@
     <entity name="Channel" representedClassName="Channel" syncable="YES">
         <attribute name="callSign" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="channelId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isFavorite" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="number" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Device" representedClassName="Device" syncable="YES">
@@ -12,7 +13,7 @@
         <attribute name="macAddress" optional="YES" attributeType="String" defaultValueString="YourMom" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Channel" positionX="-6930" positionY="-6408" width="128" height="88"/>
+        <element name="Channel" positionX="-6930" positionY="-6408" width="128" height="105"/>
         <element name="Device" positionX="-6930" positionY="-6381" width="128" height="105"/>
     </elements>
 </model>

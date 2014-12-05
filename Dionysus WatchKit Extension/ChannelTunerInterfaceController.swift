@@ -1,5 +1,5 @@
 //
-//  ChannelTuner.swift
+//  ChannelTunerInterfaceController.swift
 //  Dionysus
 //
 //  Created by Bush, Ryan M on 12/3/14.
@@ -7,9 +7,8 @@
 //
 
 import WatchKit
-import NotificationCenter
 
-class ChannelTuner: WKInterfaceController {
+class ChannelTunerInterfaceController: WKInterfaceController {
     @IBOutlet var channelLabel: WKInterfaceLabel?
     @IBOutlet var inputLabel: WKInterfaceLabel?
     
@@ -25,7 +24,7 @@ class ChannelTuner: WKInterfaceController {
     @IBOutlet var eightButton: WKInterfaceButton?
     @IBOutlet var nineButton: WKInterfaceButton?
     
-    lazy var currentInput: String? = String()
+    lazy var currentInput: String = String()
     
     override init(context: AnyObject?) {
         super.init(context: context)
@@ -44,9 +43,9 @@ class ChannelTuner: WKInterfaceController {
     }
     
     func addNumber(input: String!) {
-        if currentInput!.lengthOfBytesUsingEncoding(NSASCIIStringEncoding) < 3 {
-            currentInput! += input
-            inputLabel!.setText(currentInput!)
+        if currentInput.lengthOfBytesUsingEncoding(NSASCIIStringEncoding) < 3 {
+            currentInput += input
+            inputLabel!.setText(currentInput)
             
             updateCallSign()
         }
@@ -59,11 +58,11 @@ class ChannelTuner: WKInterfaceController {
     }
     
     @IBAction func sendToTv() {
-        WebOperations.tuneToChannel(currentInput!, deviceMacAddress: "000004A8C1BE", completion: nil, failure: nil)
+        WebOperations.tuneToChannel(currentInput, deviceMacAddress: "000004A8C1BE", completion: nil, failure: nil)
     }
     
     func updateCallSign() {
-        if let results = DataManager.sharedInstance.fetchResults(kChannelKey, predicate: NSPredicate(format: "number = %@", currentInput!)) {
+        if let results = DataManager.sharedInstance.fetchResults(kChannelKey, predicate: NSPredicate(format: "number = %@", currentInput)) {
             if results.count > 0 {
                 if let channel = results[0] as? Channel {
                     channelLabel!.setText(channel.valueForKey(kCallSign) as? String)

@@ -40,6 +40,19 @@ class ChannelTests: XCTestCase {
         }
     }
     
+    func testAllFavorites() {
+        //Set the testChannel to be a favorite
+        testChannel!.setValue(true, forKey: kIsFavorite)
+        DataManager.sharedInstance.save()
+        
+        //Get all the favorites
+        let favorites = Channel.allFavorites()
+        
+        //Check that there is only one and make sure its the correct one
+        XCTAssert(favorites.count == 1, "All favorites is returning more than the favorites")
+        XCTAssert(favorites[0].objectID == testChannel!.objectID, "The favorited channel must be returned in the array of favorites")
+    }
+    
     func testDeleteChannel() {
         //Delete the test object
         Channel.deleteChannel(testChannel)
