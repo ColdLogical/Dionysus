@@ -283,13 +283,13 @@
                                                     </group>
                                                     <group width="0.69999999999999996" alignment="left" layout="vertical" spacing="2" id="St8-Zu-Mjd" userLabel="Labels">
                                                         <items>
-                                                            <label width="1" alignment="left" text="Title" id="USz-Mj-AO9" userLabel="Title">
+                                                            <label width="1" alignment="left" text="Title" minimumScaleFactor="0.5" id="USz-Mj-AO9" userLabel="Title">
                                                                 <fontDescription key="font" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                                             </label>
-                                                            <label width="1" alignment="left" text="Episode Info" id="Wlu-mb-kqx" userLabel="Episode Info">
+                                                            <label width="1" alignment="left" text="Episode Info" minimumScaleFactor="0.5" id="Wlu-mb-kqx" userLabel="Episode Info">
                                                                 <fontDescription key="font" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                                             </label>
-                                                            <label width="1" alignment="left" text="Time Info" id="7kJ-ll-Zxr" userLabel="Time and Network Info">
+                                                            <label width="1" alignment="left" text="Time Info" minimumScaleFactor="0.5" id="7kJ-ll-Zxr" userLabel="Time and Network Info">
                                                                 <fontDescription key="font" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                                             </label>
                                                         </items>

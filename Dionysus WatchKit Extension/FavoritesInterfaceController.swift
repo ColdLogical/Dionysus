@@ -25,7 +25,36 @@ class FavoritesInterfaceController: WKInterfaceController {
                 for i in 0 ..< t.numberOfRows {
                     if let  row = t.rowControllerAtIndex(i) as? FavoriteChannelRow {
                         let favorite = self.favoriteChannels[i]
-                        row.titleLabel!.setText(favorite.valueForKey(kCallSign) as? String)
+                        row.titleLabel!.setText(favorite.valueForKey(kTitle) as? String)
+                        if var networkURI = favorite.valueForKey(kNetworkLogoURI) as? String {
+                            let resizedURI: String = networkURI + "?w=90&h=75"
+                            row.networkImage!.setImage(UIImage(data:NSData(contentsOfURL: NSURL(string: resizedURI )!)!))
+                        }
+                        
+                        let seasonNumber = favorite.valueForKey(kSeasonNumber) as? String
+                        let episodeNumber = favorite.valueForKey(kEpisodeNumber) as? String
+                        let episodeTitle = favorite.valueForKey(kEpisodeTitle) as? String
+                        
+                        if seasonNumber != nil && episodeNumber != nil && episodeTitle != nil {
+                            row.episodeLabel!.setText("(S\(seasonNumber!), E\(episodeNumber!)) \(episodeTitle!)")
+                        } else {
+                            row.episodeLabel!.setText("")
+                        }
+                        
+                        if let startDate = favorite.valueForKey(kTitleStartDate) as? NSDate {
+                            let formatter = NSDateFormatter()
+                            formatter.timeStyle = NSDateFormatterStyle.ShortStyle
+                            
+                            let startString = formatter.stringFromDate(startDate)
+                            if let endDate = favorite.valueForKey(kTitleEndDate) as? NSDate {
+                                let endString = formatter.stringFromDate(endDate)
+                                row.timeLabel!.setText("\(startString) - \(endString)")
+                            } else {
+                                row.timeLabel!.setText("\(startString)")
+                            }
+                        } else {
+                            row.timeLabel!.setText("")
+                        }
                     }
                 }
             }

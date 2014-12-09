@@ -21,7 +21,7 @@ public let kDevicesEndpoint = "symphony/services/v1/devices"
 public let kErrorResponseKey = "ErrorReponse"
 public let kFavoritesEndpoint = "symphony/services/v1/preferences/__FavoriteChannels__"
 public let kLoginEndpoint = "symphony/auth/login"
-public let kLineupsEndpoint = "symphony/services/v1/catalog/video/guide/lineups"
+public let kLineupsEndpoint = "symphony/services/v1/catalog/video/guide"
 public let kTokenKey = "token"
 public let kTuneChannelEndpoint = "symphony/services/v1/devices"
 public let kPasswordKey = "password"
@@ -140,10 +140,8 @@ public class WebOperations {
                         for dict in guidePeriod {
                             if let channelLineupArray = dict["ChannelLineup"] as? NSArray {
                                 for channelInfoDict in channelLineupArray {
-                                    if let channelDict = channelInfoDict[kChannelKey] as? NSDictionary {
-                                        var c = Channel.existingOrNewFromDictionary(channelDict)
-                                        channels.append(c)
-                                    }
+                                    var c = Channel.existingOrNewFromDictionary(channelInfoDict as NSDictionary)
+                                    channels.append(c)
                                 }
                             }
                         }

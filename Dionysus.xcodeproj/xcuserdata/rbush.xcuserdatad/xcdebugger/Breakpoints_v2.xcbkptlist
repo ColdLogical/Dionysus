@@ -6,17 +6,47 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Dionysus WatchKit Extension/FavoritesInterfaceController.swift"
-            timestampString = "439507538.075053"
+            timestampString = "439771242.56987"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20"
-            endingLineNumber = "20"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
             landmarkName = "completion(_:_:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Dionysus_WatchKit_Extension.FavoritesInterfaceController.(init (Dionysus_WatchKit_Extension.FavoritesInterfaceController.Type) -&gt; (context : Swift.Optional&lt;Swift.AnyObject&gt;) -&gt; Dionysus_WatchKit_Extension.FavoritesInterfaceController).(completion #1) ((Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.NSURLRequest&gt;, Swift.ImplicitlyUnwrappedOptional&lt;Swift.Array&lt;Dionysus_WatchKit_Extension.Channel&gt;&gt;))()"
+                  moduleName = "Dionysus WatchKit Extension"
+                  urlString = "file:///Users/rbush/Documents/Dionysus/Dionysus%20WatchKit%20Extension/FavoritesInterfaceController.swift"
+                  timestampString = "439769122.806352"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "35"
+                  endingLineNumber = "35"
+                  offsetFromSymbolStart = "7128">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Dionysus_WatchKit_Extension.FavoritesInterfaceController.(init (Dionysus_WatchKit_Extension.FavoritesInterfaceController.Type) -&gt; (context : Swift.Optional&lt;Swift.AnyObject&gt;) -&gt; Dionysus_WatchKit_Extension.FavoritesInterfaceController).(completion #1) ((Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.NSURLRequest&gt;, Swift.ImplicitlyUnwrappedOptional&lt;Swift.Array&lt;Dionysus_WatchKit_Extension.Channel&gt;&gt;))()"
+                  moduleName = "Dionysus WatchKit Extension"
+                  urlString = "file:///Users/rbush/Documents/Dionysus/Dionysus%20WatchKit%20Extension/FavoritesInterfaceController.swift"
+                  timestampString = "439769122.80652"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "35"
+                  endingLineNumber = "35"
+                  offsetFromSymbolStart = "7773">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

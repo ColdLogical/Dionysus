@@ -3,8 +3,15 @@
     <entity name="Channel" representedClassName="Channel" syncable="YES">
         <attribute name="callSign" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="channelId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="episodeNumber" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="episodeTitle" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="isFavorite" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="networkLogoURI" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="number" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="seasonNumber" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="titleEndDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="titleStartDate" optional="YES" attributeType="Date" syncable="YES"/>
     </entity>
     <entity name="Device" representedClassName="Device" syncable="YES">
         <attribute name="alias" optional="YES" attributeType="String" defaultValueString=" " syncable="YES"/>
@@ -13,7 +20,7 @@
         <attribute name="macAddress" optional="YES" attributeType="String" defaultValueString="YourMom" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Channel" positionX="-6930" positionY="-6408" width="128" height="105"/>
+        <element name="Channel" positionX="-6930" positionY="-6408" width="128" height="210"/>
         <element name="Device" positionX="-6930" positionY="-6381" width="128" height="105"/>
     </elements>
 </model>

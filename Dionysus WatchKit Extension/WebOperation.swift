@@ -113,7 +113,7 @@ public class WebOperation : NSObject, NSURLConnectionDataDelegate, NSURLConnecti
         var error: NSError?
         
         if let jsonData: AnyObject = NSJSONSerialization.JSONObjectWithData(receivedData, options: NSJSONReadingOptions.allZeros, error: &error) {
-            println("Connection Succeeded: \(jsonData)")
+            println("Connection Succeeded for request: \(connection.originalRequest)\n \(jsonData)")
             
             if error == nil {
                 if completionHandler != nil {
