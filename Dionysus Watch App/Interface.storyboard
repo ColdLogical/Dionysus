@@ -16,7 +16,7 @@
                                     <group width="0.050000000000000003" height="1" alignment="left" spacing="0.0" id="DhE-We-0Xb"/>
                                     <imageView width="0.14999999999999999" height="1" alignment="left" image="channelTuner" contentMode="scaleAspectFit" id="deS-VW-L5Z"/>
                                     <group width="0.02" height="1" alignment="left" id="epb-Iy-vxl"/>
-                                    <label width="0.75" height="1" alignment="left" text="Channel Tuner" minimumScaleFactor="0.5" id="76V-KG-pW3">
+                                    <label width="0.75" height="1" alignment="left" text="Rotary Tuner" minimumScaleFactor="0.5" id="76V-KG-pW3">
                                         <fontDescription key="font" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
                                     </label>
                                 </items>
@@ -27,6 +27,24 @@
                         </button>
                         <separator width="0.80000000000000004" alignment="center" id="i28-KW-UG0">
                             <color key="color" red="0.050980392156862744" green="0.094117647058823528" blue="0.14117647058823529" alpha="1" colorSpace="calibratedRGB"/>
+                        </separator>
+                        <button alignment="left" id="k4d-Ib-q3p">
+                            <group key="contentGroup" width="1" height="0.25" alignment="left" id="Vg2-RS-wGF">
+                                <items>
+                                    <group width="0.050000000000000003" height="1" alignment="left" spacing="0.0" id="2Tl-aT-hqO"/>
+                                    <imageView width="0.14999999999999999" height="1" alignment="left" image="channelTuner" contentMode="scaleAspectFit" id="tX4-yd-j27"/>
+                                    <group width="0.02" height="1" alignment="left" id="8y2-OX-PNC"/>
+                                    <label width="0.75" height="1" alignment="left" text="Numpad Tuner" minimumScaleFactor="0.5" id="aoF-Ad-kjt">
+                                        <fontDescription key="font" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
+                                    </label>
+                                </items>
+                            </group>
+                            <connections>
+                                <segue destination="Ub6-9b-17f" kind="push" id="h64-41-gbp"/>
+                            </connections>
+                        </button>
+                        <separator width="0.80000000000000004" alignment="center" id="hsX-uW-fHh">
+                            <color key="color" red="0.050980392159999999" green="0.094117647060000004" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
                         </separator>
                         <button alignment="left" id="Wfp-34-3fK">
                             <group key="contentGroup" width="1" height="0.25" alignment="left" id="OVf-P3-jy7">
@@ -49,12 +67,12 @@
                     </items>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="237" y="288"/>
+            <point key="canvasLocation" x="237" y="555"/>
         </scene>
-        <!--Channel Tuner Interface Controller-->
+        <!--Rotary-->
         <scene sceneID="yih-b9-Wfp">
             <objects>
-                <controller id="lzg-49-1g1" customClass="ChannelTunerInterfaceController" customModule="Dionysus_WatchKit_Extension">
+                <controller title="Rotary" id="lzg-49-1g1" customClass="ChannelTunerInterfaceController" customModule="Dionysus_WatchKit_Extension">
                     <items>
                         <group width="1" height="1" alignment="left" layout="vertical" spacing="0.0" hasDetent="YES" id="qZa-I8-d10">
                             <items>
@@ -278,7 +296,7 @@
                                                 <items>
                                                     <group width="0.29999999999999999" height="1" alignment="left" id="Tq2-vs-DzW" userLabel="Logo">
                                                         <items>
-                                                            <imageView alignment="center" verticalAlignment="center" id="BOa-DG-Cik" userLabel="Network Image"/>
+                                                            <imageView width="0.59999999999999998" height="0.59999999999999998" alignment="center" verticalAlignment="center" contentMode="scaleAspectFit" id="BOa-DG-Cik" userLabel="Network Image"/>
                                                         </items>
                                                     </group>
                                                     <group width="0.69999999999999996" alignment="left" layout="vertical" spacing="2" id="St8-Zu-Mjd" userLabel="Labels">
@@ -317,6 +335,133 @@
                 </controller>
             </objects>
             <point key="canvasLocation" x="488" y="288"/>
+        </scene>
+        <!--Numpad-->
+        <scene sceneID="4fD-7n-yLo">
+            <objects>
+                <controller title="Numpad" id="Ub6-9b-17f" customClass="ChannelTunerInterfaceController" customModule="Dionysus_WatchKit_Extension">
+                    <items>
+                        <group width="1" height="0.20000000000000001" alignment="left" hasDetent="YES" id="eK6-a7-YGd">
+                            <items>
+                                <group width="0.25" height="1" alignment="left" verticalAlignment="bottom" id="Fmz-6I-Bd8"/>
+                                <label width="0.5" alignment="left" verticalAlignment="bottom" text="---" textAlignment="center" id="QQy-vZ-Ob5">
+                                    <color key="textColor" red="0.99607843137254903" green="0.62352941176470589" blue="0.035294117647058823" alpha="1" colorSpace="calibratedRGB"/>
+                                </label>
+                                <label width="0.25" alignment="left" verticalAlignment="bottom" text="chan" minimumScaleFactor="0.20000000000000001" id="Heq-D6-2JB">
+                                    <color key="textColor" red="0.4823529411764706" green="0.55294117647058827" blue="0.62745098039215685" alpha="1" colorSpace="calibratedRGB"/>
+                                </label>
+                            </items>
+                        </group>
+                        <group width="1" height="0.80000000000000004" alignment="left" layout="vertical" spacing="2" hasDetent="YES" id="2yl-LB-Y6Q">
+                            <items>
+                                <group width="1" height="0.25" alignment="left" spacing="2" hasDetent="YES" id="xNh-Zb-h5J">
+                                    <items>
+                                        <button width="0.33000000000000002" height="1" alignment="left" title="1" id="6md-ix-aCZ">
+                                            <color key="backgroundColor" red="0.058823529411764705" green="0.17254901960784313" blue="0.29019607843137257" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <action selector="onePressed" destination="Ub6-9b-17f" id="jg3-la-MDU"/>
+                                            </connections>
+                                        </button>
+                                        <button width="0.33000000000000002" height="1" alignment="left" title="2" id="xfq-Qc-7fE">
+                                            <color key="backgroundColor" red="0.058823529409999999" green="0.17254901959999999" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <action selector="twoPressed" destination="Ub6-9b-17f" id="DXJ-Jv-UWc"/>
+                                            </connections>
+                                        </button>
+                                        <button width="0.33000000000000002" height="1" alignment="left" title="3" id="QQj-id-83x">
+                                            <color key="backgroundColor" red="0.058823529409999999" green="0.17254901959999999" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <action selector="threePressed" destination="Ub6-9b-17f" id="EKF-S6-q8w"/>
+                                            </connections>
+                                        </button>
+                                    </items>
+                                </group>
+                                <group width="1" height="0.25" alignment="left" spacing="2" hasDetent="YES" id="vFk-Ma-St9">
+                                    <items>
+                                        <button width="0.33000000000000002" height="1" alignment="left" title="4" id="Bmi-Df-bfp">
+                                            <color key="backgroundColor" red="0.058823529409999999" green="0.17254901959999999" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <action selector="fourPressed" destination="Ub6-9b-17f" id="mJK-p6-hu2"/>
+                                            </connections>
+                                        </button>
+                                        <button width="0.33000000000000002" height="1" alignment="left" title="5" id="bkg-Fi-Sqt">
+                                            <color key="backgroundColor" red="0.058823529409999999" green="0.17254901959999999" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <action selector="fivePressed" destination="Ub6-9b-17f" id="h1V-4v-E32"/>
+                                            </connections>
+                                        </button>
+                                        <button width="0.33000000000000002" height="1" alignment="left" title="6" id="4nx-7B-6G8">
+                                            <color key="backgroundColor" red="0.058823529409999999" green="0.17254901959999999" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <action selector="sixPressed" destination="Ub6-9b-17f" id="Mk5-IR-S0l"/>
+                                            </connections>
+                                        </button>
+                                    </items>
+                                </group>
+                                <group width="1" height="0.25" alignment="left" spacing="2" hasDetent="YES" id="0wq-hc-nWd">
+                                    <items>
+                                        <button width="0.33000000000000002" height="1" alignment="left" title="7" id="Yw7-dv-CUQ">
+                                            <color key="backgroundColor" red="0.058823529409999999" green="0.17254901959999999" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <action selector="sevenPressed" destination="Ub6-9b-17f" id="vNf-uo-yCX"/>
+                                            </connections>
+                                        </button>
+                                        <button width="0.33000000000000002" height="1" alignment="left" title="8" id="cpG-Hd-1mi">
+                                            <color key="backgroundColor" red="0.058823529409999999" green="0.17254901959999999" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <action selector="eightPressed" destination="Ub6-9b-17f" id="wLX-0D-bSJ"/>
+                                            </connections>
+                                        </button>
+                                        <button width="0.33000000000000002" height="1" alignment="left" title="9" id="FiQ-fp-ROb">
+                                            <color key="backgroundColor" red="0.058823529409999999" green="0.17254901959999999" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <action selector="ninePressed" destination="Ub6-9b-17f" id="CiY-uF-RFO"/>
+                                            </connections>
+                                        </button>
+                                    </items>
+                                </group>
+                                <group width="1" height="0.25" alignment="left" spacing="2" hasDetent="YES" id="6zk-EK-XTR">
+                                    <items>
+                                        <button width="0.33000000000000002" height="1" alignment="left" title="X" id="eoD-Jc-NtL">
+                                            <color key="backgroundColor" red="0.058823529409999999" green="0.17254901959999999" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <action selector="clear" destination="Ub6-9b-17f" id="Qfw-if-hbB"/>
+                                            </connections>
+                                        </button>
+                                        <button width="0.33000000000000002" height="1" alignment="left" title="0" id="SQC-y4-jlQ">
+                                            <color key="backgroundColor" red="0.058823529409999999" green="0.17254901959999999" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <action selector="zeroPressed" destination="Ub6-9b-17f" id="Bid-Ne-cym"/>
+                                            </connections>
+                                        </button>
+                                        <button width="0.33000000000000002" height="1" alignment="left" title="+" id="ING-gA-cvw">
+                                            <color key="backgroundColor" red="0.058823529409999999" green="0.17254901959999999" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <action selector="sendToTv" destination="Ub6-9b-17f" id="yul-le-uwt"/>
+                                            </connections>
+                                        </button>
+                                    </items>
+                                </group>
+                            </items>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="channelLabel" destination="Heq-D6-2JB" id="DtX-kX-01D"/>
+                        <outlet property="eightButton" destination="cpG-Hd-1mi" id="fOh-Jc-we0"/>
+                        <outlet property="fiveButton" destination="bkg-Fi-Sqt" id="UYp-Vp-2Gk"/>
+                        <outlet property="fourButton" destination="Bmi-Df-bfp" id="C4e-0I-EIE"/>
+                        <outlet property="inputLabel" destination="QQy-vZ-Ob5" id="T77-Gn-qZp"/>
+                        <outlet property="nineButton" destination="FiQ-fp-ROb" id="Lrd-az-Q87"/>
+                        <outlet property="oneButton" destination="6md-ix-aCZ" id="FH9-mt-bsr"/>
+                        <outlet property="sevenButton" destination="Yw7-dv-CUQ" id="S5a-Cd-ezd"/>
+                        <outlet property="sixButton" destination="4nx-7B-6G8" id="faX-9n-Esq"/>
+                        <outlet property="threeButton" destination="QQj-id-83x" id="f5J-ye-SFl"/>
+                        <outlet property="twoButton" destination="xfq-Qc-7fE" id="z8p-cE-WQ8"/>
+                        <outlet property="zeroButton" destination="SQC-y4-jlQ" id="ozO-fx-zjJ"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="488" y="555"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">
