@@ -28,6 +28,24 @@ public class Device: NSManagedObject {
     @NSManaged public var dvr: NSNumber
     @NSManaged public var isDefault: NSNumber
     
+    public class func allDevices() -> [Device]! {
+        if let results = DataManager.sharedInstance.fetchResults(kDeviceKey, predicate: nil) as? [Device] {
+            return results
+        }
+        
+        return [Device]()
+    }
+    
+    public class func defaultDevice() -> Device? {
+        if let results = DataManager.sharedInstance.fetchResults(kDeviceKey, predicate: NSPredicate(format: "isDefault == %@", true)) as? [Device] {
+            if results.count > 0 {
+                return results[0]
+            }
+        }
+        
+        return nil
+    }
+    
     public class func deleteDevice(device: Device!) {
         DataManager.sharedInstance.delete(device)
     }
@@ -65,8 +83,8 @@ public class Device: NSManagedObject {
     
     public func parseValues(values: NSDictionary!) {
         self.setValue(values[kAliasKey] as? String ?? "", forKey:kAlias)
-        self.setValue(values[kIsDefaultKey] as? NSNumber ?? false, forKey:kIsDefault)
-        self.setValue(values[kDVRKey] as? NSNumber ?? false, forKey:kDVR)
+        self.setValue(values[kIsDefaultKey] as? String == "true" ? true : false, forKey:kIsDefault)
+        self.setValue(values[kDVRKey] as? String == "true" ? true : false, forKey:kDVR)
         self.setValue(values[kMacAddressKey] as? String ?? "", forKey:kMacAddress)
         
         DataManager.sharedInstance.save()

@@ -106,7 +106,7 @@ public class Channel: NSManagedObject {
                     self.setValue(dict[kImageURIKey] as? String ?? "", forKey:kNetworkLogoURI)
                 }
             }
-    }
+        }
     
         if let titleArray = values[kTitleKey] as? NSArray {
             if let dict = titleArray[0] as? NSDictionary {
@@ -117,7 +117,7 @@ public class Channel: NSManagedObject {
                             self.setValue(startDate, forKey: kTitleStartDate)
                         }
                         
-                        if let endString = deliveryDict[kTitleStartDateKey] as? NSString {
+                        if let endString = deliveryDict[kTitleEndDateKey] as? NSString {
                             let endDate = NSDate(timeIntervalSince1970: endString.doubleValue)
                             self.setValue(endDate, forKey: kTitleEndDate)
                         }
@@ -133,5 +133,4 @@ public class Channel: NSManagedObject {
         
         DataManager.sharedInstance.save()
     }
-
 }

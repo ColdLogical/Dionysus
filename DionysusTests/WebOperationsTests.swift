@@ -11,7 +11,15 @@ import XCTest
 import Dionysus
 
 class WebOperationsTests: XCTestCase {
-    let userDefaults = NSUserDefaults()
+    let userDefaults: NSUserDefaults = {
+        if let defaults = NSUserDefaults(suiteName: kUserDefaultsSuiteName) {
+            return defaults
+        }
+        
+        assert(false, "Couldn't create user default")
+        return NSUserDefaults.standardUserDefaults()
+    }()
+    
     let configFileName = "TestConfig.plist"
     var configPath: String {
         let paths =  NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
@@ -47,7 +55,7 @@ class WebOperationsTests: XCTestCase {
         var error: NSError?
         fileManager.removeItemAtPath(configPath, error: &error)
         
-        WebOperations.setConfiguration(WebOperations.defaultConfigPath())
+        userDefaults.removeObjectForKey(kConfigPathKey)
     }
     
     func testAuthorizedRequest() {
@@ -271,6 +279,9 @@ class WebOperationsTests: XCTestCase {
         WebOperations.setConfiguration(value)
         
         XCTAssert(userDefaults.valueForKey(kConfigPathKey) as? String == value, "Value in user defaults must equal value that was set")
+        
+        //Reset old path
+        userDefaults.removeObjectForKey(kConfigPathKey)
     }
     
     func testSetUserDefault() {

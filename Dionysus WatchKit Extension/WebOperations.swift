@@ -25,6 +25,7 @@ public let kLineupsEndpoint = "symphony/services/v1/catalog/video/guide"
 public let kTokenKey = "token"
 public let kTuneChannelEndpoint = "symphony/services/v1/devices"
 public let kPasswordKey = "password"
+public let kUserDefaultsSuiteName = "group.com.charter.dionysus"
 public let kUsernameKey = "username"
 
 let DataOperationClass = WebOperation.self
@@ -63,7 +64,7 @@ public class WebOperations {
             return baseURL
         }
         
-        assert(true, "No Base URL Found")
+        assert(false, "No Base URL Found")
         return ""
     }
     
@@ -76,8 +77,7 @@ public class WebOperations {
         var pathToConfig = WebOperations.defaultConfigPath()
         
         //Check to see if the default config was overridden
-        let userDefaults = NSUserDefaults()
-        if let configPath = userDefaults.valueForKey(kConfigPathKey) as? String {
+        if let configPath = WebOperations.userDefaultForKey(kConfigPathKey)  {
             //Set path to overridden config
             pathToConfig = configPath
         }
@@ -88,7 +88,7 @@ public class WebOperations {
         }
         
         //If no configuration dictionary is found, EVERYTHING IS BROKEN!!! (ÒДÓױ)
-        assert(true, "No Configuration Dictionary found at \(pathToConfig)")
+        assert(false, "No Configuration Dictionary found at \(pathToConfig)")
         return NSDictionary()
     }
     
@@ -321,6 +321,9 @@ public class WebOperations {
     
     public class func setBaseURL(newBaseURL: String?) {
         WebOperations.setUserDefault(newBaseURL, key: kBaseURLKey)
+        
+        //Altering the base url invalidates the auth token, dont try to use it again
+        WebOperations.setAuthToken(nil)
     }
     
     public class func setConfiguration(newPathToConfig: String?) {
@@ -331,12 +334,17 @@ public class WebOperations {
     }
     
     public class func setUserDefault(value: String?, key: String) {
-        let userDefaults = NSUserDefaults.standardUserDefaults()
-        if value != nil {
-            userDefaults.setObject(value, forKey: key)
-        } else {
-            userDefaults.removeObjectForKey(key)
+        if let userDefaults = NSUserDefaults(suiteName: kUserDefaultsSuiteName) {
+            if value != nil {
+                userDefaults.setObject(value, forKey: key)
+            } else {
+                userDefaults.removeObjectForKey(key)
+            }
+            
+            return
         }
+        
+        assert(false, "User defaults could not be created for suit named \(kUserDefaultsSuiteName)")
     }
     
     public class func tuneDictionary(channel: String!, macAddress: String!) -> NSDictionary! {
@@ -389,7 +397,11 @@ public class WebOperations {
     }
     
     public class func userDefaultForKey(key: String) -> String? {
-        let userDefaults = NSUserDefaults.standardUserDefaults()
-        return userDefaults.stringForKey(key)
+        if let userDefaults = NSUserDefaults(suiteName: kUserDefaultsSuiteName) {
+            return userDefaults.stringForKey(key)
+        }
+        
+        assert(false, "User defaults could not be created for suit named \(kUserDefaultsSuiteName)")
+        return nil
     }
 }

@@ -13,8 +13,8 @@ import Dionysus
 class DeviceTests: XCTestCase {
     let dictionary = [kAliasKey: "YourMomsAlias",
         kMacAddressKey: "YourMom",
-        kDVRKey: true,
-        kIsDefaultKey: false]
+        kDVRKey: "true",
+        kIsDefaultKey: "false"]
     var testDevice: Device?
 
     override func setUp() {
@@ -109,13 +109,13 @@ class DeviceTests: XCTestCase {
             d.parseValues(dictionary)
             
             XCTAssert(d.valueForKey(kAlias) as? String == dictionary[kAliasKey], "Parsed value must equal value inputted")
-            XCTAssert(d.valueForKey(kDVR) as? NSNumber == dictionary[kDVRKey], "Parsed value must equal value inputted")
-            XCTAssert(d.valueForKey(kIsDefault) as? NSNumber == dictionary[kIsDefaultKey], "Parsed value must equal value inputted")
+            XCTAssert(d.valueForKey(kDVR) as? NSNumber == (dictionary[kDVRKey] == "true" ? true :false) , "Parsed value must equal value inputted")
+            XCTAssert(d.valueForKey(kIsDefault) as? NSNumber == (dictionary[kIsDefaultKey] == "true" ? true :false), "Parsed value must equal value inputted")
             XCTAssert(d.valueForKey(kMacAddress) as? String == dictionary[kMacAddressKey], "Parsed value must equal value inputted")
             
             context.deleteObject(d)
         } else {
-            assert(true, "Couldn't create Device object to test with")
+            assert(false, "Couldn't create Device object to test with")
         }
     }
 

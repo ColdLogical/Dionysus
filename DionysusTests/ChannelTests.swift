@@ -11,9 +11,19 @@ import CoreData
 import Dionysus
 
 class ChannelTests: XCTestCase {
-    let dictionary = [kChannelIdKey: "YourMomsID",
-        kCallSignKey: "YourMom",
-        kNumberKey: "25"]
+    let dictionary: NSDictionary = [ kChannelKey: [kChannelIdKey: "YourMomsID",
+                kCallSignKey: "YourMom",
+                kNumberKey: "25",
+                kNetworkLogoURIKey: [[ kImageURIKey: "your mom is an image" ]]
+            ],
+            kTitleKey: [
+                [ kDeliveryKey: [ [kTitleStartDateKey: "10", kTitleEndDateKey: "20"] ],
+                    kSeasonNumberKey : "17",
+                    kEpisodeNumberKey  : "3",
+                    kTitleNameKey : "Your sister",
+                    kEpisodeTitleKey : "Is Hot",
+                ]
+        ] ]
     var testChannel: Channel?
     
     override func setUp() {
@@ -64,7 +74,8 @@ class ChannelTests: XCTestCase {
         
         let entity = NSEntityDescription.entityForName("Channel", inManagedObjectContext: context)
         fetchRequest.entity = entity
-        fetchRequest.predicate = NSPredicate(format: "channelId == %@", dictionary[kChannelIdKey]! as String)
+        let channelDict = dictionary[kChannelKey] as NSDictionary
+        fetchRequest.predicate = NSPredicate(format: "channelId == %@", channelDict[kChannelIdKey] as String)
         
         let fetchedObjects = context.executeFetchRequest(fetchRequest, error:&error)
         
@@ -73,7 +84,8 @@ class ChannelTests: XCTestCase {
     
     func testExistingOrNew() {
         //Try to get an existing channel
-        let existingChannel = Channel.existingOrNew(dictionary[kChannelIdKey]! as String)
+        let channelDict = dictionary[kChannelKey] as NSDictionary
+        let existingChannel = Channel.existingOrNew(channelDict[kChannelIdKey] as String)
         
         //Make sure it is the existing one
         XCTAssert(existingChannel.objectID == testChannel!.objectID, "Must return existing instance of channel with unique identfier")
@@ -84,7 +96,7 @@ class ChannelTests: XCTestCase {
         context.deleteObject(existingChannel)
         
         //Try to get a new one
-        let newChannel = Channel.existingOrNew(dictionary[kChannelIdKey]! as String)
+        let newChannel = Channel.existingOrNew(channelDict[kChannelIdKey] as String)
         
         //Make sure its new
         XCTAssert(newChannel.objectID != oldID, "Must return a new instance if none exists")
@@ -119,13 +131,31 @@ class ChannelTests: XCTestCase {
         if let c = NSEntityDescription.insertNewObjectForEntityForName("Channel", inManagedObjectContext: context) as? Channel {
             c.parseValues(dictionary)
             
-            XCTAssert(c.valueForKey(kChannelId) as? String == dictionary[kChannelIdKey], "Parsed value must equal value inputted")
-            XCTAssert(c.valueForKey(kCallSign) as? String == dictionary[kCallSignKey], "Parsed value must equal value inputted")
-            XCTAssert(c.valueForKey(kNumber) as? String == dictionary[kNumberKey], "Parsed value must equal value inputted")
+            let channelDict = dictionary[kChannelKey] as NSDictionary
+            
+            XCTAssert(c.valueForKey(kChannelId) as? String == channelDict[kChannelIdKey] as? String, "Parsed value must equal value inputted")
+            XCTAssert(c.valueForKey(kCallSign) as? String == channelDict[kCallSignKey] as? String, "Parsed value must equal value inputted")
+            XCTAssert(c.valueForKey(kNumber) as? String == channelDict[kNumberKey] as? String, "Parsed value must equal value inputted")
+            XCTAssert(c.valueForKey(kNetworkLogoURI) as? String == ((channelDict[kNetworkLogoURIKey] as NSArray)[0] as NSDictionary)[kImageURIKey] as? String, "Parsed value must equal value inputted")
+
+            //Please dont ever look at these lines
+            let titleDict = (dictionary[kTitleKey] as NSArray)[0] as NSDictionary
+            let deliveryDict = (titleDict[kDeliveryKey] as NSArray)[0] as NSDictionary
+            
+            let start = NSDate(timeIntervalSince1970: (deliveryDict[kTitleStartDateKey] as NSString).doubleValue)
+            XCTAssert(c.valueForKey(kTitleStartDate) as? NSDate == start, "Parsed value must equal value inputted")
+            
+            let end = NSDate(timeIntervalSince1970: (deliveryDict[kTitleEndDateKey] as NSString).doubleValue)
+            XCTAssert(c.valueForKey(kTitleEndDate) as? NSDate == end, "Parsed value must equal value inputted")
+            
+            XCTAssert(c.valueForKey(kEpisodeNumber) as? String == titleDict[kEpisodeNumberKey] as? String , "Parsed value must equal value inputted")
+            XCTAssert(c.valueForKey(kEpisodeTitle) as? String == titleDict[kEpisodeTitleKey] as? String , "Parsed value must equal value inputted")
+            XCTAssert(c.valueForKey(kTitle) as? String == titleDict[kTitleNameKey] as? String , "Parsed value must equal value inputted")
+            XCTAssert(c.valueForKey(kSeasonNumber) as? String == titleDict[kSeasonNumberKey] as? String , "Parsed value must equal value inputted")
             
             context.deleteObject(c)
         } else {
-            assert(true, "Couldn't create Channel object to test with")
+            assert(false, "Couldn't create Channel object to test with")
         }
     }
 

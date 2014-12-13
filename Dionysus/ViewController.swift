@@ -9,19 +9,32 @@
 import UIKit
 
 class ViewController: UIViewController {
+    @IBOutlet var currentEnvironmentLabel: UILabel?
+    @IBOutlet var defaultDeviceLabel: UILabel?
+    @IBOutlet var environmentField: UITextField?
     @IBOutlet var passwordField: UITextField?
     @IBOutlet var tokenLabel: UILabel?
     @IBOutlet var usernameField: UITextField?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if WebOperations.authToken() == nil {
+            generateAuth()
+        } else {
+            updateTokenInfo()
+        }
+        
+        updateEnvironment()
+        updateDefaultDevice()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    //MARK: Actions
     @IBAction func generateAuth() {
         func success(request: NSURLRequest, token: String!) {
             self.updateTokenInfo()
@@ -36,12 +49,34 @@ class ViewController: UIViewController {
     
     @IBAction func fetchDevices() {
         func success(request: NSURLRequest, deviceList: [Device]!) {
-            if deviceList.count > 0 {
-                self.tokenLabel!.text = deviceList[0].valueForKey(kAliasKey) as? String
-            }
+            updateDefaultDevice()
         }
         
         WebOperations.fetchDevices(success, failure: nil)
+    }
+    
+    @IBAction func fetchFavorites() {
+        func success(request: NSURLRequest, channels: [Channel]!) {
+            
+        }
+    }
+    
+    @IBAction func setEnvironment() {
+        WebOperations.setBaseURL(self.environmentField!.text)
+        generateAuth()
+    }
+    
+    //MARK: Operational
+    func updateDefaultDevice() {
+        if let device = Device.defaultDevice() {
+            self.defaultDeviceLabel!.text = device.valueForKey(kAliasKey) as? String
+        }
+    }
+    
+    func updateEnvironment() {
+        let env = WebOperations.baseURL()
+        self.currentEnvironmentLabel!.text = env
+        self.environmentField!.text = env
     }
     
     func updateTokenInfo() {
