@@ -10,64 +10,112 @@
             <objects>
                 <controller id="TZ3-6v-rl0" customClass="DionysusInterfaceController" customModule="Dionysus_WatchKit_Extension">
                     <items>
-                        <button alignment="left" id="3kl-Rq-URh">
-                            <group key="contentGroup" width="1" height="0.25" alignment="left" id="rLt-7y-a5j">
-                                <items>
-                                    <group width="0.050000000000000003" height="1" alignment="left" spacing="0.0" id="DhE-We-0Xb"/>
-                                    <imageView width="0.14999999999999999" height="1" alignment="left" image="channelTuner" contentMode="scaleAspectFit" id="deS-VW-L5Z"/>
-                                    <group width="0.02" height="1" alignment="left" id="epb-Iy-vxl"/>
-                                    <label width="0.75" height="1" alignment="left" text="Rotary Tuner" minimumScaleFactor="0.5" id="76V-KG-pW3">
-                                        <fontDescription key="font" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
-                                    </label>
-                                </items>
-                            </group>
-                            <connections>
-                                <segue destination="lzg-49-1g1" kind="push" id="Lil-UW-tD8"/>
-                            </connections>
-                        </button>
-                        <separator width="0.80000000000000004" alignment="center" id="i28-KW-UG0">
-                            <color key="color" red="0.050980392156862744" green="0.094117647058823528" blue="0.14117647058823529" alpha="1" colorSpace="calibratedRGB"/>
-                        </separator>
-                        <button alignment="left" id="k4d-Ib-q3p">
-                            <group key="contentGroup" width="1" height="0.25" alignment="left" id="Vg2-RS-wGF">
-                                <items>
-                                    <group width="0.050000000000000003" height="1" alignment="left" spacing="0.0" id="2Tl-aT-hqO"/>
-                                    <imageView width="0.14999999999999999" height="1" alignment="left" image="channelTuner" contentMode="scaleAspectFit" id="tX4-yd-j27"/>
-                                    <group width="0.02" height="1" alignment="left" id="8y2-OX-PNC"/>
-                                    <label width="0.75" height="1" alignment="left" text="Numpad Tuner" minimumScaleFactor="0.5" id="aoF-Ad-kjt">
-                                        <fontDescription key="font" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
-                                    </label>
-                                </items>
-                            </group>
-                            <connections>
-                                <segue destination="Ub6-9b-17f" kind="push" id="h64-41-gbp"/>
-                            </connections>
-                        </button>
-                        <separator width="0.80000000000000004" alignment="center" id="hsX-uW-fHh">
-                            <color key="color" red="0.050980392159999999" green="0.094117647060000004" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
-                        </separator>
-                        <button alignment="left" id="Wfp-34-3fK">
-                            <group key="contentGroup" width="1" height="0.25" alignment="left" id="OVf-P3-jy7">
-                                <items>
-                                    <group width="0.050000000000000003" height="1" alignment="left" spacing="0.0" id="Bsy-Jb-uG4"/>
-                                    <imageView width="0.14999999999999999" height="1" alignment="left" image="favorites" contentMode="scaleAspectFit" id="Qof-3t-SGU"/>
-                                    <group width="0.02" height="1" alignment="left" id="Ek0-92-NSN"/>
-                                    <label width="0.75" height="1" alignment="left" text="Favorites" minimumScaleFactor="0.5" id="hjf-ZP-Q7L">
-                                        <fontDescription key="font" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
-                                    </label>
-                                </items>
-                            </group>
-                            <connections>
-                                <segue destination="tjL-yY-qXQ" kind="push" id="OjX-Rc-IZx"/>
-                            </connections>
-                        </button>
-                        <separator width="0.80000000000000004" alignment="center" id="SqU-gX-on0">
-                            <color key="color" red="0.050980392159999999" green="0.094117647060000004" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
-                        </separator>
+                        <table alignment="left" layout="vertical" id="m7v-MO-UvP">
+                            <items>
+                                <tableRow identifier="RotaryMenuRow" id="ikt-NU-NmD" userLabel="Rotary" customClass="MenuRow" customModule="Dionysus_WatchKit_Extension">
+                                    <group key="rootItem" width="1" height="44" alignment="left" layout="vertical" spacing="0.0" id="hFF-Sl-web">
+                                        <items>
+                                            <group width="1" height="42" alignment="left" id="6S6-U1-JD3">
+                                                <items>
+                                                    <group width="0.050000000000000003" height="1" alignment="left" spacing="0.0" id="4fj-5p-BUU"/>
+                                                    <imageView width="0.14999999999999999" height="1" alignment="left" image="channelTuner" contentMode="scaleAspectFit" id="pd0-Se-i9K"/>
+                                                    <group width="0.02" height="1" alignment="left" id="ETY-Ad-5fF"/>
+                                                    <label width="0.75" height="1" alignment="left" text="Rotary Tuner" minimumScaleFactor="0.5" id="7QJ-Op-EU0">
+                                                        <fontDescription key="font" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
+                                                    </label>
+                                                </items>
+                                            </group>
+                                            <separator width="0.80000000000000004" alignment="center" id="FhM-nu-ury">
+                                                <color key="color" red="0.12988293401564951" green="0.2437987069538409" blue="0.37061365223463683" alpha="1" colorSpace="calibratedRGB"/>
+                                            </separator>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="iconImage" destination="pd0-Se-i9K" id="vLu-QT-KqT"/>
+                                        <outlet property="titleLabel" destination="7QJ-Op-EU0" id="dYO-A3-CY6"/>
+                                        <segue destination="lzg-49-1g1" kind="push" id="Nyo-Fx-cGy"/>
+                                    </connections>
+                                </tableRow>
+                                <tableRow identifier="NumpadMenuRow" id="pw3-p7-sdY" userLabel="Numpad" customClass="MenuRow" customModule="Dionysus_WatchKit_Extension">
+                                    <group key="rootItem" width="1" height="44" alignment="left" layout="vertical" spacing="0.0" id="SEv-db-qXf">
+                                        <items>
+                                            <group width="1" height="42" alignment="left" id="0v3-ex-f1O">
+                                                <items>
+                                                    <group width="0.050000000000000003" height="1" alignment="left" spacing="0.0" id="eWP-g3-4Za"/>
+                                                    <imageView width="0.14999999999999999" height="1" alignment="left" image="channelTuner" contentMode="scaleAspectFit" id="4xC-c7-Gpc"/>
+                                                    <group width="0.02" height="1" alignment="left" id="0d9-Ek-Ezv"/>
+                                                    <label width="0.75" height="1" alignment="left" text="Numpad Tuner" minimumScaleFactor="0.5" id="oGM-yK-7cs">
+                                                        <fontDescription key="font" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
+                                                    </label>
+                                                </items>
+                                            </group>
+                                            <separator width="0.80000000000000004" alignment="center" id="e6X-w2-wPk">
+                                                <color key="color" red="0.12988293401564951" green="0.2437987069538409" blue="0.37061365223463683" alpha="1" colorSpace="calibratedRGB"/>
+                                            </separator>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="iconImage" destination="4xC-c7-Gpc" id="VBI-QK-ldT"/>
+                                        <outlet property="titleLabel" destination="oGM-yK-7cs" id="xcp-t3-elS"/>
+                                        <segue destination="Ub6-9b-17f" kind="push" id="hvx-Wq-4rC"/>
+                                    </connections>
+                                </tableRow>
+                                <tableRow identifier="FavoritesMenuRow" id="6MR-Xd-aX3" userLabel="Favorites" customClass="MenuRow" customModule="Dionysus_WatchKit_Extension">
+                                    <group key="rootItem" width="1" height="44" alignment="left" layout="vertical" spacing="0.0" id="2rZ-C5-t4f">
+                                        <items>
+                                            <group width="1" height="42" alignment="left" id="GFB-gs-pfH">
+                                                <items>
+                                                    <group width="0.050000000000000003" height="1" alignment="left" spacing="0.0" id="xvj-au-lNQ"/>
+                                                    <imageView width="0.14999999999999999" height="1" alignment="left" image="favorites" contentMode="scaleAspectFit" id="R0E-gT-5RN"/>
+                                                    <group width="0.02" height="1" alignment="left" id="SXN-Pm-rYJ"/>
+                                                    <label width="0.75" height="1" alignment="left" text="Favorites" minimumScaleFactor="0.5" id="yqq-d0-VKH">
+                                                        <fontDescription key="font" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
+                                                    </label>
+                                                </items>
+                                            </group>
+                                            <separator width="0.80000000000000004" alignment="center" id="Uto-no-AGO">
+                                                <color key="color" red="0.12988293401564951" green="0.2437987069538409" blue="0.37061365223463683" alpha="1" colorSpace="calibratedRGB"/>
+                                            </separator>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="iconImage" destination="R0E-gT-5RN" id="WhO-h1-Vez"/>
+                                        <outlet property="titleLabel" destination="yqq-d0-VKH" id="GkH-P7-0uq"/>
+                                        <segue destination="tjL-yY-qXQ" kind="push" id="jhP-t2-ZkX"/>
+                                    </connections>
+                                </tableRow>
+                                <tableRow identifier="SearchMenuRow" id="iSc-dG-KGV" userLabel="Search" customClass="MenuRow" customModule="Dionysus_WatchKit_Extension">
+                                    <group key="rootItem" width="1" height="44" alignment="left" layout="vertical" spacing="0.0" id="8kp-KR-2Gs">
+                                        <items>
+                                            <group width="1" height="42" alignment="left" id="l3Q-bS-CF3">
+                                                <items>
+                                                    <group width="0.050000000000000003" height="1" alignment="left" spacing="0.0" id="w8m-Dy-fTF"/>
+                                                    <imageView width="0.14999999999999999" height="1" alignment="left" image="favorites" contentMode="scaleAspectFit" id="8Rc-qQ-ICd"/>
+                                                    <group width="0.02" height="1" alignment="left" id="Ns9-Op-z8X"/>
+                                                    <label width="0.75" height="1" alignment="left" text="Search" minimumScaleFactor="0.5" id="Ccf-zS-mfO">
+                                                        <fontDescription key="font" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
+                                                    </label>
+                                                </items>
+                                            </group>
+                                            <separator width="0.80000000000000004" alignment="center" id="hkV-PU-Cnl">
+                                                <color key="color" red="0.12988293400000001" green="0.243798707" blue="0.37061365219999998" alpha="1" colorSpace="calibratedRGB"/>
+                                            </separator>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="iconImage" destination="8Rc-qQ-ICd" id="FRJ-34-oSK"/>
+                                        <outlet property="titleLabel" destination="Ccf-zS-mfO" id="7y5-La-RlV"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
                     </items>
+                    <connections>
+                        <outlet property="table" destination="m7v-MO-UvP" id="XCv-QK-R97"/>
+                    </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="237" y="555"/>
+            <point key="canvasLocation" x="220" y="555"/>
         </scene>
         <!--Rotary-->
         <scene sceneID="yih-b9-Wfp">
@@ -280,7 +328,7 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="488" y="12"/>
+            <point key="canvasLocation" x="471" y="555"/>
         </scene>
         <!--Favorites-->
         <scene sceneID="qWl-ly-F2h">
@@ -289,7 +337,7 @@
                     <items>
                         <table alignment="left" layout="vertical" id="NlB-rW-xYk">
                             <items>
-                                <tableRow identifier="FavoriteChannel" id="xf8-Ro-ppe" customClass="FavoriteChannelRow" customModule="Dionysus_WatchKit_Extension">
+                                <tableRow identifier="FavoriteChannelRow" id="xf8-Ro-ppe" customClass="FavoriteChannelRow" customModule="Dionysus_WatchKit_Extension">
                                     <group key="rootItem" width="1" alignment="right" layout="vertical" id="YJn-6y-Ham">
                                         <items>
                                             <group width="1" alignment="left" id="dwz-CQ-7Ir">
@@ -315,7 +363,7 @@
                                                 </items>
                                             </group>
                                             <separator width="0.75" alignment="right" id="n2Y-jM-fpw">
-                                                <color key="color" red="0.050980392159999999" green="0.094117647060000004" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="color" red="0.12988293400000001" green="0.243798707" blue="0.37061365219999998" alpha="1" colorSpace="calibratedRGB"/>
                                             </separator>
                                         </items>
                                     </group>
@@ -334,7 +382,7 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="488" y="288"/>
+            <point key="canvasLocation" x="471" y="6"/>
         </scene>
         <!--Numpad-->
         <scene sceneID="4fD-7n-yLo">
@@ -461,7 +509,7 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="488" y="555"/>
+            <point key="canvasLocation" x="471" y="282"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">
@@ -484,7 +532,7 @@
             <objects>
                 <controller id="4sK-HA-Art" customClass="NotificationController" customModule="Dionysus_Watch_App" customModuleProvider="target"/>
             </objects>
-            <point key="canvasLocation" x="462" y="807"/>
+            <point key="canvasLocation" x="471" y="807"/>
         </scene>
     </scenes>
 </document>

@@ -17,17 +17,15 @@ class FavoritesInterfaceController: WKInterfaceController {
         super.init(context: context)
         
         func completion(request: NSURLRequest!, favorites: [Channel]!) {
-            if self.table != nil {
-                let t = self.table!
-                
-                t.setNumberOfRows(self.favoriteChannels.count, withRowType: "FavoriteChannel")
+            if let t = table {
+                t.setNumberOfRows(self.favoriteChannels.count, withRowType: "FavoriteChannelRow")
                 
                 for i in 0 ..< t.numberOfRows {
                     if let  row = t.rowControllerAtIndex(i) as? FavoriteChannelRow {
                         let favorite = self.favoriteChannels[i]
                         row.titleLabel!.setText(favorite.valueForKey(kTitle) as? String)
                         if var networkURI = favorite.valueForKey(kNetworkLogoURI) as? String {
-                            let resizedURI: String = networkURI + "?w=90&h=75"
+                            let resizedURI: String = networkURI + "?w=90"
                             row.networkImage!.setImage(UIImage(data:NSData(contentsOfURL: NSURL(string: resizedURI )!)!))
                         }
                         
@@ -66,17 +64,20 @@ class FavoritesInterfaceController: WKInterfaceController {
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
-        NSLog("%@ will activate", self)
     }
     
     override func didDeactivate() {
         // This method is called when watch view controller is no longer visible
-        NSLog("%@ did deactivate", self)
         super.didDeactivate()
     }
     
     override func table(table: WKInterfaceTable, didSelectRowAtIndex rowIndex: Int) {
-        WebOperations.tuneToChannel(favoriteChannels[rowIndex].number, deviceMacAddress: "000004A8C1BE", completion: nil, failure: nil)
+        if let device = Device.defaultDevice() {
+            WebOperations.tuneToChannel(favoriteChannels[rowIndex].number, deviceMacAddress: device.macAddress, completion: nil, failure: nil)
+        } else {
+            //TODO: Figure out if it is possible to have a default device... if so, need some type of notification telling user they need to set their device.
+            //      If not, then assert in default device call on Device class
+        }
     }
     
     

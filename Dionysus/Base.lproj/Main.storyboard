@@ -109,7 +109,6 @@
                             <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="W5i-JW-9iA" secondAttribute="trailing" constant="10" id="2vJ-9C-yd0"/>
                             <constraint firstItem="CdQ-FQ-Eml" firstAttribute="centerY" secondItem="QqF-aS-Ape" secondAttribute="centerY" constant="-0.5" id="375-q6-Gq0"/>
                             <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="CdQ-FQ-Eml" secondAttribute="trailing" constant="10" id="4OJ-R1-uXX"/>
-                            <constraint firstItem="CdQ-FQ-Eml" firstAttribute="leading" secondItem="QqF-aS-Ape" secondAttribute="leading" id="56N-He-haP"/>
                             <constraint firstItem="QqF-aS-Ape" firstAttribute="leading" secondItem="E0U-IO-KJ4" secondAttribute="leading" id="6pq-mV-85c"/>
                             <constraint firstItem="QqF-aS-Ape" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="6qd-M6-Qc4"/>
                             <constraint firstItem="u2J-g5-2Cb" firstAttribute="centerY" secondItem="kQH-wG-lcT" secondAttribute="centerY" constant="-0.5" id="Bcq-J4-CSi"/>
@@ -117,7 +116,6 @@
                             <constraint firstItem="u2J-g5-2Cb" firstAttribute="width" secondItem="E0U-IO-KJ4" secondAttribute="width" id="Kgo-MX-kud"/>
                             <constraint firstItem="u2J-g5-2Cb" firstAttribute="top" secondItem="E0U-IO-KJ4" secondAttribute="bottom" constant="8" id="M3B-iO-AZh"/>
                             <constraint firstItem="u2J-g5-2Cb" firstAttribute="leading" secondItem="QqF-aS-Ape" secondAttribute="leading" id="Mxt-XZ-hai"/>
-                            <constraint firstItem="CdQ-FQ-Eml" firstAttribute="top" secondItem="QqF-aS-Ape" secondAttribute="bottom" constant="4" id="QdF-tQ-dRr"/>
                             <constraint firstItem="9e1-1X-VhD" firstAttribute="top" secondItem="hTU-bb-rXs" secondAttribute="bottom" constant="8" id="RYO-Ie-fjr"/>
                             <constraint firstItem="hTU-bb-rXs" firstAttribute="width" secondItem="u2J-g5-2Cb" secondAttribute="width" id="WjU-VD-Jaa"/>
                             <constraint firstItem="9e1-1X-VhD" firstAttribute="leading" secondItem="QqF-aS-Ape" secondAttribute="leading" id="YUt-ae-gMc"/>
@@ -139,12 +137,6 @@
                             <constraint firstItem="9e1-1X-VhD" firstAttribute="leading" secondItem="W5i-JW-9iA" secondAttribute="leading" constant="-7" id="xX9-H9-9KZ"/>
                             <constraint firstItem="CdQ-FQ-Eml" firstAttribute="leading" secondItem="QqF-aS-Ape" secondAttribute="trailing" constant="10" id="yo4-dx-mSo"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="56N-He-haP"/>
-                                <exclude reference="QdF-tQ-dRr"/>
-                            </mask>
-                        </variation>
                     </view>
                     <connections>
                         <outlet property="currentEnvironmentLabel" destination="W5i-JW-9iA" id="IrI-nX-Cir"/>
