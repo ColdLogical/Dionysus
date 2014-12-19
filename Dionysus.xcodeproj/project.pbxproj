@@ -386,6 +386,7 @@
 				188A25671A1D17E1002C8AE4 /* Sources */,
 				188A25681A1D17E1002C8AE4 /* Frameworks */,
 				188A25691A1D17E1002C8AE4 /* Resources */,
+				189C77721A44A3AC00FCB4FE /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -525,6 +526,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		189C77721A44A3AC00FCB4FE /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "#Header Doc Currently doesn't support Swift, uncomment when it does brah\n\n#export LANG=en_US.US-ASCII\n# generate html code document for source code\n# https://developer.apple.com/library/mac/documentation/DeveloperTools/Conceptual/HeaderDoc/usage/usage.html#//apple_ref/doc/uid/TP40001215-CH337-SW2\n#echo \"Generating Documentation\"\n\n#DocDirectory=\"${SRCROOT}/Documentation/${TARGET_NAME}\"\n\n#if [ ! -d \"$DocDirectory\" ]; then\n#echo \"No Documentation Directory, creating $DocDirectory\"\n#mkdir -p \"$DocDirectory\"\n#fi\n\n#headerdoc2html -o \"$DocDirectory\" \"${SRCROOT}/${TARGET_NAME}\"\n#gatherheaderdoc \"$DocDirectory\"";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		186ACC8B1A0C491800512F12 /* Sources */ = {
@@ -778,6 +795,7 @@
 		188A25881A1D17E2002C8AE4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CODE_SIGN_ENTITLEMENTS = "Dionysus WatchKit Extension/Dionysus WatchKit Extension.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -797,6 +815,7 @@
 		188A25891A1D17E2002C8AE4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CODE_SIGN_ENTITLEMENTS = "Dionysus WatchKit Extension/Dionysus WatchKit Extension.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
