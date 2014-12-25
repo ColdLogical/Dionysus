@@ -9,40 +9,42 @@
 import WatchKit
 import NotificationCenter
 
+/**
+*        Initial menu interface controller for watch application
+*               Displays a menu to get to the various screens of the application
+*/
 class DionysusInterfaceController: WKInterfaceController {
-    @IBOutlet var table: WKInterfaceTable?
-    
-    override init(context: AnyObject?) {
-        super.init(context: context)
-
-        if let t = table {
-            t.setRowTypes(["RotaryMenuRow", "NumpadMenuRow", "FavoritesMenuRow", "SearchMenuRow"])
+        /// Interface Table for the menu
+        @IBOutlet var table: WKInterfaceTable?
+        
+        /**
+        Override of default init function to set up menu rows and do initial fetch of channels to fill data
+        
+        :param: context The context used to instantiate the interface controller
+        
+        :returns: configured DionysusInterfaceController with all the rows of the menu items configured
+        */
+        override init(context: AnyObject?) {
+                super.init(context: context)
+                
+                if let t = table {
+                        t.setRowTypes(["RotaryMenuRow", "NumpadMenuRow", "FavoritesMenuRow", "SearchMenuRow"])
+                }
+                
+                WebOperations.fetchChannels(nil, failure: nil)
         }
         
-        WebOperations.fetchChannels(nil, failure: nil)
-    }
-    
-    override func willActivate() {
-        // This method is called when watch view controller is about to be visible to user
-        super.willActivate()
-    }
-    
-    override func didDeactivate() {
-        // This method is called when watch view controller is no longer visible
-        super.didDeactivate()
-    }
-    
-//    override func table(table: WKInterfaceTable, didSelectRowAtIndex rowIndex: Int) {
-//        switch rowIndex {
-//        case 0:
-//        case 1:
-//        case 2:
-//        }
-//        if let device = Device.defaultDevice() {
-//            WebOperations.tuneToChannel(favoriteChannels[rowIndex].number, deviceMacAddress: device.macAddress, completion: nil, failure: nil)
-//        } else {
-//            //TODO: Figure out if it is possible to have a default device... if so, need some type of notification telling user they need to set their device.
-//            //      If not, then assert in default device call on Device class
-//        }
-//    } 
+        //    override func table(table: WKInterfaceTable, didSelectRowAtIndex rowIndex: Int) {
+        //        switch rowIndex {
+        //        case 0:
+        //        case 1:
+        //        case 2:
+        //        }
+        //        if let device = Device.defaultDevice() {
+        //            WebOperations.tuneToChannel(favoriteChannels[rowIndex].number, deviceMacAddress: device.macAddress, completion: nil, failure: nil)
+        //        } else {
+        //            //TODO: Figure out if it is possible to have a default device... if so, need some type of notification telling user they need to set their device.
+        //            //      If not, then assert in default device call on Device class
+        //        }
+        //    } 
 }

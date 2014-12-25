@@ -36,101 +36,149 @@ public let kTitleStartDate = "titleStartDate"
 public let kTitleStartDateKey = "StartDate"
 
 @objc(Channel)
+/**
+*       Managed object that represents a Channel with associated information, such as ESPN or Disney.
+*/
 public class Channel: NSManagedObject {
-    
-    @NSManaged public var callSign: String
-    @NSManaged public var channelId: String
-    @NSManaged public var episodeNumber: String
-    @NSManaged public var episodeTitle: String
-    @NSManaged public var isFavorite: NSNumber
-    @NSManaged public var networkLogoURI: String
-    @NSManaged public var number: String
-    @NSManaged public var seasonNumber: String
-    @NSManaged public var title: String
-    @NSManaged public var titleEndDate: NSDate
-    @NSManaged public var titleStartDate: NSDate
-    
-    public class func allFavorites() -> [Channel] {
-        if let results = DataManager.sharedInstance.fetchResults(kChannelKey, predicate: NSPredicate(format: "isFavorite = %@", true)) as? [Channel] {
-            return results
-        }
         
-        return [Channel]()
-    }
-    
-    public class func deleteChannel(channel: Channel!) {
-        DataManager.sharedInstance.delete(channel)
-    }
-    
-    public class func existingOrNew(channelId: String!) -> Channel {
-        let c = DataManager.sharedInstance.existingOrNewEntity("Channel", predicate: NSPredicate(format: "channelId = %@", channelId)) as Channel
+        /// The callsign of the channel
+        @NSManaged public var callSign: String
+        /// The unique channel identification number, in a string
+        @NSManaged public var channelId: String
+        /// The episode number of the currently playing asset on the channel
+        @NSManaged public var episodeNumber: String
+        /// The episode title of the currently playing asset on the channel
+        @NSManaged public var episodeTitle: String
+        /// A boolean indicating if the channel is a favorite channel
+        @NSManaged public var isFavorite: NSNumber
+        /// The network logo URI, used to dynamically download the image for the network logo
+        @NSManaged public var networkLogoURI: String
+         /// The channel number, in a string
+        @NSManaged public var number: String
+        /// The season number of the currently playing asset on the channel
+        @NSManaged public var seasonNumber: String
+        /// The title of the currently playing asset on the channel
+        @NSManaged public var title: String
+        /// The end date of the currently playing asset on the channel
+        @NSManaged public var titleEndDate: NSDate
+        /// The start date of the currently playing asset on the channel
+        @NSManaged public var titleStartDate: NSDate
         
-        if c.valueForKey(kChannelIdKey) as? String != channelId {
-            //A brand new entity, so set its macAddress
-            c.channelId = channelId
-            DataManager.sharedInstance.save()
-        }
+        /**
+        Fetches a list of all the channel objects marked as favorites from the managed object context.
         
-        return c
-    }
-    
-    public class func existingOrNewFromDictionary(dictionary: NSDictionary!) -> Channel {
-        var c: Channel?
-        if let channelDict = dictionary[kChannelKey] as? NSDictionary {
-            if let channelId = channelDict[kChannelIdKey] as? String {
-                c = Channel.existingOrNew(channelId)
-            } else {
-                c = Channel.newChannel()
-            }
-        }
-        
-        //Update values of entity
-        c!.parseValues(dictionary)
-        DataManager.sharedInstance.save()
-        
-        return c!
-    }
-    
-    public class func newChannel() -> Channel {
-        return DataManager.sharedInstance.newEntity("Channel") as Channel
-    }
-    
-    public func parseValues(values: NSDictionary!) {
-        if let channelDict = values[kChannelKey] as? NSDictionary {
-            self.setValue(channelDict[kChannelIdKey] as? String ?? "", forKey:kChannelId)
-            self.setValue(channelDict[kCallSignKey] as? String ?? "", forKey:kCallSign)
-            self.setValue(channelDict[kNumberKey] as? String ?? "", forKey:kNumber)
-        
-            if let networkArray = channelDict[kNetworkLogoURIKey] as? NSArray {
-                for dict in networkArray {
-                    self.setValue(dict[kImageURIKey] as? String ?? "", forKey:kNetworkLogoURI)
-                }
-            }
-        }
-    
-        if let titleArray = values[kTitleKey] as? NSArray {
-            if let dict = titleArray[0] as? NSDictionary {
-                if let deliveryArray = dict[kDeliveryKey] as? NSArray {
-                    if let deliveryDict = deliveryArray[0] as? NSDictionary {
-                        if let startString = deliveryDict[kTitleStartDateKey] as? NSString {
-                            let startDate = NSDate(timeIntervalSince1970: startString.doubleValue)
-                            self.setValue(startDate, forKey: kTitleStartDate)
-                        }
-                        
-                        if let endString = deliveryDict[kTitleEndDateKey] as? NSString {
-                            let endDate = NSDate(timeIntervalSince1970: endString.doubleValue)
-                            self.setValue(endDate, forKey: kTitleEndDate)
-                        }
-                    }
+        :returns: An array of all channels marked as favorites.
+        */
+        public class func allFavorites() -> [Channel] {
+                if let results = DataManager.sharedInstance.fetchResults(kChannelKey, predicate: NSPredicate(format: "isFavorite = %@", true)) as? [Channel] {
+                        return results
                 }
                 
-                self.setValue(dict[kEpisodeNumberKey]  as? String, forKey:kEpisodeNumber)
-                self.setValue(dict[kEpisodeTitleKey]  as? String, forKey:kEpisodeTitle)
-                self.setValue(dict[kTitleNameKey]  as? String, forKey:kTitle)
-                self.setValue(dict[kSeasonNumberKey]  as? String, forKey:kSeasonNumber)
-            }
+                return [Channel]()
         }
         
-        DataManager.sharedInstance.save()
-    }
+        /**
+        Helper function to delete a channel object.
+        
+        :param: channel The specific channenl to delete.
+        */
+        public class func deleteChannel(channel: Channel!) {
+                DataManager.sharedInstance.delete(channel)
+        }
+        
+        /**
+        Helper function to create a channel object based on channel ID.
+        
+        :param: channelId A string representation of the channel ID.
+        
+        :returns: A channel object with the input channel ID
+        */
+        public class func existingOrNew(channelId: String!) -> Channel {
+                let c = DataManager.sharedInstance.existingOrNewEntity("Channel", predicate: NSPredicate(format: "channelId = %@", channelId)) as Channel
+                
+                if c.valueForKey(kChannelIdKey) as? String != channelId {
+                        //A brand new entity, so set its macAddress
+                        c.channelId = channelId
+                        DataManager.sharedInstance.save()
+                }
+                
+                return c
+        }
+        
+        /**
+        Helper function to create a channel object, still based on channel ID, but it will pull the channel ID from the dictionary that is passed in under the key "ChannelId".
+        
+        :param: dictionary A dictionary with associated channel ID data under the "ChannelId" key.
+        
+        :returns: A channel object with the input channel ID
+        */
+        public class func existingOrNewFromDictionary(dictionary: NSDictionary!) -> Channel {
+                var c: Channel?
+                if let channelDict = dictionary[kChannelKey] as? NSDictionary {
+                        if let channelId = channelDict[kChannelIdKey] as? String {
+                                c = Channel.existingOrNew(channelId)
+                        } else {
+                                c = Channel.newChannel()
+                        }
+                }
+                
+                //Update values of entity
+                c!.parseValues(dictionary)
+                DataManager.sharedInstance.save()
+                
+                return c!
+        }
+        
+        /**
+        Helper function that creates a brand new channel with defaults values.
+        
+        :returns: A new channel object.
+        */
+        public class func newChannel() -> Channel {
+                return DataManager.sharedInstance.newEntity("Channel") as Channel
+        }
+        
+        /**
+        Helper function that sets the channel's associated values to the values from the dictionary. The dictionary is typically returned from the web services and parsed using this method.
+        
+        :param: values A dictionary with any combination of values.
+        */
+        public func parseValues(values: NSDictionary!) {
+                if let channelDict = values[kChannelKey] as? NSDictionary {
+                        self.setValue(channelDict[kChannelIdKey] as? String ?? "", forKey:kChannelId)
+                        self.setValue(channelDict[kCallSignKey] as? String ?? "", forKey:kCallSign)
+                        self.setValue(channelDict[kNumberKey] as? String ?? "", forKey:kNumber)
+                        
+                        if let networkArray = channelDict[kNetworkLogoURIKey] as? NSArray {
+                                for dict in networkArray {
+                                        self.setValue(dict[kImageURIKey] as? String ?? "", forKey:kNetworkLogoURI)
+                                }
+                        }
+                }
+                
+                if let titleArray = values[kTitleKey] as? NSArray {
+                        if let dict = titleArray[0] as? NSDictionary {
+                                if let deliveryArray = dict[kDeliveryKey] as? NSArray {
+                                        if let deliveryDict = deliveryArray[0] as? NSDictionary {
+                                                if let startString = deliveryDict[kTitleStartDateKey] as? NSString {
+                                                        let startDate = NSDate(timeIntervalSince1970: startString.doubleValue)
+                                                        self.setValue(startDate, forKey: kTitleStartDate)
+                                                }
+                                                
+                                                if let endString = deliveryDict[kTitleEndDateKey] as? NSString {
+                                                        let endDate = NSDate(timeIntervalSince1970: endString.doubleValue)
+                                                        self.setValue(endDate, forKey: kTitleEndDate)
+                                                }
+                                        }
+                                }
+                                
+                                self.setValue(dict[kEpisodeNumberKey]  as? String, forKey:kEpisodeNumber)
+                                self.setValue(dict[kEpisodeTitleKey]  as? String, forKey:kEpisodeTitle)
+                                self.setValue(dict[kTitleNameKey]  as? String, forKey:kTitle)
+                                self.setValue(dict[kSeasonNumberKey]  as? String, forKey:kSeasonNumber)
+                        }
+                }
+                
+                DataManager.sharedInstance.save()
+        }
 }

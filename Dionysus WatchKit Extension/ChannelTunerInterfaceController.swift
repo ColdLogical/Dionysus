@@ -9,7 +9,7 @@
 import WatchKit
 
 /**
-*  WatchKit interface controller for channel tuning by number.
+*       WatchKit interface controller for channel tuning by number.
 */
 class ChannelTunerInterfaceController: WKInterfaceController {
         /// WatchKit label for displaying the call sign of a channel, based on the current input.

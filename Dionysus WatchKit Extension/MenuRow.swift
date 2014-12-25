@@ -8,7 +8,12 @@
 
 import WatchKit
 
+/**
+*      Row for WKInterfaceTable that has an image and title. Used for the menu of the application
+*/
 class MenuRow: NSObject {
-    @IBOutlet  var iconImage: WKInterfaceImage?
-    @IBOutlet  var titleLabel: WKInterfaceLabel?
+        /// Outlet to icon WKInterfaceImage object
+        @IBOutlet  var iconImage: WKInterfaceImage?
+        /// Outlet to title WKInterfaceLabel object
+        @IBOutlet  var titleLabel: WKInterfaceLabel?
 }

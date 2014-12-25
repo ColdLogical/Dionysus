@@ -539,7 +539,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "#Header Doc Currently doesn't support Swift, uncomment when it does brah\n\n#export LANG=en_US.US-ASCII\n# generate html code document for source code\n# https://developer.apple.com/library/mac/documentation/DeveloperTools/Conceptual/HeaderDoc/usage/usage.html#//apple_ref/doc/uid/TP40001215-CH337-SW2\n#echo \"Generating Documentation\"\n\n#DocDirectory=\"${SRCROOT}/Documentation/${TARGET_NAME}\"\n\n#if [ ! -d \"$DocDirectory\" ]; then\n#echo \"No Documentation Directory, creating $DocDirectory\"\n#mkdir -p \"$DocDirectory\"\n#fi\n\n#headerdoc2html -o \"$DocDirectory\" \"${SRCROOT}/${TARGET_NAME}\"\n#gatherheaderdoc \"$DocDirectory\"";
+			shellScript = "";
 		};
 /* End PBXShellScriptBuildPhase section */
 

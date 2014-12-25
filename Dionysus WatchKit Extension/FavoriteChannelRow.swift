@@ -8,9 +8,16 @@
 
 import WatchKit
 
+/**
+*       Interface table row object used for favorite channels
+*/
 class FavoriteChannelRow: NSObject {
-    @IBOutlet  var networkImage: WKInterfaceImage?
-    @IBOutlet  var episodeLabel: WKInterfaceLabel?
-    @IBOutlet  var timeLabel: WKInterfaceLabel?
-    @IBOutlet  var titleLabel: WKInterfaceLabel?
+        /// Outlet to network WKInterfaceImage object
+        @IBOutlet  var networkImage: WKInterfaceImage?
+        /// Outlet to episode WKInterfaceLabel object
+        @IBOutlet  var episodeLabel: WKInterfaceLabel?
+        /// Outlet to time WKInterfaceLabel object
+        @IBOutlet  var timeLabel: WKInterfaceLabel?
+        /// Outlet to title WKInterfaceLabel object
+        @IBOutlet  var titleLabel: WKInterfaceLabel?
 }

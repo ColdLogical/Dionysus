@@ -1,0 +1,26 @@
+WebOperations.swift
+	func loginCompletion(request: NSURLRequest, json: NSDictionary!)
+NotificationController.swift
+	class NotificationController: WKUserNotificationInterfaceController
+WebOperation.swift
+	required public init(URL: String)
+	required convenience public init(URL: String, parameters: [String:String]?, data: [String:String]?, xmlDictionary: NSDictionary?)
+	required convenience public init(URL: String, data: [String:String]?)
+	required convenience public init(URL: String, parameters: [String:String]?)
+	required convenience public init(URL: String, parameters: [String:String]?, xmlDictionary: NSDictionary?)
+	public class func queryString(queries: [String:String]!) -> String!
+	public func appendStringToData(string: String!)
+	public func connect(completion: ((request: NSURLRequest, json: NSDictionary) -> Void)?, failure: ((request: NSURLRequest, error: NSError) -> Void)?)
+DataManager.swift
+	struct Static
+Channel.swift
+	public class Channel: NSManagedObject
+MockOperations.swift
+	override func connect(completion: ((request: NSURLRequest, json: NSDictionary) -> Void)?, failure: ((request: NSURLRequest, error: NSError) -> Void)?)
+FavoritesInterfaceController.swift
+	override init(context: AnyObject?)
+	override func table(table: WKInterfaceTable, didSelectRowAtIndex rowIndex: Int)
+DionysusInterfaceController.swift
+	override init(context: AnyObject?)
+Device.swift
+	public class Device: NSManagedObject
