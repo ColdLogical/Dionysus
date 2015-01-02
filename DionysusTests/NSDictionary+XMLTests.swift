@@ -24,9 +24,7 @@ class NSDictionary_XMLTests: XCTestCase {
     }
     
     func testXML() {
-        //Make sure it has a header
         let xml = dictionary.XML()
-        XCTAssertTrue(xml.hasPrefix(kXMLHeader), "XML has to be prefixed by the XML header")
         
         //Check that the end is the XML of values
         XCTAssertTrue(xml.hasSuffix(dictionary.XMLOfValues()), "XML must have XML of values of dictionary")
