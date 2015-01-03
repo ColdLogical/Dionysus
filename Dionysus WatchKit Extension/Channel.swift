@@ -19,6 +19,7 @@ public let kEpisodeNumber = "episodeNumber"
 public let kEpisodeNumberKey = "Episode"
 public let kEpisodeTitle = "episodeTitle"
 public let kEpisodeTitleKey = "EpisodeName"
+public let kImageKey = "Image"
 public let kImageURIKey = "ImageUri"
 public let kIsFavorite = "isFavorite"
 public let kNetworkLogoURI = "networkLogoURI"
@@ -28,10 +29,15 @@ public let kNumberKey = "ChannelNumber"
 public let kSeasonNumber = "seasonNumber"
 public let kSeasonNumberKey = "Season"
 public let kTitle = "title"
-public let kTitleKey = "Title"
-public let kTitleNameKey = "Name"
+public let kTitleDescriptionKey = "LongDescription"
+public let kTitleDescription = "titleDescription"
 public let kTitleEndDate = "titleEndDate"
 public let kTitleEndDateKey = "EndDate"
+public let kTitleId = "titleId"
+public let kTitleIdKey = "TitleId"
+public let kTitleImage = "titleImage"
+public let kTitleKey = "Title"
+public let kTitleNameKey = "Name"
 public let kTitleStartDate = "titleStartDate"
 public let kTitleStartDateKey = "StartDate"
 
@@ -61,6 +67,8 @@ public class Channel: NSManagedObject {
         @NSManaged public var title: String
         /// The end date of the currently playing asset on the channel
         @NSManaged public var titleEndDate: NSDate
+        /// The id of the currently playing asset on the channel
+        @NSManaged public var titleId: String
         /// The start date of the currently playing asset on the channel
         @NSManaged public var titleStartDate: NSDate
         
@@ -78,12 +86,47 @@ public class Channel: NSManagedObject {
         }
         
         /**
+        Function that creates the asset image URI that will be resized by the server.
+        
+        :param: width Integer of the width the image needs to be resized to
+        
+        :returns: The URI of the asset image with the width paramater attached, for resizing by the server
+        */
+        public func assetImageURIWithWidth(width: Int) -> String? {
+                if var networkURI = valueForKey(kTitleImage) as? String {
+                        let resizedURI: String = networkURI + "?w=\(width)"
+                        return resizedURI
+                }
+                
+                return nil
+        }
+        
+        /**
         Helper function to delete a channel object.
         
         :param: channel The specific channenl to delete.
         */
         public class func deleteChannel(channel: Channel!) {
                 DataManager.sharedInstance.delete(channel)
+        }
+        
+        /**
+        Function that will return a properly formatted string representing information about the season, episode, and title.
+        
+        :returns: A string in various formats such as "(S#, E#) Title"
+        */
+        public func episodeText() -> String {
+                let seasonNumber = valueForKey(kSeasonNumber) as? String
+                let episodeNumber = valueForKey(kEpisodeNumber) as? String
+                let episodeTitle = valueForKey(kEpisodeTitle) as? String
+                
+                var text = String()
+                
+                if seasonNumber != nil && episodeNumber != nil && episodeTitle != nil {
+                        text = "(S\(seasonNumber!), E\(episodeNumber!)) \(episodeTitle!)"
+                }
+                
+                return text
         }
         
         /**
@@ -139,6 +182,22 @@ public class Channel: NSManagedObject {
         }
         
         /**
+        Function that creates the network logo image URI that will be resized by the server.
+        
+        :param: width Integer of the width the image needs to be resized to
+        
+        :returns: The URI of the network logo image with the width paramater attached, for resizing by the server
+        */
+        public func networkImageURIWithWidth(width: Int) -> String? {
+                if var networkURI = valueForKey(kNetworkLogoURI) as? String {
+                        let resizedURI: String = networkURI + "?w=\(width)"
+                        return resizedURI
+                }
+        
+                return nil
+        }
+        
+        /**
         Helper function that sets the channel's associated values to the values from the dictionary. The dictionary is typically returned from the web services and parsed using this method.
         
         :param: values A dictionary with any combination of values.
@@ -172,13 +231,40 @@ public class Channel: NSManagedObject {
                                         }
                                 }
                                 
-                                self.setValue(dict[kEpisodeNumberKey]  as? String, forKey:kEpisodeNumber)
-                                self.setValue(dict[kEpisodeTitleKey]  as? String, forKey:kEpisodeTitle)
-                                self.setValue(dict[kTitleNameKey]  as? String, forKey:kTitle)
-                                self.setValue(dict[kSeasonNumberKey]  as? String, forKey:kSeasonNumber)
+                                self.setValue(dict[kEpisodeNumberKey] as? String, forKey:kEpisodeNumber)
+                                self.setValue(dict[kEpisodeTitleKey] as? String, forKey:kEpisodeTitle)
+                                self.setValue(dict[kTitleIdKey] as? String, forKey:kTitleId)
+                                self.setValue(dict[kTitleNameKey] as? String, forKey:kTitle)
+                                self.setValue(dict[kSeasonNumberKey] as? String, forKey:kSeasonNumber)
                         }
                 }
                 
                 DataManager.sharedInstance.save()
+        }
+        
+        /**
+        Function that will return a properly formatted string representing information about the asset's current time frame.
+        
+        :returns: A string in various formats such as "7:00 - 8:00"
+        */
+        public func timeText() -> String {
+                var text = String()
+                
+                if let startDate = valueForKey(kTitleStartDate) as? NSDate {
+                        let formatter = NSDateFormatter()
+                        formatter.timeStyle = NSDateFormatterStyle.ShortStyle
+                        
+                        let startString = formatter.stringFromDate(startDate)
+                        if let endDate = valueForKey(kTitleEndDate) as? NSDate {
+                                let endString = formatter.stringFromDate(endDate)
+                                text = "\(startString) - \(endString)"
+                        } else {
+                                text = "\(startString)"
+                        }
+                } else {
+                        text = ""
+                }
+                
+                return text
         }
 }

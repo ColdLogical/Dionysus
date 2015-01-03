@@ -333,7 +333,42 @@
         <!--Asset Detail-->
         <scene sceneID="ZOz-M4-ErN">
             <objects>
-                <controller id="jJX-CT-bTe" userLabel="Asset Detail"/>
+                <controller spacing="0.0" id="jJX-CT-bTe" userLabel="Asset Detail">
+                    <items>
+                        <group width="1" height="0.5" alignment="left" layout="vertical" radius="0.0" spacing="0.0" hasDetent="YES" id="XLX-25-gRF">
+                            <items>
+                                <group width="1" height="0.90000000000000002" alignment="left" radius="0.0" spacing="0.0" id="Q0a-gw-sAz" userLabel="Asset Image Group">
+                                    <items>
+                                        <imageView width="0.25" height="0.40000000000000002" alignment="right" verticalAlignment="bottom" id="gbW-tY-ywy" userLabel="Network Image"/>
+                                    </items>
+                                </group>
+                                <group width="1" height="0.050000000000000003" alignment="left" radius="0.0" spacing="0.0" id="7rm-gT-2pd" userLabel="Progress Group">
+                                    <items>
+                                        <group width="0.5" height="1" alignment="left" radius="0.0" spacing="0.0" id="VqY-54-nBJ">
+                                            <color key="backgroundColor" red="0.11372549830000001" green="0.73725491759999995" blue="0.61176472900000001" alpha="1" colorSpace="deviceRGB"/>
+                                        </group>
+                                        <group width="0.5" height="1" alignment="left" radius="0.0" spacing="0.0" id="Ds0-UK-BPL">
+                                            <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        </group>
+                                    </items>
+                                </group>
+                            </items>
+                        </group>
+                        <group width="1" alignment="left" layout="vertical" radius="0.0" spacing="1" hasDetent="YES" id="GTV-86-CM9">
+                            <items>
+                                <label alignment="left" text="Title" id="csH-WR-6s4"/>
+                                <label alignment="left" text="Episode" id="BFl-Ma-d5F"/>
+                                <label alignment="left" text="Time" id="ANu-aN-xw2"/>
+                                <group width="1" height="10" alignment="left" id="GRw-X0-gD7"/>
+                                <label alignment="left" text="Description" id="mfx-jW-ux7"/>
+                                <group width="1" height="10" alignment="left" id="Bq0-ba-Fph"/>
+                                <button width="0.90000000000000002" alignment="center" title="Watch" id="7m8-zO-jHY"/>
+                                <button width="0.90000000000000002" alignment="center" title="Record" id="FWM-At-31S"/>
+                                <button width="0.90000000000000002" alignment="center" title="Open On Device" id="72L-mW-stM"/>
+                            </items>
+                        </group>
+                    </items>
+                </controller>
             </objects>
             <point key="canvasLocation" x="713" y="343"/>
         </scene>
