@@ -22,6 +22,7 @@ public let kErrorResponseKey = "ErrorReponse"
 public let kFavoritesEndpoint = "symphony/services/v1/preferences/__FavoriteChannels__"
 public let kLoginEndpoint = "symphony/auth/login"
 public let kLineupsEndpoint = "symphony/services/v1/catalog/video/guide"
+public let kTitleDetailsEndpoint = "symphony/services/v1/catalog/video/titles/"
 public let kTokenKey = "token"
 public let kTuneChannelEndpoint = "symphony/services/v1/devices"
 public let kPasswordKey = "password"
@@ -31,9 +32,11 @@ public let kUsernameKey = "username"
 let DataOperationClass = WebOperation.self
 
 /**
-*       This class provides an abstraction to the web services and user default suite.
-*       Helper methods are provided to be able to easily access the configurable options such as the authorization token or base URL. There are abstracted web operation functions that deal with connecting to the correct endpoints and parsing the resulting json data into the correct objects.
-*       All end point touching operations should accept a completion and failure handler to be able to inform the requesting object with the correct information.
+This class provides an abstraction to the web services and user default suite.
+
+Helper methods are provided to be able to easily access the configurable options such as the authorization token or base URL. There are abstracted web operation functions that deal with connecting to the correct endpoints and parsing the resulting json data into the correct objects.
+
+All end point touching operations should accept a completion and failure handler to be able to inform the requesting object with the correct information.
 */
 public class WebOperations {
         /**
@@ -306,11 +309,78 @@ public class WebOperations {
         }
         
         /**
+        Fetchs the title details for the channel and updates the channels appropriate properties with the new information.
+        
+        :param: channel    The channel to get title details for. The channel will be updated with the information received from the server.
+        :param: completion The completion handler. This function will pass success if it received title detail information from the server.
+        :param: failure    The failure handler.
+        */
+        public class func fetchTitleDetails(channel: Channel!, completion: ((request: NSURLRequest, success: Bool!) -> Void)?, failure: ((request: NSURLRequest, error: NSError) -> Void)?) {
+                authorizedRequest() {
+                        if let auth = WebOperations.authToken() {
+                                if let titleId = channel.valueForKey(kTitleId) as? String {
+                                        let url = WebOperations.titleDetailsURL(titleId)
+                                        let params = [kTokenKey : auth]
+                                        
+                                        let op: WebOperation = DataOperationClass(URL: url, parameters: params)
+                                        
+                                        func titleDetailsCompletion(request: NSURLRequest, json: NSDictionary!) {
+                                                if let contentArray = json["Content"] as? NSArray {
+                                                        for contentDict in contentArray {
+                                                                if let titleDict = contentDict["TitleItem"] as? NSDictionary {
+                                                                        channel.setValue(titleDict["LongDescription"] as? String ?? "", forKey:kTitleDescription)
+                                                                        
+                                                                        if let imageArray = titleDict["Image"] as? NSArray {
+                                                                                var smallestImageDict: NSDictionary?
+                                                                                
+                                                                                for imageDict in imageArray {
+                                                                                        if smallestImageDict != nil {
+                                                                                                if let smallestWidth = smallestImageDict!["Width"] as? NSNumber {
+                                                                                                        if let width = imageDict["Width"] as? NSNumber {
+                                                                                                                if smallestWidth.compare(width) == NSComparisonResult.OrderedDescending {
+                                                                                                                        continue
+                                                                                                                }
+                                                                                                        } else {
+                                                                                                                continue
+                                                                                                        }
+                                                                                                }
+                                                                                                
+                                                                                        }
+                                                                                
+                                                                                        smallestImageDict = imageDict as? NSDictionary
+                                                                                }
+                                                                                
+                                                                                if smallestImageDict != nil {
+                                                                                        channel.setValue(smallestImageDict!["ImageUri"] as? String ?? "", forKey:kTitleImage)
+                                                                                }
+                                                                        }
+                                                                }
+                                                        }
+                                                }
+                                                
+                                                if completion != nil {
+                                                        completion!(request: request, success: true)
+                                                }
+                                        }
+                                        
+                                        op.connect(titleDetailsCompletion, failure:failure)
+                                } else {
+                                        
+                                }
+                        } else {
+                                if failure != nil {
+                                        failure!(request: NSURLRequest(), error: NSError(domain: "Muldor", code: 1001, userInfo: [ NSLocalizedDescriptionKey: "No auth token found while trying to fetch title details"]))
+                                }
+                        }
+                }
+        }
+        
+        /**
         Convience method that calls login(username:, password:, completion:, failure:,) with the default login parameters.
         
         :param: completion The completion handler. This function will pass in the authorization token received.
-        :param: failure    The failure handler
-        :seealso: login(username:, password:, completion:, failure:,) :\seealso:
+        :param: failure    The failure handler.
+        :seealso: login(username:, password:, completion:, failure:,)
         */
         public class func login(completion: ((request: NSURLRequest, token: String!) -> Void)?, failure: ((request: NSURLRequest, error: NSError) -> Void)?) {
                 let params = WebOperations.loginParameters()
@@ -321,8 +391,8 @@ public class WebOperations {
         Convience method that calls login(username:, password:, completion:, failure:,) with the input username and password as parameters.
         
         :param: completion The completion handler. This function will pass in the authorization token received.
-        :param: failure    The failure handler
-        :seealso: login(completion:, failure:,) :\seealso:
+        :param: failure    The failure handler.
+        :seealso: login(completion:, failure:,)
         */
         public class func login(username: String, password: String, completion: ((request: NSURLRequest, token: String!) -> Void)?, failure: ((request: NSURLRequest, error: NSError) -> Void)?) {
                 let url = WebOperations.loginURL()
@@ -468,15 +538,24 @@ public class WebOperations {
         }
         
         /**
+        Generates a title details URL by combining the base URL, the title details endpoint, and the title Id.
+        
+        :param: titleId The id of the title to get details for.
+        */
+        public class func titleDetailsURL(titleId: String!) -> String {
+                return WebOperations.baseURL() + kTitleDetailsEndpoint + "/" + titleId
+        }
+        
+        /**
         Tunes the default device to the inputted channel. Passes arguments along to the tuneToChannel(channel:,deviceMacAddress:,completion:, failure:) method, but with the default device retrived from the Device class.
         
         :param: channel    The channel ID to tune too
         :param: completion       The completion handler. This function will pass the success response received from the services.
         :param: failure    The failure handler
         */
-        public class func tuneDefaultDeviceToChannel(channel: String!, completion: ((request: NSURLRequest, successful: Bool!) -> Void)?, failure: ((request: NSURLRequest, error: NSError) -> Void)?) {
+        public class func tuneDefaultDevice(channel: String!, completion: ((request: NSURLRequest, successful: Bool!) -> Void)?, failure: ((request: NSURLRequest, error: NSError) -> Void)?) {
                 if let device =  Device.defaultDevice() {
-                        WebOperations.tuneToChannel(channel, deviceMacAddress: device.macAddress, completion: completion, failure: failure);
+                        WebOperations.tune(channel, deviceMacAddress: device.macAddress, completion: completion, failure: failure)
                 } else {
                         if failure != nil {
                                 println("No default device found, tune to default device failed")
@@ -515,7 +594,7 @@ public class WebOperations {
         :param: completion       The completion handler. This function will pass the success response received from the services.
         :param: failure          The failure handler
         */
-        public class func tuneToChannel(channel: String!, deviceMacAddress: String!, completion: ((request: NSURLRequest, successful: Bool!) -> Void)?, failure: ((request: NSURLRequest, error: NSError) -> Void)?) {
+        public class func tune(channel: String!, deviceMacAddress: String!, completion: ((request: NSURLRequest, successful: Bool!) -> Void)?, failure: ((request: NSURLRequest, error: NSError) -> Void)?) {
                 if let auth = WebOperations.authToken() {
                         let params = [kTokenKey : auth]
                         let url = WebOperations.tuneURL()

@@ -54,7 +54,7 @@ class FavoritesInterfaceController: WKInterfaceController {
         override func table(table: WKInterfaceTable, didSelectRowAtIndex rowIndex: Int) {
                 if let device = Device.defaultDevice() {
                         //NOTE: We assume this call always succeeds (cause we are moronic optimists), thus there is no implementation of completion or failure
-                        WebOperations.tuneToChannel(favoriteChannels[rowIndex].number, deviceMacAddress: device.macAddress, completion: nil, failure: nil)
+                        WebOperations.tune(favoriteChannels[rowIndex].number, deviceMacAddress: device.macAddress, completion: nil, failure: nil)
                 }
                 //NOTE: It is technically possible to not have a default device. However, this should never happen with a valid Charter customer.
                 //      Add code here to handle the user interface if we decide to handle the flow of not having a default device.

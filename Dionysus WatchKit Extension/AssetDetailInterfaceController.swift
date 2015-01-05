@@ -21,29 +21,96 @@ class AssetDetailInterfaceController: WKInterfaceController {
                         descriptionLabel!.setText(channel!.valueForKey(kTitleDescription) as? String)
                         
                         if let uri = channel!.networkImageURIWithWidth(90) {
-                                networkImage!.setImage(UIImage(data:NSData(contentsOfURL: NSURL(string: uri )!)!))
+                                networkImage!.setImage(UIImage(data:NSData(contentsOfURL:NSURL(string:uri)!)!))
                         }
                         
                         if let uri = channel!.assetImageURIWithWidth(Int(self.contentFrame.size.width)) {
-                                networkImage!.setImage(UIImage(data:NSData(contentsOfURL: NSURL(string: uri )!)!))
+                                networkImage!.setImage(UIImage(data:NSData(contentsOfURL:NSURL(string:uri)!)!))
+                        }
+                }
+        }
+        
+        /**
+        Float value representing the current progress displayed.
+        
+        This value is between 0.0 and 1.0, where 1.0 represents completion. Input values are pinned to those limits.
+        */
+        var progress: Float = 0.0 {
+                didSet {
+                        if progress > 1 {
+                                progress = 1
+                        } else if progress < 0 {
+                                progress = 0
+                        }
+                        
+                        if let pg = self.progressGroup {
+                                let progressWholeNumber: CGFloat = CGFloat(progress) * self.contentFrame.size.width
+                                pg.setWidth(progressWholeNumber)
                         }
                 }
         }
         
         /// Outlet to the asset WKInterfaceImage object
-        @IBOutlet var assetImage: WKInterfaceImage?
+        @IBOutlet var assetImageGroup: WKInterfaceGroup?
         /// Outlet to the description WKInterfaceLabel object
         @IBOutlet var descriptionLabel: WKInterfaceLabel?
+        /// Outlet to the group used to display the emptyness
+        @IBOutlet var emptynessGroup: WKInterfaceGroup?
         /// Outlet to the episode WKInterfaceLabel object
         @IBOutlet var episodeLabel: WKInterfaceLabel?
         /// Outlet to the network WKInterfaceImage object
         @IBOutlet var networkImage: WKInterfaceImage?
+        /// Outlet to the group used to display the progress
+        @IBOutlet var progressGroup: WKInterfaceGroup?
         /// Outlet to the time WKInterfaceLabel object
         @IBOutlet var timeLabel: WKInterfaceLabel?
         /// Outlet to the title WKInterfaceLabel object
         @IBOutlet var titleLabel: WKInterfaceLabel?
         
+        /**
+        Overrides the default implementation to fetch title details for the channel
+        
+        :param: context the context to create the interface controller form
+        
+        :returns: a new configured AssetDetailInterfaceController
+        */
+        override init(context: AnyObject?) {
+                super.init(context: context)
+                
+//                func success() {
+//                        self.channel = channel
+//                }
+                
+                if let c = channel {
+                        let description = c.valueForKey(kTitleDescription) as? String
+                        if description == nil || description!.isEmpty {
+//                                WebOperations.fetchTitleDetails(c, completion: nil, failure: nil)
+                        }
+                }
+        }
+        
         // MARK: Operational Methods
+        /**
+        Function that sets the right side color of the progress view.
+        
+        :param: color The color to display the emptyness in.
+        */
+        func setEmptyColor(color: UIColor) {
+                if let eg = self.emptynessGroup {
+                        eg.setBackgroundColor(color)
+                }
+        }
+        
+        /**
+        Function that sets the left side color of the progress view.
+        
+        :param: color The color to display the progress in.
+        */
+        func setProgressColor(color: UIColor!) {
+                if let pg = self.progressGroup {
+                        pg.setBackgroundColor(color)
+                }
+        }
         
         
         // MARK: Interface Actions

@@ -35,7 +35,7 @@ public let kTitleEndDate = "titleEndDate"
 public let kTitleEndDateKey = "EndDate"
 public let kTitleId = "titleId"
 public let kTitleIdKey = "TitleId"
-public let kTitleImage = "titleImage"
+public let kTitleImage = "titleImageURI"
 public let kTitleKey = "Title"
 public let kTitleNameKey = "Name"
 public let kTitleStartDate = "titleStartDate"
@@ -93,8 +93,8 @@ public class Channel: NSManagedObject {
         :returns: The URI of the asset image with the width paramater attached, for resizing by the server
         */
         public func assetImageURIWithWidth(width: Int) -> String? {
-                if var networkURI = valueForKey(kTitleImage) as? String {
-                        let resizedURI: String = networkURI + "?w=\(width)"
+                if var assetURI = valueForKey(kTitleImage) as? String {
+                        let resizedURI: String = assetURI + "?w=\(width)"
                         return resizedURI
                 }
                 

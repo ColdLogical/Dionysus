@@ -36,6 +36,8 @@ class ChannelTests: XCTestCase {
                 
                 if testChannel != nil {
                         testChannel!.parseValues(dictionary)
+                        testChannel!.setValue("picture of your sister", forKey:kTitleImage)
+                        testChannel!.setValue("your sister, like OMG", forKey:kTitleDescription)
                         DataManager.sharedInstance.save()
                 } else {
                         assert(testChannel != nil, "Test channel cannot be nil at end of setup")
