@@ -20,12 +20,10 @@ class DionysusInterfaceController: WKInterfaceController {
         /**
         Override of default init function to set up menu rows and do initial fetch of channels to fill data
         
-        :param: context The context used to instantiate the interface controller
-        
         :returns: configured DionysusInterfaceController with all the rows of the menu items configured
         */
-        override init(context: AnyObject?) {
-                super.init(context: context)
+        override init() {
+                super.init()
                 
                 if let t = table {
                         t.setRowTypes(["RotaryMenuRow", "NumpadMenuRow", "FavoritesMenuRow", "SearchMenuRow"])

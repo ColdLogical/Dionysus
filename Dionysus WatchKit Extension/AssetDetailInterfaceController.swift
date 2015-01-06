@@ -82,12 +82,10 @@ class AssetDetailInterfaceController: WKInterfaceController {
         /**
         Overrides the default implementation to fetch title details for the channel
         
-        :param: context the context to create the interface controller form
-        
         :returns: a new configured AssetDetailInterfaceController
         */
-        override init(context: AnyObject?) {
-                super.init(context: context)
+        override init() {
+                super.init()
                 
 //                func success() {
 //                        self.channel = channel

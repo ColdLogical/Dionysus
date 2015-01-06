@@ -21,12 +21,10 @@ class FavoritesInterfaceController: WKInterfaceController {
         /**
         Overrides the default implementation to fetch the list of favorite channels
         
-        :param: context the context to create the interface controller form
-        
         :returns: a new configured FavoritesInterfaceController
         */
-        override init(context: AnyObject?) {
-                super.init(context: context)
+        override init() {
+                super.init()
                 
                 WebOperations.fetchFavorites(updateRows, failure: nil)
         }
