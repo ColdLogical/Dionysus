@@ -19,7 +19,13 @@ class FavoriteChannelRow: NSObject {
                         episodeLabel!.setText(channel!.episodeText())
                         timeLabel!.setText(channel!.timeText())
                         if let uri = channel!.networkImageURIWithWidth(90) {
-                                networkImage!.setImage(UIImage(data:NSData(contentsOfURL: NSURL(string: uri )!)!))
+                                if let url = NSURL(string: uri ) {
+                                        if let data = NSData(contentsOfURL: url) {
+                                                if let image = UIImage(data: data) {
+                                                        networkImage!.setImage(image)
+                                                }
+                                        }
+                                }
                         }
                 }
         }
