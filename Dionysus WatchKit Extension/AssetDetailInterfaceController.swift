@@ -8,6 +8,13 @@
 
 import WatchKit
 
+public let kAssetImageData = "AssetImageData"
+public let kDescriptionString = "DescriptionString"
+public let kEpisodeString = "EpisodeString"
+public let kNetworkImageData = "NetworkImageData"
+public let kTimeString = "TimeString"
+public let kTitleString = "TitleString"
+
 /**
 *        Interface Controller for an asset to display all relavent information. Also allows for tuning to asset, recording asset, and opening asset on companion device.
 */
@@ -38,6 +45,24 @@ class AssetDetailInterfaceController: WKInterfaceController {
                                                 }
                                         }
                                 }
+                        }
+                }
+        }
+        
+        /// NSDictionary that holds all information to be displayed on an asset detail interface controller. This is used to display information for notifications since the current information would be incorrect.
+        var completeInfo: NSDictionary? {
+                didSet {
+                        titleLabel!.setText(completeInfo![kTitleString] as? String)
+                        episodeLabel!.setText(completeInfo![kEpisodeString] as? String)
+                        timeLabel!.setText(completeInfo![kTimeString] as? String)
+                        descriptionLabel!.setText(completeInfo![kDescriptionString] as? String)
+                        
+                        if let image = UIImage(data: completeInfo![kAssetImageData] as NSData) {
+                                assetImageGroup!.setBackgroundImage(image)
+                        }
+                        
+                        if let image = UIImage(data: completeInfo![kNetworkImageData] as NSData) {
+                                networkImage!.setImage(image)
                         }
                 }
         }
@@ -80,18 +105,18 @@ class AssetDetailInterfaceController: WKInterfaceController {
         @IBOutlet var titleLabel: WKInterfaceLabel?
         
         /**
-        Overrides the default implementation to fetch title details for the channel
+        Overides default implementation to provide support for context configuration
         
-        :returns: a new configured AssetDetailInterfaceController
+        :param: context The object used to configure the asset detail page. Can be a Channel object or an NSDictionary.
         */
-        override init() {
-                super.init()
+        override func awakeWithContext(context: AnyObject?) {
+                if let info = context  as? NSDictionary {
+                        completeInfo = info
+                }
                 
-//                func success() {
-//                        self.channel = channel
-//                }
-                
-                if let c = channel {
+                if let c = context as? Channel {
+                        channel = c
+                        
                         let description = c.valueForKey(kTitleDescription) as? String
                         if description == nil || description!.isEmpty {
 //                                WebOperations.fetchTitleDetails(c, completion: nil, failure: nil)

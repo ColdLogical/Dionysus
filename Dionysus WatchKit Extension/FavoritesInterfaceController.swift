@@ -2,7 +2,7 @@
 //  FavoritesInterfaceController.swift
 //  Dionysus
 //
-//  Created by Bush, Ryan M on 12/5/14.
+//  Created by  Bush, Ryan M on 12/5/14.
 //  Copyright (c) 2014 Charter. All rights reserved.
 //
 
@@ -26,16 +26,21 @@ class FavoritesInterfaceController: WKInterfaceController {
         override init() {
                 super.init()
                 
-                WebOperations.fetchFavorites(updateRows, failure: nil)
+                updateRows()
+                WebOperations.fetchFavorites(updateRowsAfterFetch, failure: nil)
         }
         
-        /**
+         /**
         Updates the rows of the interface table with all the favorite channels information
         
-        :param: row      the FavoriteChannelRow to update
-        :param: favorite the Channel information to update with
+        :param: request The NSURLRequest of the web operation
+        :param: favorites The list of Channels received from the web operation
         */
-        func updateRows(request: NSURLRequest!, favorites: [Channel]!) {
+        func updateRowsAfterFetch(request: NSURLRequest!, favorites: [Channel]!) {
+                updateRows()
+        }
+        
+        func updateRows() {
                 if let t = table {
                         t.setNumberOfRows(self.favoriteChannels.count, withRowType: "FavoriteChannelRow")
                         

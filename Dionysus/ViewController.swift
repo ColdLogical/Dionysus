@@ -83,6 +83,16 @@ class ViewController: UIViewController {
         }
         
         /**
+        Creates and presents a local notification
+        */
+        @IBAction func sendNotification() {
+                let notif = UILocalNotification()
+                notif.alertAction = "Your Mom"
+                
+                UIApplication.sharedApplication().presentLocalNotificationNow(notif)
+        }
+        
+        /**
         Sets the environment URL in the user default suite and makes a call to regenerate the authorization token
         */
         @IBAction func setEnvironment() {

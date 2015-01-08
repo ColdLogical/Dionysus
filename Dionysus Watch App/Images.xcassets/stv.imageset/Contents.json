@@ -6,8 +6,7 @@
     },
     {
       "idiom" : "iphone",
-      "scale" : "2x",
-      "filename" : "ic_actions_stv-1.png"
+      "scale" : "2x"
     },
     {
       "idiom" : "iphone",
@@ -23,7 +22,8 @@
     },
     {
       "idiom" : "watch",
-      "scale" : "2x"
+      "scale" : "2x",
+      "filename" : "ic_actions_stv-1.png"
     }
   ],
   "info" : {

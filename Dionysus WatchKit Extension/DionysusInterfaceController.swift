@@ -26,10 +26,17 @@ class DionysusInterfaceController: WKInterfaceController {
                 super.init()
                 
                 if let t = table {
-                        t.setRowTypes(["RotaryMenuRow", "NumpadMenuRow", "FavoritesMenuRow", "SearchMenuRow"])
+                        t.setRowTypes(["NumpadMenuRow", "FavoritesMenuRow"])
                 }
                 
-                WebOperations.fetchChannels(nil, failure: nil)
+                if let results = DataManager.sharedInstance.fetchResults("Channel", predicate: NSPredicate(format: "%K <= %@", kTitleEndDate, NSDate())) {
+                        if results.count > 0 {
+                                println("Found out of date data, Refreshing...")
+                                WebOperations.fetchChannels(nil, failure: nil)
+                        } else {
+                                println("All channel data is synced")
+                        }
+                }
         }
         
         //    override func table(table: WKInterfaceTable, didSelectRowAtIndex rowIndex: Int) {
@@ -44,5 +51,38 @@ class DionysusInterfaceController: WKInterfaceController {
         //            //TODO: Figure out if it is possible to have a default device... if so, need some type of notification telling user they need to set their device.
         //            //      If not, then assert in default device call on Device class
         //        }
-        //    } 
+        //    }
+        
+        override func handleActionWithIdentifier(identifier: String?, forRemoteNotification remoteNotification: [NSObject : AnyObject]) {
+                let notif = UILocalNotification()
+                
+                
+                var assetData = NSData()
+                if let url = NSURL(string: "http://tmsimg.video.cdn.charter.com/iconic/v9/AllPhotos/9087990/p9087990_i_v9_aa.jpg?width=\(self.contentFrame.size.width)") {
+                        if let data = NSData(contentsOfURL: url) {
+                                assetData = data
+                        }
+                }
+                
+                var networkData = NSData()
+                if let url = NSURL(string: "http://tmsimg.video.cdn.charter.com/h3/NowShowing/18284/s18284_h3_aa.png?w=90") {
+                        if let data = NSData(contentsOfURL: url) {
+                                networkData = data
+                        }
+                }
+                
+                notif.userInfo = [ kTitleString : "Lincoln",
+                        kEpisodeString : "",
+                        kTimeString : "6:00 PM - 8:00 PM",
+                        kDescriptionString: "With the nation embroiled in still another year with the high death count of Civil War, President Abraham Lincoln (Daniel Day-Lewis) brings the full measure of his passion, humanity and political skill to what would become his defining legacy: to end the war and permanently abolish slavery through the 13th Amendment. Having great courage, acumen and moral fortitude, Lincoln pushes forward to compel the nation, and those in government who oppose him, to aim toward a greater good for all mankind.",
+                        kAssetImageData: assetData,
+                        kNetworkImageData: networkData
+                ]
+                
+                handleActionWithIdentifier(identifier, forLocalNotification: notif)
+        }
+        
+        override func handleActionWithIdentifier(identifier: String?, forLocalNotification localNotification: UILocalNotification) {
+                presentControllerWithName("AssetDetail", context: localNotification.userInfo)
+        }
 }

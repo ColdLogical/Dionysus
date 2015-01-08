@@ -59,12 +59,14 @@
 		186D46051A25171800928D1D /* WebOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFB31A1D6AAB0093FA04 /* WebOperations.swift */; };
 		186D46061A25171F00928D1D /* DionysusModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1855DFAE1A1D6AAB0093FA04 /* DionysusModel.xcdatamodeld */; };
 		186D46081A26760B00928D1D /* NSDictionary+XML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186D46071A26760B00928D1D /* NSDictionary+XML.swift */; };
+		1873C9AB1A5EF3880079E4A1 /* ImageCacher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1873C9AA1A5EF3880079E4A1 /* ImageCacher.swift */; };
+		1873C9AD1A5EF57A0079E4A1 /* ImageCacherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1873C9AC1A5EF57A0079E4A1 /* ImageCacherTests.swift */; };
 		188A256D1A1D17E1002C8AE4 /* WatchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 188A256C1A1D17E1002C8AE4 /* WatchKit.framework */; };
 		188A25751A1D17E2002C8AE4 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188A25741A1D17E2002C8AE4 /* NotificationController.swift */; };
 		188A257B1A1D17E2002C8AE4 /* Dionysus Watch App.app in Resources */ = {isa = PBXBuildFile; fileRef = 188A257A1A1D17E2002C8AE4 /* Dionysus Watch App.app */; };
-		188A25821A1D17E2002C8AE4 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 188A25811A1D17E2002C8AE4 /* Interface.storyboard */; };
 		188A25841A1D17E2002C8AE4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 188A25831A1D17E2002C8AE4 /* Images.xcassets */; };
 		188A25871A1D17E2002C8AE4 /* Dionysus WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 188A256B1A1D17E1002C8AE4 /* Dionysus WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		1899DB921A5DE8E5007C3881 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1899DB911A5DE8E5007C3881 /* Interface.storyboard */; };
 		18ABB7A81A3B9AB8008D9A8A /* DionysusConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18ABB7A71A3B9AB8008D9A8A /* DionysusConfig.plist */; };
 		18ABB7AA1A3F5E62008D9A8A /* MenuRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ABB7A91A3F5E62008D9A8A /* MenuRow.swift */; };
 		18D4E1BD1A13D48C00A283E2 /* WebOperationsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D4E1BC1A13D48C00A283E2 /* WebOperationsTests.swift */; };
@@ -154,6 +156,8 @@
 		186ACCAA1A0C491800512F12 /* DionysusTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DionysusTests.swift; sourceTree = "<group>"; };
 		186ACCB61A0D62D300512F12 /* WebOperationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebOperationTests.swift; sourceTree = "<group>"; };
 		186D46071A26760B00928D1D /* NSDictionary+XML.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDictionary+XML.swift"; sourceTree = "<group>"; };
+		1873C9AA1A5EF3880079E4A1 /* ImageCacher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCacher.swift; sourceTree = "<group>"; };
+		1873C9AC1A5EF57A0079E4A1 /* ImageCacherTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCacherTests.swift; sourceTree = "<group>"; };
 		18840AB91A16C4F30066119C /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		188A256B1A1D17E1002C8AE4 /* Dionysus WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Dionysus WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		188A256C1A1D17E1002C8AE4 /* WatchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchKit.framework; path = System/Library/Frameworks/WatchKit.framework; sourceTree = SDKROOT; };
@@ -162,8 +166,8 @@
 		188A25741A1D17E2002C8AE4 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		188A257A1A1D17E2002C8AE4 /* Dionysus Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Dionysus Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		188A25801A1D17E2002C8AE4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		188A25811A1D17E2002C8AE4 /* Interface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Interface.storyboard; sourceTree = "<group>"; };
 		188A25831A1D17E2002C8AE4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		1899DB911A5DE8E5007C3881 /* Interface.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Interface.storyboard; sourceTree = "<group>"; };
 		18ABB7A71A3B9AB8008D9A8A /* DionysusConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DionysusConfig.plist; sourceTree = "<group>"; };
 		18ABB7A91A3F5E62008D9A8A /* MenuRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuRow.swift; sourceTree = "<group>"; };
 		18D4E1BC1A13D48C00A283E2 /* WebOperationsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebOperationsTests.swift; sourceTree = "<group>"; };
@@ -270,6 +274,7 @@
 				0136B0621A23FCB80016666B /* DataManagerTests.swift */,
 				1855DF981A1D53F70093FA04 /* DeviceTests.swift */,
 				186ACCAA1A0C491800512F12 /* DionysusTests.swift */,
+				1873C9AC1A5EF57A0079E4A1 /* ImageCacherTests.swift */,
 				01ACBDE71A292C5F0029230A /* NSDictionary+XMLTests.swift */,
 				18D4E1BC1A13D48C00A283E2 /* WebOperationsTests.swift */,
 				186ACCB61A0D62D300512F12 /* WebOperationTests.swift */,
@@ -305,6 +310,7 @@
 				1855DFAD1A1D6AAB0093FA04 /* DionysusInterfaceController.swift */,
 				186129A01A32287A00D15E91 /* FavoriteChannelRow.swift */,
 				1861299E1A3222EB00D15E91 /* FavoritesInterfaceController.swift */,
+				1873C9AA1A5EF3880079E4A1 /* ImageCacher.swift */,
 				18ABB7A91A3F5E62008D9A8A /* MenuRow.swift */,
 				188A25741A1D17E2002C8AE4 /* NotificationController.swift */,
 				1855DFB01A1D6AAB0093FA04 /* Images.xcassets */,
@@ -326,9 +332,9 @@
 		188A257E1A1D17E2002C8AE4 /* Dionysus Watch App */ = {
 			isa = PBXGroup;
 			children = (
-				188A25811A1D17E2002C8AE4 /* Interface.storyboard */,
 				188A25831A1D17E2002C8AE4 /* Images.xcassets */,
 				188A257F1A1D17E2002C8AE4 /* Supporting Files */,
+				1899DB911A5DE8E5007C3881 /* Interface.storyboard */,
 			);
 			path = "Dionysus Watch App";
 			sourceTree = "<group>";
@@ -523,7 +529,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				188A25821A1D17E2002C8AE4 /* Interface.storyboard in Resources */,
+				1899DB921A5DE8E5007C3881 /* Interface.storyboard in Resources */,
 				188A25841A1D17E2002C8AE4 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -573,6 +579,7 @@
 				0136B05C1A23DF190016666B /* ChannelTests.swift in Sources */,
 				186ACCAB1A0C491800512F12 /* DionysusTests.swift in Sources */,
 				1855DF991A1D53F70093FA04 /* DeviceTests.swift in Sources */,
+				1873C9AD1A5EF57A0079E4A1 /* ImageCacherTests.swift in Sources */,
 				0136B0631A23FCB80016666B /* DataManagerTests.swift in Sources */,
 				18D4E1BD1A13D48C00A283E2 /* WebOperationsTests.swift in Sources */,
 			);
@@ -587,6 +594,7 @@
 				188A25751A1D17E2002C8AE4 /* NotificationController.swift in Sources */,
 				186D46041A25171800928D1D /* WebOperation.swift in Sources */,
 				186D46061A25171F00928D1D /* DionysusModel.xcdatamodeld in Sources */,
+				1873C9AB1A5EF3880079E4A1 /* ImageCacher.swift in Sources */,
 				018F97D01A28F6FA00E51069 /* NSDictionary+XML.swift in Sources */,
 				186D46011A25171800928D1D /* DataManager.swift in Sources */,
 				18025E081A2FEA5B006ADD49 /* ChannelTunerInterfaceController.swift in Sources */,
@@ -742,7 +750,7 @@
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Dionysus/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Dionysus;
 				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
@@ -757,7 +765,7 @@
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Dionysus/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Dionysus;
 				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
@@ -776,7 +784,7 @@
 				);
 				INFOPLIST_FILE = DionysusTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = DionysusTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Dionysus.app/Dionysus";
 			};
 			name = Debug;
@@ -791,7 +799,7 @@
 				);
 				INFOPLIST_FILE = DionysusTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = DionysusTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Dionysus.app/Dionysus";
 			};
 			name = Release;
@@ -810,7 +818,7 @@
 				INFOPLIST_FILE = "Dionysus WatchKit Extension/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_NAME = "${TARGET_NAME}";
+				PRODUCT_NAME = "Dionysus WatchKit Extension";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 			};
@@ -826,7 +834,7 @@
 				INFOPLIST_FILE = "Dionysus WatchKit Extension/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_NAME = "${TARGET_NAME}";
+				PRODUCT_NAME = "Dionysus WatchKit Extension";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 			};
@@ -844,7 +852,7 @@
 				IBSC_MODULE = Dionysus_WatchKit_Extension;
 				INFOPLIST_FILE = "Dionysus Watch App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Dionysus Watch App";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
 				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
@@ -859,7 +867,7 @@
 				IBSC_MODULE = Dionysus_WatchKit_Extension;
 				INFOPLIST_FILE = "Dionysus Watch App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Dionysus Watch App";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
 				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
