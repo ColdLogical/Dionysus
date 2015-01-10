@@ -72,13 +72,21 @@ public class Channel: NSManagedObject {
         /// The start date of the currently playing asset on the channel
         @NSManaged public var titleStartDate: NSDate
         
+        public class func allChannels()  -> [Channel] {
+                if let results = DataManager.sharedInstance.fetchResults(kChannelKey) as? [Channel] {
+                        return results
+                }
+                
+                return [Channel]()
+        }
+        
         /**
         Fetches a list of all the channel objects marked as favorites from the managed object context.
         
         :returns: An array of all channels marked as favorites.
         */
         public class func allFavorites() -> [Channel] {
-                if let results = DataManager.sharedInstance.fetchResults(kChannelKey, predicate: NSPredicate(format: "isFavorite = %@", true)) as? [Channel] {
+                if let results = DataManager.sharedInstance.fetchResults(kChannelKey, predicate: NSPredicate(format: "%K = %@", kIsFavorite, true)) as? [Channel] {
                         return results
                 }
                 
@@ -137,7 +145,7 @@ public class Channel: NSManagedObject {
         :returns: A channel object with the input channel ID
         */
         public class func existingOrNew(channelId: String!) -> Channel {
-                let c = DataManager.sharedInstance.existingOrNewEntity("Channel", predicate: NSPredicate(format: "channelId = %@", channelId)) as Channel
+                let c = DataManager.sharedInstance.existingOrNewEntity("Channel", predicate: NSPredicate(format: "%K = %@", kChannelId, channelId)) as Channel
                 
                 if c.valueForKey(kChannelIdKey) as? String != channelId {
                         //A brand new entity, so set its macAddress

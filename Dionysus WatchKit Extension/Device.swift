@@ -79,7 +79,7 @@ public class Device: NSManagedObject {
         :returns: A device object with a matching  MAC address.
         */
         public class func existingOrNew(macAddress: String!) -> Device {
-                let d = DataManager.sharedInstance.existingOrNewEntity(kDeviceKey, predicate: NSPredicate(format: "macAddress = %@", macAddress)) as Device
+                let d = DataManager.sharedInstance.existingOrNewEntity(kDeviceKey, predicate: NSPredicate(format: "%K = %@", kMacAddress, macAddress)) as Device
                 
                 if d.valueForKey(kMacAddressKey) as? String != macAddress {
                         //A brand new entity, so set its macAddress

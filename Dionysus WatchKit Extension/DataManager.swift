@@ -1,4 +1,4 @@
-//
+ //
 //  DataManager.swift
 //  Dionysus
 //
@@ -8,6 +8,8 @@
 
 import Foundation
 import CoreData
+import UIKit
+import WatchKit
 
 /**
 *       A single who is responsible for maintaining the core data context. Provides functionality for creating objects, deleting objects, and fetching objects.
@@ -77,6 +79,113 @@ public class DataManager {
         
         //MARK: Helper Functions
         /**
+        Will cache the image data for the URL key passed in. This will clear space in the cache if there isn't enough space to cache a new image. To clear space, it prioritizes cached images based on number of times used and date since last use, the removes the lowest priority ones until there is enough space to cache.
+        
+        :param: url The URL of the cached image to retrieve. If the app has not cached this URL image, it will download the contents and cache it for future use.
+        */
+        public func cacheImage(url: String!) -> String? {
+                var key = url.stringByReplacingOccurrencesOfString("/", withString: "")
+                key = key.stringByReplacingOccurrencesOfString(".", withString: "")
+                key = key.stringByReplacingOccurrencesOfString("?", withString: "")
+                key = key.stringByReplacingOccurrencesOfString(":", withString: "")
+                
+                let pred = NSPredicate(format: "%K == %@", kKey, key)
+                
+                if let results = fetchResults("ImageCache", predicate: pred) {
+                        var imgCache: ImageCache? = nil
+                        if results.count == 0 {
+                                var image: UIImage? = nil
+                                if let urlOfImage = NSURL(string: url) {
+                                        if let data = NSData(contentsOfURL: urlOfImage) {
+                                                if let img = UIImage(data: data) {
+                                                        image = img
+                                                }
+                                        }
+                                }
+                                
+                                if image != nil {
+                                        if !WKInterfaceDevice.currentDevice().addCachedImage(image!, name: key) {
+                                                let countDesc = NSSortDescriptor(key: kUsedCount, ascending: true)
+                                                let dateDesc = NSSortDescriptor(key: kUsedDate, ascending: false)
+                                                
+                                                let imgCaches = fetchResults("ImageCache", sortDescriptors:[countDesc, dateDesc]) as [ImageCache]
+                                                
+                                                for ic in imgCaches {
+                                                        WKInterfaceDevice.currentDevice().removeCachedImageWithName(ic.valueForKey(kKey) as String)
+                                                        ImageCache.deleteImageCache(ic)
+                                                        if WKInterfaceDevice.currentDevice().addCachedImage(image!, name: key) {
+                                                                break;
+                                                        }
+                                                }
+                                        }
+                                        
+                                        imgCache = ImageCache.existingOrNew(key)
+                                }
+                        } else {
+                                imgCache = results[0] as? ImageCache
+                        }
+                        
+                        if imgCache != nil {
+                                var count = (imgCache!.valueForKey(kUsedCount) as NSNumber).intValue
+                                imgCache!.setValue(NSNumber(int:count+1), forKey:kUsedCount)
+                                imgCache!.setValue(NSDate(), forKey:kUsedDate)
+                                
+                                save()
+                                
+                                return key
+                        }
+                }
+                
+                return nil
+        }
+//        public func cacheImage(url: String!) {
+//                let pred = NSPredicate(format: "%K == %@", kKey, url)
+//                
+//                if let results = fetchResults("ImageCache", predicate: pred) {
+//                        var imgCache: ImageCache? = nil
+//                        if results.count == 0 {
+//                                println("Caching image \(url)")
+//                                var image: UIImage? = nil
+//                                if let urlOfImage = NSURL(string: url) {
+//                                        if let data = NSData(contentsOfURL: urlOfImage) {
+//                                                if let img = UIImage(data: data) {
+//                                                        image = img
+//                                                }
+//                                        }
+//                                }
+//                                
+//                                if image != nil {
+//                                        if !WKInterfaceDevice.currentDevice().addCachedImage(image!, name: url) {
+//                                                let countDesc = NSSortDescriptor(key: kUsedCount, ascending: true)
+//                                                let dateDesc = NSSortDescriptor(key: kUsedDate, ascending: false)
+//                                                
+//                                                let imgCaches = fetchResults("ImageCache", sortDescriptors:[countDesc, dateDesc]) as [ImageCache]
+//                                                
+//                                                for ic in imgCaches {
+//                                                        WKInterfaceDevice.currentDevice().removeCachedImageWithName(ic.valueForKey(kKey) as String)
+//                                                        ImageCache.deleteImageCache(ic)
+//                                                        if WKInterfaceDevice.currentDevice().addCachedImage(image!, name: url) {
+//                                                                break;
+//                                                        }
+//                                                }
+//                                        }
+//                                        
+//                                        imgCache = existingOrNewEntity("ImageCache", predicate: pred) as? ImageCache
+//                                }
+//                        } else {
+//                                println("Using cached image \(url)")
+//                                imgCache = results[0] as? ImageCache
+//                        }
+//                        
+//                        if imgCache != nil {
+//                                var count = (imgCache!.valueForKey(kUsedCount) as NSNumber).intValue
+//                                imgCache!.setValue(NSNumber(int:count++), forKey:kUsedCount)
+//                                imgCache!.setValue(NSDate(), forKey:kUsedDate)
+//                        }
+//                }
+//        }
+        
+        /**
         Helper function to delete an object from the context and save the change.
         
         :param: object The managed object to delete
@@ -107,7 +216,18 @@ public class DataManager {
         }
         
         /**
-        Helper function to fetch results from the managed object context based on entity type, and a predicate of any kind.
+        Convience function to fetch all objects of an entity type.
+        
+        :param: entityName The type of managed object to fetch
+        
+        :returns: An array of objects matching the entity type
+        */
+        public func fetchResults(entityName: String!) -> [AnyObject]? {
+                return fetchResults(entityName, predicate: nil, sortDescriptors: nil)
+        }
+        
+        /**
+        Convience function to fetch results from the managed object context based on entity type, and a predicate of any kind.
         
         :param: entityName The type of managed object to fetch
         :param: predicate  The predicate describing the objects to fetch
@@ -115,6 +235,19 @@ public class DataManager {
         :returns: An array of objects matching the predicate
         */
         public func fetchResults(entityName: String!, predicate: NSPredicate?) -> [AnyObject]? {
+                return fetchResults(entityName, predicate: predicate, sortDescriptors: nil)
+        }
+        
+        /**
+        Helper function to fetch sorted results from the managed object context based on entity type, and a predicate of any kind.
+        
+        :param: entityName The type of managed object to fetch
+        :param: predicate  The predicate describing the objects to fetch
+        :param: sortDescriptions The sort descriptors used to sort the results
+        
+        :returns: An array of sorted objects matching the predicate
+        */
+        public func fetchResults(entityName: String!, predicate: NSPredicate?, sortDescriptors: [AnyObject]?) -> [AnyObject]? {
                 var error: NSError?
                 let fetchRequest = NSFetchRequest()
                 
@@ -125,9 +258,25 @@ public class DataManager {
                         fetchRequest.predicate = predicate
                 }
                 
+                if sortDescriptors != nil {
+                        fetchRequest.sortDescriptors = sortDescriptors
+                }
+                
                 let fetchedObjects = context.executeFetchRequest(fetchRequest, error:&error)
                 
                 return fetchedObjects
+        }
+        
+        /**
+        Convience function to fetch sorted results from the managed object context based on entity type.
+        
+        :param: entityName The type of managed object to fetch
+        :param: sortDescriptions The sort descriptors used to sort the results
+        
+        :returns: An array of sorted objects
+        */
+        public func fetchResults(entityName: String!,  sortDescriptors: [AnyObject]?) -> [AnyObject]? {
+                return fetchResults(entityName, predicate: nil, sortDescriptors: sortDescriptors)
         }
         
         /**

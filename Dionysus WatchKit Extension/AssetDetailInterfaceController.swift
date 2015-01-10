@@ -28,23 +28,11 @@ class AssetDetailInterfaceController: WKInterfaceController {
                         descriptionLabel!.setText(channel!.valueForKey(kTitleDescription) as? String)
                         
                         if let uri = channel!.networkImageURIWithWidth(90) {
-                                if let url = NSURL(string: uri ) {
-                                        if let data = NSData(contentsOfURL: url) {
-                                                if let image = UIImage(data: data) {
-                                                        networkImage!.setImage(image)
-                                                }
-                                        }
-                                }
+                                networkImage!.setImageNamed(DataManager.sharedInstance.cacheImage(uri))
                         }
                         
                         if let uri = channel!.assetImageURIWithWidth(90) {
-                                if let url = NSURL(string: uri ) {
-                                        if let data = NSData(contentsOfURL: url) {
-                                                if let image = UIImage(data: data) {
-                                                        assetImageGroup!.setBackgroundImage(image)
-                                                }
-                                        }
-                                }
+                                assetImageGroup!.setBackgroundImageNamed(DataManager.sharedInstance.cacheImage(uri))
                         }
                 }
         }

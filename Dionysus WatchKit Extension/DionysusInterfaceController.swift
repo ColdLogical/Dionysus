@@ -30,7 +30,7 @@ class DionysusInterfaceController: WKInterfaceController {
                 }
                 
                 if let results = DataManager.sharedInstance.fetchResults("Channel", predicate: NSPredicate(format: "%K <= %@", kTitleEndDate, NSDate())) {
-                        if results.count > 0 {
+                        if results.count > 0 || Channel.allChannels().count == 0 {
                                 println("Found out of date data, Refreshing...")
                                 WebOperations.fetchChannels(nil, failure: nil)
                         } else {
